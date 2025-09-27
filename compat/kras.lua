@@ -9,39 +9,39 @@ end
 
 if mods["advanced-chemical-plant"] and not mods["Krastorio2"] then
   if advfitting == "airtight-seal" and not mods["IfNickel"] then
-    rm.AddIngredient("kr-advanced-chemical-plant", "airtight-seal", 32, 32)
+    rm.AddIngredient("kr-advanced-chemical-plant", "airtight-seal", 32)
   end
   if parts.experimental then
-    rm.AddIngredient("kr-advanced-chemical-plant", "advanced-gearbox", 4, 4)
+    rm.AddIngredient("kr-advanced-chemical-plant", "advanced-gearbox", 4)
   else if not mods["space-exploration"] then
-    rm.AddIngredient("kr-advanced-chemical-plant", "bearing", 16, 16)
+    rm.AddIngredient("kr-advanced-chemical-plant", "bearing", 16)
   end end
-  rm.AddIngredient("kr-advanced-chemical-plant", "electric-engine-unit", 4, 4) --nobody can escape my insistence on shoving this item in every high end recipe. nobody!
+  rm.AddIngredient("kr-advanced-chemical-plant", "electric-engine-unit", 4) --nobody can escape my insistence on shoving this item in every high end recipe. nobody!
 end
 
 if mods["AdvancedAssemblyMachineStandalone"] and not mods["Krastorio2"] then
-  rm.RemoveIngredient("assembling-machine-3", "electric-engine-unit", 99999, 99999) -- :O
+  rm.RemoveIngredient("assembling-machine-3", "electric-engine-unit", 99999) -- :O
   if parts.experimental then
-    rm.AddIngredient("kr-advanced-assembling-machine", "hardened-hull", 12, 12)
+    rm.AddIngredient("kr-advanced-assembling-machine", "hardened-hull", 122)
   end
 end
 
 if mods["advanced-centrifuge"] then
   if parts.experimental then
-    rm.AddIngredient("k11-advanced-centrifuge", "advanced-gearbox", 10, 10)
+    rm.AddIngredient("k11-advanced-centrifuge", "advanced-gearbox", 10)
   else
-    rm.AddIngredient("k11-advanced-centrifuge", "bearing", 50, 50)
+    rm.AddIngredient("k11-advanced-centrifuge", "bearing", 50)
   end
 end
 
 if mods["Krastorio2"] then
-    rm.RemoveIngredient("steel-gear-wheel", "steel-plate", 1, 1)
+    rm.RemoveIngredient("steel-gear-wheel", "steel-plate", 1)
     if not rm.CheckIngredient("steel-gear-wheel", "steel-plate") then
         rm.multiply("steel-gear-wheel", 4, true, true, true)
-        rm.AddIngredient("steel-gear-wheel", "steel-plate", 3, 3)
+        rm.AddIngredient("steel-gear-wheel", "steel-plate", 3)
     end
-    rm.AddIngredient("steel-gear-wheel", "brass-plate", 3, 3)
-    rm.ReplaceIngredient("kr-s-c-steel-gear-wheel", "iron-plate", "brass-plate", 3, 3)
+    rm.AddIngredient("steel-gear-wheel", "brass-plate", 3)
+    rm.ReplaceIngredient("kr-s-c-steel-gear-wheel", "iron-plate", "brass-plate", 3)
     --rm.AddIngredient("imersium-gear-wheel", "brass-plate", 2, 2)
 
     if parts.experimental then
@@ -51,185 +51,185 @@ if mods["Krastorio2"] then
         tf.addRecipeUnlock("kr-imersium-processing", "elite-gearbox")
       end
 
-      rm.RemoveIngredient("inserter-parts", "iron-stick", 4, 4)
-      rm.RemoveIngredient("inserter-parts", "aluminum-plate", 1, 1)
-      rm.AddIngredient("inserter-parts", "articulated-mechanism", 2, 2)
+      rm.RemoveIngredient("inserter-parts", "iron-stick", 4)
+      rm.RemoveIngredient("inserter-parts", "aluminum-plate", 1)
+      rm.AddIngredient("inserter-parts", "articulated-mechanism", 2)
 
       --gearboxes
       rm.ReplaceProportional("advanced-gearbox", "iron-gear-wheel", "steel-gear-wheel", 1)
-      rm.RemoveIngredient("express-transport-belt", "steel-gear-wheel", 10, 10)
-      rm.RemoveIngredient("express-underground-belt", "steel-gear-wheel", 20, 20)
-      rm.RemoveIngredient("express-splitter", "steel-gear-wheel", 20, 20)
-      rm.RemoveIngredient("express-transport-belt-loader", "steel-gear-wheel", 40, 40)
-      rm.RemoveIngredient("express-transport-belt-beltbox", "steel-gear-wheel", 40, 40)
+      rm.RemoveIngredient("express-transport-belt", "steel-gear-wheel", 10)
+      rm.RemoveIngredient("express-underground-belt", "steel-gear-wheel", 20)
+      rm.RemoveIngredient("express-splitter", "steel-gear-wheel", 20)
+      rm.RemoveIngredient("express-transport-belt-loader", "steel-gear-wheel", 40)
+      rm.RemoveIngredient("express-transport-belt-beltbox", "steel-gear-wheel", 40)
 
-      rm.RemoveIngredient("kr-fast-loader", "iron-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-fast-loader", "gearbox", 2, 2)
-      rm.RemoveIngredient("kr-express-loader", "steel-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-express-loader", "advanced-gearbox", 2, 2)
+      rm.RemoveIngredient("kr-fast-loader", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-fast-loader", "gearbox", 2)
+      rm.RemoveIngredient("kr-express-loader", "steel-gear-wheel", 10)
+      rm.AddIngredient("kr-express-loader", "advanced-gearbox", 2)
 
-      rm.AddIngredient("kr-advanced-loader", "complex-joint", 1, 1)
-      rm.AddIngredient("kr-superior-loader", "complex-joint", 2, 2)
-      rm.AddIngredient("kr-advanced-transport-belt-loader", "complex-joint", 1, 1)
-      rm.AddIngredient("kr-superior-transport-belt-loader", "complex-joint", 2, 2)
+      rm.AddIngredient("kr-advanced-loader", "complex-joint", 1)
+      rm.AddIngredient("kr-superior-loader", "complex-joint", 2)
+      rm.AddIngredient("kr-advanced-transport-belt-loader", "complex-joint", 1)
+      rm.AddIngredient("kr-superior-transport-belt-loader", "complex-joint", 2)
 
-      rm.AddIngredient("kr-advanced-loader", "advanced-gearbox", 2, 2)
-      rm.AddIngredient("kr-advanced-transport-belt", "advanced-gearbox", 1, 1)
-      rm.RemoveIngredient("kr-advanced-transport-belt", "imersium-gear-wheel", 3, 3)
-      rm.AddIngredient("kr-advanced-splitter", "advanced-gearbox", 2, 2)
-      rm.RemoveIngredient("kr-advanced-splitter", "imersium-gear-wheel", 2, 2)
+      rm.AddIngredient("kr-advanced-loader", "advanced-gearbox", 2)
+      rm.AddIngredient("kr-advanced-transport-belt", "advanced-gearbox", 1)
+      rm.RemoveIngredient("kr-advanced-transport-belt", "imersium-gear-wheel", 3)
+      rm.AddIngredient("kr-advanced-splitter", "advanced-gearbox", 2)
+      rm.RemoveIngredient("kr-advanced-splitter", "imersium-gear-wheel", 2)
 
-      rm.RemoveIngredient("kr-se-loader", "steel-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-se-loader", "advanced-gearbox", 2, 2)
+      rm.RemoveIngredient("kr-se-loader", "steel-gear-wheel", 10)
+      rm.AddIngredient("kr-se-loader", "advanced-gearbox", 2)
 
-      rm.RemoveIngredient("kr-superior-loader", "imersium-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-superior-loader", "elite-gearbox", 2, 2)
+      rm.RemoveIngredient("kr-superior-loader", "imersium-gear-wheel", 10)
+      rm.AddIngredient("kr-superior-loader", "elite-gearbox", 2)
 
-      rm.RemoveIngredient("kr-superior-transport-belt", "imersium-gear-wheel", 10, 10)
-      rm.RemoveIngredient("kr-superior-transport-belt", "se-heavy-bearing", 4, 4)
-      rm.AddIngredient("kr-superior-transport-belt", "elite-gearbox", 1, 1)
+      rm.RemoveIngredient("kr-superior-transport-belt", "imersium-gear-wheel", 10)
+      rm.RemoveIngredient("kr-superior-transport-belt", "se-heavy-bearing", 4)
+      rm.AddIngredient("kr-superior-transport-belt", "elite-gearbox", 1)
 
-      rm.RemoveIngredient("kr-superior-splitter", "imersium-gear-wheel", 10, 10)
-      rm.RemoveIngredient("kr-superior-splitter", "se-heavy-bearing", 4, 4)
-      rm.AddIngredient("kr-superior-splitter", "elite-gearbox", 2, 2)
+      rm.RemoveIngredient("kr-superior-splitter", "imersium-gear-wheel", 10)
+      rm.RemoveIngredient("kr-superior-splitter", "se-heavy-bearing", 4)
+      rm.AddIngredient("kr-superior-splitter", "elite-gearbox", 2)
 
-      rm.RemoveIngredient("kr-se-deep-space-loader-black", "imersium-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-se-deep-space-loader-black", "elite-gearbox", 2, 2)
+      rm.RemoveIngredient("kr-se-deep-space-loader-black", "imersium-gear-wheel", 10)
+      rm.AddIngredient("kr-se-deep-space-loader-black", "elite-gearbox", 2)
 
       if mods["space-exploration"] then
-        rm.ReplaceIngredient("se-deep-space-transport-belt", "se-heavy-bearing", "elite-gearbox", 1, 1)
+        rm.ReplaceIngredient("se-deep-space-transport-belt", "se-heavy-bearing", "elite-gearbox", 1)
         rm.ReplaceProportional("se-heavy-assembly", "imersium-beam", "elite-gearbox", 0.5)
       end
 
-      rm.ReplaceIngredient("galvanized-steel-plate", "steel-plate", "steel-beam", 1, 1)
+      rm.ReplaceIngredient("galvanized-steel-plate", "steel-plate", "steel-beam", 1)
       data.raw.item["galvanized-steel-plate"].localised_name = {"item-name.galvanized-steel-beam"}
 
-      rm.AddIngredient("kr-gas-power-station", "flywheel", 2, 2)
-      rm.RemoveIngredient("kr-advanced-steam-turbine", "steel-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-advanced-steam-turbine", "advanced-gearbox", 2, 2)
+      rm.AddIngredient("kr-gas-power-station", "flywheel", 2)
+      rm.RemoveIngredient("kr-advanced-steam-turbine", "steel-gear-wheel", 10)
+      rm.AddIngredient("kr-advanced-steam-turbine", "advanced-gearbox", 2)
 
       --k2 makes the steam turbine an upgrade that takes the steam engine as a component.
       --that makes its gears valid to replace with a gearbox. them's the rules.
-      rm.RemoveIngredient("steam-turbine", "iron-gear-wheel", 99999, 99999)
-      rm.AddIngredient("steam-turbine", "gearbox", 2, 2)
+      rm.RemoveIngredient("steam-turbine", "iron-gear-wheel", 99999)
+      rm.AddIngredient("steam-turbine", "gearbox", 2)
 
-      rm.RemoveIngredient("kr-advanced-furnace", "steel-beam", 80, 80)
+      rm.RemoveIngredient("kr-advanced-furnace", "steel-beam", 80)
       if parts.nickel then
-        rm.AddIngredient("kr-advanced-furnace", "hardened-hull", 40, 40)
+        rm.AddIngredient("kr-advanced-furnace", "hardened-hull", 40)
       else
-        rm.AddIngredient("kr-advanced-furnace", "hardened-hull", 60, 60)
+        rm.AddIngredient("kr-advanced-furnace", "hardened-hull", 60)
       end
 
-      rm.AddIngredient("kr-electric-mining-drill-mk2", "gearbox", 2, 2)
+      rm.AddIngredient("kr-electric-mining-drill-mk2", "gearbox", 2)
       if mods["aai-industry"] then
-        rm.AddIngredient("kr-electric-mining-drill-mk3", "elite-gearbox", 2, 2)
-        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "imersium-gear-wheel", 5, 5)
-        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "se-heavy-bearing", 10, 10)
+        rm.AddIngredient("kr-electric-mining-drill-mk3", "elite-gearbox", 2)
+        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "imersium-gear-wheel", 5)
+        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "se-heavy-bearing", 10)
       else
-        rm.AddIngredient("kr-electric-mining-drill-mk3", "advanced-gearbox", 2, 2)
+        rm.AddIngredient("kr-electric-mining-drill-mk3", "advanced-gearbox", 2)
       end
 
       if parts.drill then
-        rm.AddIngredient("kr-quarry-drill", "industrial-drill-head", 10, 10)
-        rm.RemoveIngredient("kr-quarry-drill", "tungsten-carbide", 99999, 99999)
-        rm.RemoveIngredient("kr-quarry-drill", "diamond", 99999, 99999)
+        rm.AddIngredient("kr-quarry-drill", "industrial-drill-head", 10)
+        rm.RemoveIngredient("kr-quarry-drill", "tungsten-carbide", 99999)
+        rm.RemoveIngredient("kr-quarry-drill", "diamond", 99999)
 
-        rm.AddIngredient("kr-electric-mining-drill-mk3", "industrial-drill-head", 5, 5)
-        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "tungsten-carbide", 99999, 99999)
-        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "diamond", 99999, 99999)
+        rm.AddIngredient("kr-electric-mining-drill-mk3", "industrial-drill-head", 5)
+        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "tungsten-carbide", 99999)
+        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "diamond", 99999)
       else
-        rm.AddIngredient("kr-electric-mining-drill-mk3", "complex-joint", 10, 10)
-        rm.AddIngredient("kr-quarry-drill", "bearing", 10, 10)
+        rm.AddIngredient("kr-electric-mining-drill-mk3", "complex-joint", 10)
+        rm.AddIngredient("kr-quarry-drill", "bearing", 10)
       end
 
-      rm.AddIngredient("kr-medium-container", "articulated-mechanism", 5, 5)
-      rm.ReplaceIngredient("kr-medium-container", "steel-beam", "galvanized-steel-plate", 5, 5)
-      rm.AddIngredient("kr-big-container", "articulated-mechanism", 20, 2)
-      rm.ReplaceIngredient("kr-big-container", "steel-beam", "galvanized-steel-plate", 50, 50)
+      rm.AddIngredient("kr-medium-container", "articulated-mechanism", 5)
+      rm.ReplaceIngredient("kr-medium-container", "steel-beam", "galvanized-steel-plate", 5)
+      rm.AddIngredient("kr-big-container", "articulated-mechanism", 20)
+      rm.ReplaceIngredient("kr-big-container", "steel-beam", "galvanized-steel-plate", 50)
 
-      rm.AddIngredient("kr-big-passive-provider-container", "complex-joint", 5, 5)
-      rm.AddIngredient("kr-big-active-provider-container", "complex-joint", 5, 5)
-      rm.AddIngredient("kr-big-requester-container", "complex-joint", 5, 5)
-      rm.AddIngredient("kr-big-buffer-container", "complex-joint", 5, 5)
-      rm.AddIngredient("kr-big-storage-container", "complex-joint", 5, 5)
+      rm.AddIngredient("kr-big-passive-provider-container", "complex-joint", 5)
+      rm.AddIngredient("kr-big-active-provider-container", "complex-joint", 5)
+      rm.AddIngredient("kr-big-requester-container", "complex-joint", 5)
+      rm.AddIngredient("kr-big-buffer-container", "complex-joint", 5)
+      rm.AddIngredient("kr-big-storage-container", "complex-joint", 5)
 
-      rm.AddIngredient("kr-superior-inserter", "complex-joint", 1, 1)
-      rm.AddIngredient("kr-superior-long-inserter", "complex-joint", 2, 2)
-      rm.AddIngredient("kr-superior-filter-inserter", "complex-joint", 1, 1)
-      rm.AddIngredient("kr-superior-long-filter-inserter", "complex-joint", 2, 2)
+      rm.AddIngredient("kr-superior-inserter", "complex-joint", 1)
+      rm.AddIngredient("kr-superior-long-inserter", "complex-joint", 2)
+      rm.AddIngredient("kr-superior-filter-inserter", "complex-joint", 1)
+      rm.AddIngredient("kr-superior-long-filter-inserter", "complex-joint", 2)
 
-      rm.ReplaceIngredient("kr-fluid-storage-1", "steel-beam", "hardened-hull", 10, 10)
-      rm.ReplaceIngredient("kr-fluid-storage-2", "steel-beam", "hardened-hull", 20, 20)
+      rm.ReplaceIngredient("kr-fluid-storage-1", "steel-beam", "hardened-hull", 10)
+      rm.ReplaceIngredient("kr-fluid-storage-2", "steel-beam", "hardened-hull", 20)
       rm.ReplaceIngredient("kr-steel-pump", "steel-beam", "galvanized-steel-plate")
 
-      rm.RemoveIngredient("kr-nuclear-locomotive", "steel-gear-wheel", 20, 20)
-      rm.AddIngredient("kr-nuclear-locomotive", "advanced-gearbox", 4, 4)
+      rm.RemoveIngredient("kr-nuclear-locomotive", "steel-gear-wheel", 20)
+      rm.AddIngredient("kr-nuclear-locomotive", "advanced-gearbox", 4)
 
       --hardened hulls
-      rm.RemoveIngredient("pumpjack", "steel-beam", 4, 4)
-      rm.RemoveIngredient("oil-refinery", "steel-beam", 4, 4)
-      rm.RemoveIngredient("chemical-plant", "steel-beam", 4, 4)
+      rm.RemoveIngredient("pumpjack", "steel-beam", 4)
+      rm.RemoveIngredient("oil-refinery", "steel-beam", 4)
+      rm.RemoveIngredient("chemical-plant", "steel-beam", 4)
 
-      rm.ReplaceIngredient("kr-steel-pump", "steel-beam", "galvanized-steel-plate", 1, 1)
+      rm.ReplaceIngredient("kr-steel-pump", "steel-beam", "galvanized-steel-plate", 1)
 
       tf.addPrereq("kr-fluids-chemistry", "hardened-hull")
 
-      rm.ReplaceIngredient("kr-electrolysis-plant", "steel-beam", "galvanized-steel-plate", 10, 10)
-      rm.ReplaceIngredient("kr-filtration-plant", "steel-beam", "galvanized-steel-plate", 10, 10)
-      rm.ReplaceIngredient("kr-atmospheric-condenser", "steel-beam", "galvanized-steel-plate", 10, 10)
+      rm.ReplaceIngredient("kr-electrolysis-plant", "steel-beam", "galvanized-steel-plate", 10)
+      rm.ReplaceIngredient("kr-filtration-plant", "steel-beam", "galvanized-steel-plate", 10)
+      rm.ReplaceIngredient("kr-atmospheric-condenser", "steel-beam", "galvanized-steel-plate", 10)
 
-      rm.ReplaceIngredient("kr-fusion-reactor", "steel-plate", "hardened-hull", 500, 500)
+      rm.ReplaceIngredient("kr-fusion-reactor", "steel-plate", "hardened-hull", 500)
 
 
       if parts.gyroscope then
-        rm.RemoveIngredient("kr-nuclear-locomotive", parts.gyroscope, 99, 99)
-        rm.AddIngredient("kr-nuclear-locomotive", parts.gyroscope, 4, 4)
+        rm.RemoveIngredient("kr-nuclear-locomotive", parts.gyroscope, 99)
+        rm.AddIngredient("kr-nuclear-locomotive", parts.gyroscope, 4)
 
-        rm.RemoveIngredient("kr-advanced-tank", parts.gyroscope, 99, 99)
-        rm.AddIngredient("kr-advanced-tank", parts.gyroscope, 10, 10)
+        rm.RemoveIngredient("kr-advanced-tank", parts.gyroscope, 99)
+        rm.AddIngredient("kr-advanced-tank", parts.gyroscope, 10)
 
-        rm.RemoveIngredient("advanced-exoskeleton-equipment", parts.gyroscope, 99, 99)
-        rm.AddIngredient("advanced-exoskeleton-equipment", parts.gyroscope, 8, 8)
+        rm.RemoveIngredient("advanced-exoskeleton-equipment", parts.gyroscope, 99)
+        rm.AddIngredient("advanced-exoskeleton-equipment", parts.gyroscope, 8)
 
-        rm.RemoveIngredient("kr-laser-artillery-turret", parts.gyroscope, 99, 99)
-        rm.AddIngredient("kr-laser-artillery-turret", parts.gyroscope, 10, 10)
+        rm.RemoveIngredient("kr-laser-artillery-turret", parts.gyroscope, 99)
+        rm.AddIngredient("kr-laser-artillery-turret", parts.gyroscope, 10)
 
-        rm.RemoveIngredient("kr-rocket-turret", parts.gyroscope, 99, 99)
-        rm.AddIngredient("kr-rocket-turret", parts.gyroscope, 5, 5)
+        rm.RemoveIngredient("kr-rocket-turret", parts.gyroscope, 99)
+        rm.AddIngredient("kr-rocket-turret", parts.gyroscope, 5)
 
-        rm.RemoveIngredient("kr-railgun-turret", parts.gyroscope, 99, 99)
-        rm.AddIngredient("kr-railgun-turret", parts.gyroscope, 5, 5)
+        rm.RemoveIngredient("kr-railgun-turret", parts.gyroscope, 99)
+        rm.AddIngredient("kr-railgun-turret", parts.gyroscope, 5)
       end
     else
 
-      rm.AddIngredient("kr-express-loader", "bearing", 2, 2)
-      rm.AddIngredient("kr-advanced-loader", "bearing", 2, 2)
-      rm.AddIngredient("kr-superior-loader", "bearing", 5, 5)
-      rm.AddIngredient("kr-advanced-transport-belt-loader", "bearing", 2, 2)
-      rm.AddIngredient("kr-superior-transport-belt-loader", "bearing", 5, 5)
+      rm.AddIngredient("kr-express-loader", "bearing", 2)
+      rm.AddIngredient("kr-advanced-loader", "bearing", 2)
+      rm.AddIngredient("kr-superior-loader", "bearing", 5)
+      rm.AddIngredient("kr-advanced-transport-belt-loader", "bearing", 2)
+      rm.AddIngredient("kr-superior-transport-belt-loader", "bearing", 5)
 
-      rm.AddIngredient("kr-advanced-splitter", "bearing", 4, 4)
+      rm.AddIngredient("kr-advanced-splitter", "bearing", 4)
       if not mods["space-exploration"] then
-        rm.AddIngredient("kr-superior-splitter", "bearing", 10, 10)
+        rm.AddIngredient("kr-superior-splitter", "bearing", 10)
       end
 
-      rm.AddIngredient("kr-big-passive-provider-container", "iron-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-big-active-provider-container", "iron-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-big-requester-container", "iron-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-big-buffer-container", "iron-gear-wheel", 10, 10)
-      rm.AddIngredient("kr-big-storage-container", "iron-gear-wheel", 10, 10)
+      rm.AddIngredient("kr-big-passive-provider-container", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-big-active-provider-container", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-big-requester-container", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-big-buffer-container", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-big-storage-container", "iron-gear-wheel", 10)
 
       if not mods["space-exploration"] then
-        rm.AddIngredient("kr-superior-inserter", "bearing", 2, 2)
-        rm.AddIngredient("kr-superior-long-inserter", "bearing", 2, 2)
-        rm.AddIngredient("kr-superior-filter-inserter", "bearing", 2, 2)
-        rm.AddIngredient("kr-superior-long-filter-inserter", "bearing", 2, 2)
+        rm.AddIngredient("kr-superior-inserter", "bearing", 2)
+        rm.AddIngredient("kr-superior-long-inserter", "bearing", 2)
+        rm.AddIngredient("kr-superior-filter-inserter", "bearing", 2)
+        rm.AddIngredient("kr-superior-long-filter-inserter", "bearing", 2)
       end
-      rm.AddIngredient("kr-quarry-drill", "bearing", 10, 10)
+      rm.AddIngredient("kr-quarry-drill", "bearing", 10)
     end
 
-    rm.AddIngredient("kr-fluid-storage-1", "bolted-flange", 4, 4)
-    rm.AddIngredient("kr-fluid-storage-2", "bolted-flange", 12, 12)
+    rm.AddIngredient("kr-fluid-storage-1", "bolted-flange", 4)
+    rm.AddIngredient("kr-fluid-storage-2", "bolted-flange", 12)
 
     tf.addRecipeUnlock("kr-basic-fluid-handling", "bolted-flange")
 
@@ -238,37 +238,37 @@ if mods["Krastorio2"] then
       if parts.experimental then
         --rm.AddIngredient("kr-advanced-transport-belt", "complex-joint", 1, 1)
       else
-        rm.AddIngredient("kr-advanced-transport-belt", "bearing", 2, 2)
+        rm.AddIngredient("kr-advanced-transport-belt", "bearing", 2)
       end
     else
-      rm.AddIngredient("kr-advanced-transport-belt", "bearing", 2, 2)
+      rm.AddIngredient("kr-advanced-transport-belt", "bearing", 2)
       if parts.experimental then
         --rm.AddIngredient("kr-superior-transport-belt", "complex-joint", 2, 2)
       else
-        rm.AddIngredient("kr-superior-transport-belt", "bearing", 5, 5)
+        rm.AddIngredient("kr-superior-transport-belt", "bearing", 5)
       end
     end
 
-    rm.AddIngredient("kr-steel-pump", advfitting, 2, 2)
-    rm.AddIngredient("rocket-fuel-with-ammonia", advfitting, 1, 1)
-    rm.AddIngredient("rocket-fuel-with-hydrogen-chloride", advfitting, 1, 1)
+    rm.AddIngredient("kr-steel-pump", advfitting, 2)
+    rm.AddIngredient("rocket-fuel-with-ammonia", advfitting, 1)
+    rm.AddIngredient("rocket-fuel-with-hydrogen-chloride", advfitting, 1)
 
-    rm.AddIngredient("kr-medium-passive-provider-container", "iron-gear-wheel", 2, 2)
-    rm.AddIngredient("kr-medium-active-provider-container", "iron-gear-wheel", 2, 2)
-    rm.AddIngredient("kr-medium-requester-container", "iron-gear-wheel", 2, 2)
-    rm.AddIngredient("kr-medium-buffer-container", "iron-gear-wheel", 2, 2)
-    rm.AddIngredient("kr-medium-storage-container", "iron-gear-wheel", 2, 2)
+    rm.AddIngredient("kr-medium-passive-provider-container", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-medium-active-provider-container", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-medium-requester-container", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-medium-buffer-container", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-medium-storage-container", "iron-gear-wheel", 2)
 
     if not mods["aai-industry"] then
-      rm.AddIngredient("kr-electric-mining-drill-mk3", "bearing", 20, 20)
+      rm.AddIngredient("kr-electric-mining-drill-mk3", "bearing", 20)
     end
 
-    rm.AddIngredient("rifle-magazine", "brass-plate", 1, 1)
-    rm.AddIngredient("anti-material-rifle-magazine", "brass-plate", 1, 1)
+    rm.AddIngredient("rifle-magazine", "brass-plate", 1)
+    rm.AddIngredient("anti-material-rifle-magazine", "brass-plate", 1)
 
     rm.multiply("kr-steel-pipe", 5, true, true, true)
-    rm.AddIngredient("kr-steel-pipe", "bolted-flange", 1, 1)
-    rm.RemoveIngredient("kr-steel-pump", "graphite", 2, 2) -- airtight seal
+    rm.AddIngredient("kr-steel-pipe", "bolted-flange", 1)
+    rm.RemoveIngredient("kr-steel-pump", "graphite", 2) -- airtight seal
 
     tf.addRecipeUnlock("kr-enriched-ores", "enriched-zinc")
     tf.addRecipeUnlock("kr-enriched-ores", "enriched-zinc-plate")
@@ -278,68 +278,68 @@ end
 if mods["FluidMustFlow"] then
   if parts.experimental then
     if mods["Expensive_Fluid_Must_Flow_Recipes"] then
-      rm.ReplaceIngredient("duct-small", "steel-plate", "hardened-hull", 4, 4)
-      rm.ReplaceIngredient("duct", "steel-plate", "hardened-hull", 8, 8)
-      rm.ReplaceIngredient("duct-long", "steel-plate", "hardened-hull", 16, 16)
-      rm.ReplaceIngredient("duct-t-junction", "steel-plate", "hardened-hull", 8, 8)
-      rm.ReplaceIngredient("duct-curve", "steel-plate", "hardened-hull", 8, 8)
-      rm.ReplaceIngredient("duct-cross", "steel-plate", "hardened-hull", 8, 8)
-      rm.ReplaceIngredient("duct-underground", "steel-plate", "hardened-hull", 60, 60)
-      rm.ReplaceIngredient("non-return-duct", "steel-plate", "hardened-hull", 8, 8)
+      rm.ReplaceIngredient("duct-small", "steel-plate", "hardened-hull", 4)
+      rm.ReplaceIngredient("duct", "steel-plate", "hardened-hull", 8)
+      rm.ReplaceIngredient("duct-long", "steel-plate", "hardened-hull", 16)
+      rm.ReplaceIngredient("duct-t-junction", "steel-plate", "hardened-hull", 8)
+      rm.ReplaceIngredient("duct-curve", "steel-plate", "hardened-hull", 8)
+      rm.ReplaceIngredient("duct-cross", "steel-plate", "hardened-hull", 8)
+      rm.ReplaceIngredient("duct-underground", "steel-plate", "hardened-hull", 60)
+      rm.ReplaceIngredient("non-return-duct", "steel-plate", "hardened-hull", 8)
       if not mods["IfNickel"] then
-        rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 8, 8)
-        rm.RemoveIngredient("non-return-duct", "steel-gear-wheel", 4, 4)
+        rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 8)
+        rm.RemoveIngredient("non-return-duct", "steel-gear-wheel", 4)
       end
     else
-      rm.RemoveIngredient("duct-small", "iron-plate", 4, 4)
-      rm.RemoveIngredient("duct", "iron-plate", 8, 8)
-      rm.RemoveIngredient("duct-long", "iron-plate", 16, 16)
-      rm.RemoveIngredient("duct-t-junction", "iron-plate", 8, 8)
-      rm.RemoveIngredient("duct-curve", "iron-plate", 8, 8)
-      rm.RemoveIngredient("duct-cross", "iron-plate", 8, 8)
-      rm.RemoveIngredient("duct-underground", "iron-plate", 60, 60)
-      rm.RemoveIngredient("non-return-duct", "iron-plate", 8, 8)
+      rm.RemoveIngredient("duct-small", "iron-plate", 4)
+      rm.RemoveIngredient("duct", "iron-plate", 8)
+      rm.RemoveIngredient("duct-long", "iron-plate", 16)
+      rm.RemoveIngredient("duct-t-junction", "iron-plate", 8)
+      rm.RemoveIngredient("duct-curve", "iron-plate", 8)
+      rm.RemoveIngredient("duct-cross", "iron-plate", 8)
+      rm.RemoveIngredient("duct-underground", "iron-plate", 60)
+      rm.RemoveIngredient("non-return-duct", "iron-plate", 8)
 
-      rm.AddIngredient("duct-small", "hardened-hull", 1, 1)
-      rm.AddIngredient("duct", "hardened-hull", 2, 2)
-      rm.AddIngredient("duct-long", "hardened-hull", 4, 4)
-      rm.AddIngredient("duct-t-junction", "hardened-hull", 2, 2)
-      rm.AddIngredient("duct-curve", "hardened-hull", 2, 2)
-      rm.AddIngredient("duct-cross", "hardened-hull", 2, 2)
-      rm.AddIngredient("duct-underground", "hardened-hull", 15, 15)
-      rm.AddIngredient("non-return-duct", "hardened-hull", 2, 2)
+      rm.AddIngredient("duct-small", "hardened-hull", 1)
+      rm.AddIngredient("duct", "hardened-hull", 2)
+      rm.AddIngredient("duct-long", "hardened-hull", 4)
+      rm.AddIngredient("duct-t-junction", "hardened-hull", 2)
+      rm.AddIngredient("duct-curve", "hardened-hull", 2)
+      rm.AddIngredient("duct-cross", "hardened-hull", 2)
+      rm.AddIngredient("duct-underground", "hardened-hull", 15)
+      rm.AddIngredient("non-return-duct", "hardened-hull", 2)
 
       if not mods["IfNickel"] then
-        rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 4, 4)
+        rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 4)
       end
     end
-    rm.ReplaceIngredient("duct-end-point-intake", "steel-plate", "hardened-hull", 6, 6)
-    rm.ReplaceIngredient("duct-end-point-outtake", "steel-plate", "hardened-hull", 6, 6)
+    rm.ReplaceIngredient("duct-end-point-intake", "steel-plate", "hardened-hull", 6)
+    rm.ReplaceIngredient("duct-end-point-outtake", "steel-plate", "hardened-hull", 6)
   end
 
-  rm.AddIngredient("duct-small", "bolted-flange", 2, 2)
-  rm.AddIngredient("duct", "bolted-flange", 4, 4)
-  rm.AddIngredient("duct-long", "bolted-flange", 8, 8)
-  rm.AddIngredient("duct-t-junction", "bolted-flange", 3, 3)
-  rm.AddIngredient("duct-curve", "bolted-flange", 2, 2)
-  rm.AddIngredient("duct-cross", "bolted-flange", 4, 4)
-  rm.AddIngredient("duct-underground", "bolted-flange", 2, 2)
-  rm.AddIngredient("non-return-duct", "bolted-flange", 2, 2)
+  rm.AddIngredient("duct-small", "bolted-flange", 2)
+  rm.AddIngredient("duct", "bolted-flange", 4)
+  rm.AddIngredient("duct-long", "bolted-flange", 8)
+  rm.AddIngredient("duct-t-junction", "bolted-flange", 3)
+  rm.AddIngredient("duct-curve", "bolted-flange", 2)
+  rm.AddIngredient("duct-cross", "bolted-flange", 4)
+  rm.AddIngredient("duct-underground", "bolted-flange", 2)
+  rm.AddIngredient("non-return-duct", "bolted-flange", 2)
   if not mods["IfNickel"] then
-    rm.ReplaceIngredient("duct-end-point-intake", "pipe", advfitting, 6, 6)
-    rm.ReplaceIngredient("duct-end-point-outtake", "pipe", advfitting, 6, 6)
-    rm.RemoveIngredient("duct-end-point-intake", "kr-steel-pipe", 6, 6)
-    rm.RemoveIngredient("duct-end-point-outtake", "kr-steel-pipe", 6, 6)
+    rm.ReplaceIngredient("duct-end-point-intake", "pipe", advfitting, 6)
+    rm.ReplaceIngredient("duct-end-point-outtake", "pipe", advfitting, 6)
+    rm.RemoveIngredient("duct-end-point-intake", "kr-steel-pipe", 6)
+    rm.RemoveIngredient("duct-end-point-outtake", "kr-steel-pipe", 6)
   end
 
   if rm.CheckIngredient("duct-end-point-intake", "electric-engine-unit") then
-    rm.AddIngredient("duct-end-point-intake", "bearing", 6, 6)
-    rm.AddIngredient("duct-end-point-outtake", "bearing", 6, 6)
+    rm.AddIngredient("duct-end-point-intake", "bearing", 6)
+    rm.AddIngredient("duct-end-point-outtake", "bearing", 6)
   else
     --don't worry electric engine unit. i still love you
     tf.addPrereq("Ducts", "electric-engine")
-    rm.AddIngredient("duct-end-point-intake", "electric-engine-unit", 1, 1)
-    rm.AddIngredient("duct-end-point-outtake", "electric-engine-unit", 1, 1)
+    rm.AddIngredient("duct-end-point-intake", "electric-engine-unit", 1)
+    rm.AddIngredient("duct-end-point-outtake", "electric-engine-unit", 1)
   end
 end
 
@@ -348,7 +348,7 @@ if mods["Krastorio2-more-locomotives"] then
     rm.ReplaceProportional("kr-fusion-locomotive", "steel-gear-wheel", "advanced-gearbox", 0.2)
     rm.ReplaceProportional("kr-antimatter-locomotive", "imersium-gear-wheel", "elite-gearbox", 0.2)
   else
-    rm.AddIngredient("kr-fusion-locomotive", "bearing", 20, 20)
-    rm.AddIngredient("kr-antimatter-locomotive", "bearing", 100, 100)
+    rm.AddIngredient("kr-fusion-locomotive", "bearing", 20)
+    rm.AddIngredient("kr-antimatter-locomotive", "bearing", 100)
   end
 end

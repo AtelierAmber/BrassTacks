@@ -20,37 +20,19 @@ if not mods["galdocs-manufacturing"] then
           type = "recipe",
           name = "brass-plate",
           category = "smelting",
-          normal = {
-            energy_required = 1.6 * yield,
-            ingredients = {{"copper-ore", cost}, {"zinc-ore", cost}},
-            result = "brass-plate",
-            result_count = yield * 2
-          },
-          expensive = {
-            energy_required = 1.6 * yield,
-            ingredients = {{"copper-ore", cost}, {"zinc-ore", cost}},
-            result = "brass-plate",
-            result_count = yield
-          }
+          energy_required = 1.6 * yield,
+          ingredients = {{type="item", name="copper-ore", amount=cost}, {type="item", name="zinc-ore", amount=cost}},
+          results = {{type="item", name="brass-plate", amount=yield*2}},
+          main_product = "brass-plate",
         },
         {
           type = "recipe",
           name = "brass-plate-foundry",
           category = parts.foundryEnabled and "founding" or "smelting",
-          normal = {
-            enabled = false,
-            energy_required = 1.6 * yield,
-            ingredients = {{"copper-plate", yield}, {"zinc-plate", yield}},
-            result = "brass-plate",
-            result_count = yield * 2
-          },
-          expensive = {
-            enabled = false,
-            energy_required = 1.6 * yield,
-            ingredients = {{"copper-plate", yield}, {"zinc-plate", yield}},
-            result = "brass-plate",
-            result_count = yield
-          }
+          enabled = false,
+          energy_required = 1.6 * yield,
+          ingredients = {{type="item", name="copper-plate", amount=yield}, {type="item", name="zinc-plate", amount=yield}},
+          results = {{type="item", name="brass-plate", amount=yield*2}},
         }
       })
     else
@@ -59,18 +41,9 @@ if not mods["galdocs-manufacturing"] then
           type = "recipe",
           name = "brass-plate",
           category = "smelting",
-          normal = {
-            energy_required = 1.6,
-            ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-            result = "brass-plate",
-            result_count = 2
-          },
-          expensive = {
-            energy_required = 1.6,
-            ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-            result = "brass-plate",
-            result_count = 1
-          }
+          energy_required = 1.6,
+          ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
+          results = {{type="item", name="brass-plate",amount=2}}
         }
       })
       if parts.foundryEnabled then
@@ -79,20 +52,10 @@ if not mods["galdocs-manufacturing"] then
             type = "recipe",
             name = "brass-plate-foundry",
             category = "founding",
-            normal = {
-              enabled = false,
-              energy_required = 1.6,
-              ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-              result = "brass-plate",
-              result_count = 2
-            },
-            expensive = {
-              enabled = false,
-              energy_required = 1.6,
-              ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-              result = "brass-plate",
-              result_count = 1
-            }
+            enabled = false,
+            energy_required = 1.6,
+            ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
+            results = {{type="item", name="brass-plate",amount=2}}
           }
         })
       end
@@ -104,7 +67,7 @@ if not mods["galdocs-manufacturing"] then
         name = "brass-plate",
         category = "smelting",
         energy_required = 1.6,
-        ingredients = {{"brass-precursor", 1}},
+        ingredients = {{type="item", name="brass-precursor", amount=1}},
         result = "brass-plate"
       }
     })
@@ -114,18 +77,9 @@ if not mods["galdocs-manufacturing"] then
           type = "recipe",
           name = "brass-precursor",
           category = "crafting",
-          normal = {
-            energy_required = 0.5,
-            ingredients = {{"copper-ore", 2}, {"zinc-ore", 2}},
-            result = "brass-precursor",
-            result_count = 2
-          },
-          expensive = {
-            energy_required = 0.5,
-            ingredients = {{"copper-ore", 2}, {"zinc-ore", 2}},
-            result = "brass-precursor",
-            result_count = 1
-          }
+          energy_required = 0.5,
+          ingredients = {{type="item", name="copper-ore", amount=2}, {type="item", name="zinc-ore", amount=2}},
+          results = {{type="item", name="brass-precursor",amount=2}}
         }
       })
       if not parts.foundryEnabled then
@@ -134,20 +88,10 @@ if not mods["galdocs-manufacturing"] then
             type = "recipe",
             name = "brass-precursor-foundry",
             category = "crafting",
-            normal = {
-              enabled = false,
-              energy_required = 0.5,
-              ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-              result = "brass-precursor",
-              result_count = 2
-            },
-            expensive = {
-              enabled = false,
-              energy_required = 0.5,
-              ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-              result = "brass-precursor",
-              result_count = 1
-            }
+            enabled = false,
+            energy_required = 0.5,
+            ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
+            results = {{type="item", name="brass-precursor",amount=2}}
           }
         })
       end
@@ -157,18 +101,9 @@ if not mods["galdocs-manufacturing"] then
           type = "recipe",
           name = "brass-precursor",
           category = "crafting",
-          normal = {
-            energy_required = 0.5,
-            ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-            result = "brass-precursor",
-            result_count = 2
-          },
-          expensive = {
-            energy_required = 0.5,
-            ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-            result = "brass-precursor",
-            result_count = 1
-          }
+          energy_required = 0.5,
+          ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
+          results = {{type="item", name="brass-precursor",amount=2}}
         }
       })
     end
@@ -178,20 +113,10 @@ if not mods["galdocs-manufacturing"] then
           type = "recipe",
           name = "brass-plate-foundry",
           category = "founding",
-          normal = {
-            energy_required = 3.2,
-            ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-            result = "brass-plate",
-            result_count = 2,
-            enabled = false
-          },
-          expensive = {
-            energy_required = 1.6,
-            ingredients = {{"copper-plate", 1}, {"zinc-plate", 1}},
-            result = "brass-plate",
-            result_count = 1,
-            enabled = false
-          }
+          energy_required = 3.2,
+          ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
+          results = {{type="item", name="brass-plate",amount=2}},
+          enabled = false
         }
       })
     end
@@ -203,7 +128,7 @@ if not mods["galdocs-manufacturing"] then
         name = "zinc-plate",
         category = "smelting",
         energy_required = 3.2 * yield,
-        ingredients = {{"zinc-ore", cost}},
+        ingredients = {{type="item", name="zinc-ore", amount=cost}},
         result = "zinc-plate",
         result_count = yield
       }
@@ -217,7 +142,7 @@ data:extend({
     name = "bolted-flange",
     category = "crafting",
     energy_required = 2.5,
-    ingredients = {{"brass-plate", 2}},
+    ingredients = {{type="item", name="brass-plate", amount=2}},
     result = "bolted-flange",
     enabled = not mods["Krastorio2"],
     lasermill = {helium=1, productivity=true}
@@ -228,27 +153,18 @@ data:extend({
     category = "advanced-crafting",
     enabled = false,
     energy_required = 0.5,
-    ingredients = {{"brass-plate", 1}},
-    result = "brass-balls",
-    result_count = 2,
+    ingredients = {{type="item", name="brass-plate", amount=1}},
+    results = {{type="item", name="brass-balls",amount=2}},
     lasermill = {helium=1, productivity=true, type="gubbins", multiply=2}
   },
   {
     type = "recipe",
     name = "bearing",
     category = "crafting-with-fluid",
-    normal = {
-      enabled = false,
-      energy_required = 4,
-      ingredients = {{"brass-plate", 2}, {"brass-balls", 4}, {type="fluid", name="lubricant", amount=5}},
-      result = "bearing"
-    },
-    expensive = {
-      enabled = false,
-      energy_required = 4,
-      ingredients = {{"brass-plate", 2}, {"brass-balls", 8}, {type="fluid", name="lubricant", amount=10}},
-      result = "bearing"
-    }
+    enabled = false,
+    energy_required = 4,
+    ingredients = {{type="item", name="brass-plate", amount=2}, {type="item", name="brass-balls", amount=4}, {type="fluid", name="lubricant", amount=5}},
+    result = "bearing"
   }
 })
 
@@ -260,7 +176,7 @@ if mods["bzcarbon"] or mods["BrimStuff"] then
       category = "advanced-crafting",
       enabled = false,
       energy_required = 2.5,
-      ingredients = {{"bolted-flange", 1}, {"graphite", 2}},
+      ingredients = {{type="item", name="bolted-flange", amount=1}, {type="item", name="graphite", amount=2}},
       result = "airtight-seal",
       lasermill = {helium=data.raw.item["silver-brazing-alloy"] and 4 or 2, productivity=true}
     }
@@ -286,9 +202,8 @@ if mods["bzcarbon"] or mods["BrimStuff"] then
         enabled = false,
         allow_decomposition = false,
         energy_required = 250,
-        ingredients = {{"bolted-flange", 150}, {"graphite", 50}, {"se-vitalic-epoxy", 1}},
-        result = "airtight-seal",
-        result_count = 200,
+        ingredients = {{type="item", name="bolted-flange", amount=150}, {type="item", name="graphite", amount=50}, {type="item", name="se-vitalic-epoxy", amount=1}},
+        results = {{type="item", name="airtight-seal",amount=200}},
         always_show_products = true,
         localised_name = {"recipe-name.airtight-seal-vitalic"},
         lasermill = {helium=100, convert=true, se_variant="space-crafting", se_tooltip_entity="se-space-assembling-machine", unlock="airtight-seal-vitalic", icon_offset={8, -8}}
@@ -303,42 +218,26 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       type = "recipe",
       name = "flywheel",
       category = "crafting",
-      normal = {
-        energy_required = 2,
-        ingredients = {{"iron-gear-wheel", 1}, {"zinc-plate", 3}},
-        result = "flywheel"
-      },
-      expensive = {
-        energy_required = 2,
-        ingredients = {{"iron-gear-wheel", 1}, {"zinc-plate", 8}},
-        result = "flywheel"
-      },
+      energy_required = 2,
+      ingredients = {{type="item", name="iron-gear-wheel", amount=1}, {type="item", name="zinc-plate", amount=3}},
+      result = "flywheel",
       lasermill = {helium = 2, productivity = true}
     },
     {
       type = "recipe",
       name = "articulated-mechanism",
       category = "crafting",
-      normal = {
-        energy_required = 1,
-        ingredients = {{"brass-plate", 1}, parts.preferred({"aluminum-plate", "iron-plate"}, {1, 1}), {"iron-stick", 3}},
-        result = "articulated-mechanism",
-        result_count = 2
-      },
-      expensive = {
-        --aluminum is doublecosted in expensive mode
-        energy_required = mods["bzaluminum"] and 1 or 0.5,
-        ingredients = {{"brass-plate", mods["bzaluminum"] and 2 or 1}, parts.preferred({"aluminum-plate", "iron-plate"}, {1, 1}), {"iron-stick", mods["bzaluminum"] and 6 or 3}},
-        result = "articulated-mechanism",
-        result_count = mods["bzaluminum"] and 2 or 1
-      }
+      energy_required = 1,
+      ingredients = {{type="item", name="brass-plate", amount=1}, parts.preferred({"aluminum-plate", "iron-plate"}, {1, 1}), {type="item", name="iron-stick", amount=3}},
+      results = {{type="item", name="articulated-mechanism",amount=2}},
     },
     {
       type = "recipe",
       name = "hardened-hull",
       category = "crafting",
       energy_required = 2,
-      ingredients = {{"galvanized-steel-plate", 1}, parts.nickel and {"invar-plate", 1} or {"iron-plate", 2}, parts.preferred({"bronze-plate", "brass-plate"}, {2, 2})},
+      ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, parts.nickel and {type="item", name="invar-plate", amount=1} or {type="item", name="iron-plate", amount=2}, 
+                     parts.preferred({"bronze-plate", "brass-plate"}, {2, 2})},
       result = "hardened-hull",
       enabled = false,
       lasermill = {helium=5, productivity=true}
@@ -347,27 +246,19 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       type = "recipe",
       name = "complex-joint",
       category = "crafting-with-fluid",
-      normal = {
-        energy_required = 8,
-        ingredients = {{"bearing", 1}, {"galvanized-steel-plate", 1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {1, 4, 2}), {"articulated-mechanism", 8}, {type="fluid", name="lubricant", amount=5}},
-        result = "complex-joint",
-        enabled = false
-      },
-      expensive = {
-        energy_required = 8,
-        ingredients = {{"bearing", 1}, {"galvanized-steel-plate", 1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {2, 4, 4}), {"articulated-mechanism", 12}, {type="fluid", name="lubricant", amount=10}},
-        result = "complex-joint",
-        enabled = false
-      }
+      energy_required = 8,
+      ingredients = {{type="item", name="bearing", amount=1}, {type="item", name="galvanized-steel-plate", amount=1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {1, 4, 2}), 
+                     {type="item", name="articulated-mechanism", amount=8}, {type="fluid", name="lubricant", amount=5}},
+      result = "complex-joint",
+      enabled = false,
     },
     {
       type = "recipe",
       name = "gearbox",
       category = "crafting",
       energy_required = 3,
-      ingredients = {{"galvanized-steel-plate", 1}, {"iron-gear-wheel", mods["Krastorio2"] and 8 or 10}},
-      result = "gearbox",
-      result_count = 2,
+      ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 8 or 10)}},
+      results = {{type="item", name="gearbox",amount=2}},
       enabled = false
     },
     {
@@ -375,7 +266,8 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       name = "advanced-gearbox",
       category = "crafting-with-fluid",
       energy_required = 3,
-      ingredients = {{"gearbox", 1}, {"iron-gear-wheel", mods["Krastorio2"] and 4 or 5}, {"bearing", 2}, {"flywheel", 1}, {type="fluid", name="lubricant", amount=20}},
+      ingredients = {{type="item", name="gearbox", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 4 or 5)}, 
+                     {type="item", name="bearing", amount=2}, {type="item", name="flywheel", amount=1}, {type="fluid", name="lubricant", amount=20}},
       result = "advanced-gearbox",
       enabled = false
     }
@@ -387,18 +279,10 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         type = "recipe",
         name = "galvanized-steel-plate",
         category = parts.foundryEnabled and "founding" or "advanced-crafting",
-        normal = {
-          energy_required = parts.foundryEnabled and 6.4 or 3,
-          ingredients = {{"steel-plate", 1}, {"zinc-plate", 1}},
-          result = "galvanized-steel-plate",
-          enabled = false
-        },
-        expensive = {
-          energy_required = parts.foundryEnabled and 6.4 or 3,
-          ingredients = {{"steel-plate", 1}, {"zinc-plate", 2}},
-          result = "galvanized-steel-plate",
-          enabled = false
-        }
+        energy_required = parts.foundryEnabled and 6.4 or 3,
+        ingredients = {{type="item", name="steel-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
+        result = "galvanized-steel-plate",
+        enabled = false,
       }
     })
   end
@@ -410,7 +294,8 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         name = "elite-gearbox",
         category = "advanced-crafting",
         energy_required = 6,
-        ingredients = {{"advanced-gearbox", 1}, {"imersium-gear-wheel", 4}, {"imersium-beam", 1}, parts.preferred({"se-heavy-bearing", "electric-engine-unit"}, {4, 1})},
+        ingredients = {{type="item", name="advanced-gearbox", amount=1}, {type="item", name="imersium-gear-wheel", amount=4}, {type="item", name="imersium-beam", amount=1}, 
+                       parts.preferred({"se-heavy-bearing", "electric-engine-unit"}, {4, 1})},
         result = "elite-gearbox",
         enabled = false
       }
@@ -436,22 +321,12 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
           },
          },
         localised_name = {"recipe-name.complex-joint-iridium"},
-        normal = {
-          energy_required = 64,
-          ingredients = {{"bearing", 8}, {"se-iridium-plate", 1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {8, 32, 16}), {"articulated-mechanism", 48}, {type="fluid", name="lubricant", amount=40}},
-          result = "complex-joint",
-          result_count = 8,
-          enabled = false,
-          always_show_products = true
-        },
-        expensive = {
-          energy_required = 64,
-          ingredients = {{"bearing", 8}, {"se-iridium-plate", 1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {16, 32, 32}), {"articulated-mechanism", 72}, {type="fluid", name="lubricant", amount=80}},
-          result = "complex-joint",
-          result_count = 8,
-          enabled = false,
-          always_show_products = true
-        }
+        energy_required = 64,
+        ingredients = {{type="item", name="bearing", amount=8}, {type="item", name="se-iridium-plate", amount=1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {8, 32, 16}), 
+                       {type="item", name="articulated-mechanism", amount=48}, {type="fluid", name="lubricant", amount=40}},
+        results = {{type="item", name="complex-joint",amount=8}},
+        enabled = false,
+        always_show_products = true,
       },
       {
         type = "recipe",
@@ -470,9 +345,8 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
           },
          },
         energy_required = 48,
-        ingredients = {{"se-iridium-plate", 1}, {"iron-gear-wheel", mods["Krastorio2"] and 64 or 80}, {"electric-motor", mods["Krastorio2"] and 12 or 16}},
-        result = "gearbox",
-        result_count = 16,
+        ingredients = {{type="item", name="se-iridium-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 64 or 80)}, {type="item", name="electric-motor", amount=(mods["Krastorio2"] and 12 or 16)}},
+        results = {{type="item", name="gearbox",amount=16}},
         enabled = false,
         always_show_products = true,
         localised_name = {"recipe-name.gearbox-iridium"}
@@ -494,9 +368,9 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
           },
          },
         energy_required = 16,
-        ingredients = {{"se-iridium-plate", 1}, {"galvanized-steel-plate", 4}, parts.nickel and {"invar-plate", 4} or {"iron-plate", 8}, parts.preferred({"bronze-plate", "brass-plate"}, {16, 16}), parts.optionalIngredient("lead-plate", 8)},
-        result = "hardened-hull",
-        result_count = 8,
+        ingredients = {{type="item", name="se-iridium-plate", amount=1}, {type="item", name="galvanized-steel-plate", amount=4}, parts.nickel and 
+                       {type="item", name="invar-plate", amount=4} or {type="item", name="iron-plate", amount=8}, parts.preferred({"bronze-plate", "brass-plate"}, {16, 16}), parts.optionalIngredient("lead-plate", 8)},
+        results = {{type="item", name="hardened-hull",amount=8}},
         enabled = false,
         always_show_products = true,
         localised_name = {"recipe-name.hardened-hull-iridium"},
@@ -513,7 +387,8 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         category = "crafting",
         energy_required = 5,
         --preferred can't be used - ifnickel loads after this.
-        ingredients = {{"flywheel", 1}, {"bearing", 2}, {"advanced-circuit", 1}, (mods["aai-industry"] and {"electric-motor", 1}) or (mods["IfNickel"] and {"motor", 1}) or (mods["Krastorio2"] and {"steel-gear-wheel", 1}) or {"iron-gear-wheel", 2}},
+        ingredients = {{type="item", name="flywheel", amount=1}, {type="item", name="bearing", amount=2}, {type="item", name="advanced-circuit", amount=1}, 
+                       (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
         result = parts.gyroscope,
         enabled = false
       }
@@ -527,7 +402,8 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         name = "skyseeker-armature",
         category = "crafting",
         energy_required = 20,
-        ingredients = {{"complex-joint", 1}, {"low-density-structure", 1}, {"electric-engine-unit", 1}, parts.preferred({"steel-gear-wheel", "iron-gear-wheel"}, {3, 6}), parts.preferred({"gyro", "gyroscope"}, {1, 1})},
+        ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="low-density-structure", amount=1}, {type="item", name="electric-engine-unit", amount=1}, 
+                        parts.preferred({"steel-gear-wheel", "iron-gear-wheel"}, {3, 6}), parts.preferred({"gyro", "gyroscope"}, {1, 1})},
         result = "skyseeker-armature",
         enabled = false
       }
@@ -553,7 +429,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
          },
         category = "crafting",
         energy_required = 2,
-        ingredients = {{"galvanized-steel-plate", 1}, {"ll-alumina", 1}, parts.preferred({"bronze-plate", "brass-plate"}, {2, 2})},
+        ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, {type="item", name="ll-alumina", amount=1}, parts.preferred({"bronze-plate", "brass-plate"}, {2, 2})},
         result = "hardened-hull",
         enabled = false,
         lasermill = {helium=5, productivity=true, convert=true}
@@ -569,7 +445,7 @@ if parts.drill then
       name = "industrial-drill-head",
       category = "advanced-crafting",
       energy_required = 5,
-      ingredients = {{"complex-joint", 1}, {"electric-engine-unit", 1}, {"tungsten-carbide", 2}, {"diamond", 2}},
+      ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="electric-engine-unit", amount=1}, {type="item", name="tungsten-carbide", amount=2}, {type="item", name="diamond", amount=2}},
       result = "industrial-drill-head",
       enabled = false
     },
@@ -585,8 +461,8 @@ if mods["Krastorio2"] then
         name = "enriched-zinc",
         category = "chemistry",
         energy_required = 3,
-        ingredients = {{"zinc-ore", 9}, {type="fluid", name="sulfuric-acid", amount=3}, {type="fluid", name="water", amount=25, catalyst_amount = 25}},
-        results = {{"enriched-zinc", mods["space-exploration"] and 9 or 6}, {type="fluid", name="dirty-water", amount=25, catalyst_amount=25}},
+        ingredients = {{type="item", name="zinc-ore", amount=9}, {type="fluid", name="sulfuric-acid", amount=3}, {type="fluid", name="water", amount=25, catalyst_amount = 25}},
+        results = {{type="item", name="enriched-zinc", amount=(mods["space-exploration"] and 9 or 6)}, {type="fluid", name="dirty-water", amount=25, catalyst_amount=25}},
         main_product = "enriched-zinc",
         enabled = false
         --default white chemplant tint is fine for once!
@@ -600,9 +476,8 @@ if mods["Krastorio2"] then
         },
         category = "smelting",
         energy_required = 16,
-        ingredients = {{"enriched-zinc", 5}},
-        result = "zinc-plate",
-        result_count = 5,
+        ingredients = {{type="item", name="enriched-zinc", amount=5}},
+        results = {{type="item", name="zinc-plate",amount=5}},
         enabled = false
       },
       {
@@ -708,7 +583,7 @@ if mods["space-exploration"] then
         name = "molten-zinc",
         category = "smelting",
         energy_required = 60,
-        ingredients = {{mods["Krastorio2"] and "enriched-zinc" or "zinc-ore", 24}, {type="fluid", name="se-pyroflux", amount=10}},
+        ingredients = {{type="item", name=(mods["Krastorio2"] and "enriched-zinc" or "zinc-ore"), amount=24}, {type="fluid", name="se-pyroflux", amount=10}},
         results = {{type="fluid", name="molten-zinc", amount= mods["Krastorio2"] and 750 or 900}},
         enabled = false
       },
@@ -718,8 +593,7 @@ if mods["space-exploration"] then
         category = "casting",
         energy_required = 25,
         ingredients = {{type="fluid", name="molten-zinc", amount=250}},
-        result = "zinc-ingot",
-        result_count = 1,
+        results = {{type="item", name="zinc-ingot",amount=1}},
         enabled = false
       },
       {
@@ -731,9 +605,8 @@ if mods["space-exploration"] then
         },
         category = "crafting",
         energy_required = 5,
-        ingredients = {{"zinc-ingot", 1}},
-        result = "zinc-plate",
-        result_count = 10,
+        ingredients = {{type="item", name="zinc-ingot", amount=1}},
+        results = {{type="item", name="zinc-plate",amount=10}},
         allow_decomposition = false,
         enabled = false
       },
@@ -743,8 +616,7 @@ if mods["space-exploration"] then
         category = "casting",
         energy_required = 25,
         ingredients = {{type="fluid", name="se-molten-copper", amount=250}, {type="item", name="zinc-ingot", amount=1}},
-        result = "brass-ingot",
-        result_count = 2,
+        results = {{type="item", name="brass-ingot",amount=2}},
         enabled = false
       },
       {
@@ -756,9 +628,8 @@ if mods["space-exploration"] then
         },
         category = "crafting",
         energy_required = 5,
-        ingredients = {{"brass-ingot", 1}},
-        result = "brass-plate",
-        result_count = 10,
+        ingredients = {{type="item", name="brass-ingot", amount=1}},
+        results = {{type="item", name="brass-plate",amount=10}},
         allow_decomposition = false,
         enabled = false
       }
@@ -784,7 +655,7 @@ if mods["space-exploration"] then
         category = "space-materialisation",
         subgroup = "advanced-particle-stream",
         energy_required = 30,
-        ingredients = {{"zinc-ore", 10}, {"se-kr-matter-liberation-data", 1}, {type="fluid", name="se-particle-stream", amount = 50}},
+        ingredients = {{type="item", name="zinc-ore", amount=10}, {type="item", name="se-kr-matter-liberation-data", amount=1}, {type="fluid", name="se-particle-stream", amount = 50}},
         results = {{type="item", name="se-kr-matter-liberation-data", amount=1, probability=0.99}, {type="item", name="se-broken-data", amount=1, probability=0.01}, {type="fluid", name="se-particle-stream", amount = 60}},
         allow_decomposition = false,
         enabled = false
@@ -812,7 +683,7 @@ if mods["FreightForwarding"] then
       category = "chemistry",
       energy_required = 15,
       allow_decomposition = false,
-      ingredients = {{"brazen-nodule", 18}, {type="fluid", name="sulfuric-acid", amount=15}},
+      ingredients = {{type="item", name="brazen-nodule", amount=18}, {type="fluid", name="sulfuric-acid", amount=15}},
       results = {{type="item", name="zinc-ore", amount_min=40, amount_max=50}, {type="item", name="copper-ore", amount_min=0, amount_max=8}, {type="item", name="stone", amount_min=0, amount_max=4}, {type="item", name="brazen-nodule", amount_min=0, amount_max=6}},
       main_product = "zinc-ore",
       enabled = false
@@ -849,8 +720,7 @@ if mods["248k"] then
       category = "crafting-with-fluid",
       energy_required = 6,
       ingredients = {{type="fluid", name="248k-zinc-atom", amount=500}},
-      result = "zinc-plate",
-      result_count = 500,
+      results = {{type="item", name="zinc-plate",amount=500}},
       subgroup = "fu_star_engine_subgroup_d",
       enabled=false
     },
@@ -860,8 +730,7 @@ if mods["248k"] then
       category = "chemistry",
       energy_required = 6,
       ingredients = {{type="fluid", name="248k-zinc-atom", amount=250}, {type="fluid", name="fu_copper", amount=250}},
-      result = "brass-plate",
-      result_count = 500,
+      results = {{type="item", name="brass-plate",amount=500}},
       subgroup = "fu_star_engine_subgroup_d",
       enabled=false
     }
@@ -879,7 +748,7 @@ if mods["LunarLandings"] then
       icon = "__BrassTacks__/graphics/icons/cheese-ore.png",
       icon_size = 64,
       energy_required = 10,
-      ingredients = { {"cheese-ore", 20} },
+      ingredients = { {type="item", name="cheese-ore", amount=20} },
       results = {{type="item", name="zinc-ore", amount=10}, {type="item", name="ll-moon-rock", amount=3}, {type="fluid", name="light-oil", amount=10, fluidbox_index = 1}},
       always_show_products = true,
       enabled = false

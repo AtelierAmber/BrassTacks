@@ -43,19 +43,11 @@ if data.raw.recipe["brass-plate-foundry"] then
   end
 end
 
---Get a reference to all prodmods to avoid doing these checks for each recipe
-local prodmods = {}
-for k, v in pairs(data.raw.module) do
-  if v.effect and v.effect["productivity"] and v.limitation then
-    table.insert(prodmods, v)
-  end
-end
-
 for k, v in pairs(allowed_recipes) do
   if data.raw.recipe[v] then
-    for j, i in pairs(prodmods) do
-      table.insert(i.limitation, v)
-    end
+    local va = data.raw.recipe[v].allowed_module_categories or {}
+    table.insert(va, "productivity")
+    data.raw.recipe[v].allowed_module_categories = va
   end
 end
 

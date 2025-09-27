@@ -71,7 +71,7 @@ function techfuncs.removePrereq(tech, prereq)
 	end
 end
 
-function techfuncs.addSciencePackToDifficulty(tech, item)
+function techfuncs.addSciencePackToTech(tech, item)
 	if tech then
 		if tech.unit then
 			if tech.unit.ingredients then
@@ -96,11 +96,7 @@ function techfuncs.addSciencePack(tech, item)
 		return
 	end
 	local t = data.raw.technology[tech]
-	local n = t.normal
-	local e = t.expensive
-	techfuncs.addSciencePackToDifficulty(t, item)
-	techfuncs.addSciencePackToDifficulty(n, item)
-	techfuncs.addSciencePackToDifficulty(e, item)
+	techfuncs.addSciencePackToTech(t, item)
 end
 
 function techfuncs.removeSciencePackFromDifficulty(tech, item)
@@ -123,11 +119,7 @@ function techfuncs.removeSciencePack(tech, item)
 		return
 	end
 	local t = data.raw.technology[tech]
-	local n = t.normal
-	local e = t.expensive
 	techfuncs.removeSciencePackFromDifficulty(t, item)
-	techfuncs.removeSciencePackFromDifficulty(n, item)
-	techfuncs.removeSciencePackFromDifficulty(e, item)
 end
 
 return techfuncs

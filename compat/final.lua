@@ -9,54 +9,41 @@ if mods["bzcarbon"] or mods["BrimStuff"] then
 end
 
 if mods["space-exploration"] then
-  rm.AddIngredient("se-vulcanite-rocket-fuel", advfitting, 1, 1)
-  rm.RemoveProduct("se-core-fragment-omni", "zinc-ore", 3, 3)
+  rm.AddIngredient("se-vulcanite-rocket-fuel", advfitting, 1)
+  rm.RemoveProduct("se-core-fragment-omni", "zinc-ore", 3)
 
   if parts.gyroscope then
     -- gyroscope already added - this is mostly a consolation prize
-    rm.RemoveIngredient("rocket-control-unit", "iron-plate", 5, 5)
-    rm.RemoveIngredient("rocket-control-unit", "aluminum-plate", 5, 5)
+    rm.RemoveIngredient("rocket-control-unit", "iron-plate", 5)
+    rm.RemoveIngredient("rocket-control-unit", "aluminum-plate", 5)
   end
 end
 
 if mods["Krastorio2"] then
   if not parts.nickel then
     local ing = {}
-    if data.raw.recipe["pumpjack"].normal then
-      ing = data.raw.recipe["pumpjack"].normal.ingredients
-    else
-      ing = data.raw.recipe["pumpjack"].ingredients
-    end
+    ing = data.raw.recipe["pumpjack"].ingredients
     data.raw.recipe["kr-mineral-water-pumpjack"].ingredients = ing
-    if data.raw.recipe["kr-mineral-water-pumpjack"].normal then
-      data.raw.recipe["kr-mineral-water-pumpjack"].normal.ingredients = ing
-    end
-    if data.raw.recipe["pumpjack"].expensive then
-      ing = data.raw.recipe["pumpjack"].expensive.ingredients
-    end
-    if data.raw.recipe["kr-mineral-water-pumpjack"].expensive then
-      data.raw.recipe["kr-mineral-water-pumpjack"].expensive.ingredients = ing
-    end
   end
 
   if mods["bzlead"] and parts.experimental then
-    rm.RemoveIngredient("kr-fluid-storage-1", "lead-plate", 10, 10)
-    rm.RemoveIngredient("kr-fluid-storage-2", "lead-plate", 30, 30)
-    rm.RemoveIngredient("kr-advanced-furnace", "lead-plate", 20, 20)
+    rm.RemoveIngredient("kr-fluid-storage-1", "lead-plate", 10)
+    rm.RemoveIngredient("kr-fluid-storage-2", "lead-plate", 30)
+    rm.RemoveIngredient("kr-advanced-furnace", "lead-plate", 20)
   end
 
   if rm.CheckIngredient("chemical-science-pack", "sulfuric-acid") then
     data.raw.recipe["chemical-science-pack"].category = data.raw.recipe["logistic-science-pack"].category
-    rm.RemoveIngredient("chemical-science-pack", "sulfuric-acid", 999, 999)
-    rm.ReplaceIngredient("chemical-science-pack", "glass", "battery", 5, 5)
+    rm.RemoveIngredient("chemical-science-pack", "sulfuric-acid", 999)
+    rm.ReplaceIngredient("chemical-science-pack", "glass", "battery", 5)
   end
 
   if not mods["space-exploration"] then
     if rm.CheckIngredient("production-science-pack", "fast-transport-belt") then
-      rm.AddIngredient("production-science-pack", "kr-steel-pump", 1, 1)
+      rm.AddIngredient("production-science-pack", "kr-steel-pump", 1)
     end
     if rm.CheckIngredient("utility-science-pack", "rocket-fuel") and parts.experimental then
-        rm.AddIngredient("utility-science-pack", "complex-joint", 5, 5)
+        rm.AddIngredient("utility-science-pack", "complex-joint", 5)
     end
   end
 end
@@ -67,7 +54,7 @@ if false then
   --the cannon sending logic also assumes exactly one output item from the recipe (the packed capsule)
 
   local function add_catalyst(recipe, ingredient, amount, losschance, scrap, scrap_amount)
-    rm.AddIngredient(recipe, ingredient, amount, amount)
+    rm.AddIngredient(recipe, ingredient, amount)
     rm.AddProductRaw(recipe, {type="item", name=ingredient, amount=amount, probability=1.0 - losschance, catalyst_amount=amount})
     if scrap then
       rm.AddProductRaw(recipe, {type="item", name=scrap, amount=scrap_amount, probability=losschance})
