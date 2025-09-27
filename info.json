@@ -1,0 +1,10 @@
+{
+  "name": "BrassTacks",
+  "version": "1.3.8",
+  "title": "Brass Tacks",
+  "author": "planetfall",
+  "homepage": "",
+  "description": "Adds zinc ore so you can make the best alloy.",
+  "factorio_version": "1.1",
+  "dependencies": ["base >= 1.1", "? bzlead", "? bzaluminum", "? bzcarbon", "? bztin", "? bzfoundry", "? bzzirconium", "? bzlead", "? space-exploration", "? aai-industry", "? aai-containers", "? aai-signal-transmission", "? deadlock-beltboxes-loaders", "? DeadlockCrating", "? vtk-deep-core-mining", "? Krastorio2", "? FluidMustFlow", "? Expensive_Fluid_Must_Flow_Recipes", "? bzgold", "? cargo-ships", "? underwater-pipes", "? IntermodalContainers", "? FreightForwarding", "? 248k", "? LunarLandings"]
+}
