@@ -39,7 +39,7 @@ local function RemoveFromIngList(ingredients, toremove, count)
       if v[2] > count then
         v[2] = v[2] - count
       else
-        ingredients[k] = nil
+        table.remove(ingredients, k)
       end
       return true
     end
@@ -47,7 +47,7 @@ local function RemoveFromIngList(ingredients, toremove, count)
       if v["amount"] > count then
         v["amount"] = v["amount"] - count
       else
-        ingredients[k] = nil
+        table.remove(ingredients, k)
       end
       return true
     end
@@ -119,7 +119,7 @@ local function ReplaceInIngList(ingredients, toadd, toremove, count)
     end
   end
   if delete_index ~= -1 then
-    ingredients[delete_index] = nil
+    table.remove(ingredients, delete_index)
   end
   if not done then
     if data.raw.fluid[toadd] then
@@ -198,12 +198,6 @@ function recipemod.multiply(recipe, factor, cost, output, time)
         if v["amount"] then v["amount"] = v["amount"] * factor end
         if v["amount_min"] then v["amount_min"] = v["amount_min"] * factor end
         if v["amount_max"] then v["amount_max"] = v["amount_max"] * factor end
-      end
-    else
-      if recipe.result_count then
-        recipe.result_count = recipe.result_count * factor
-      else
-        recipe.result_count = factor
       end
     end
   end

@@ -68,7 +68,7 @@ if not mods["galdocs-manufacturing"] then
         category = "smelting",
         energy_required = 1.6,
         ingredients = {{type="item", name="brass-precursor", amount=1}},
-        result = "brass-plate"
+        results = {{type="item", name="brass-plate", amount=1}},
       }
     })
     if mods["bzaluminum"] then
@@ -129,8 +129,7 @@ if not mods["galdocs-manufacturing"] then
         category = "smelting",
         energy_required = 3.2 * yield,
         ingredients = {{type="item", name="zinc-ore", amount=cost}},
-        result = "zinc-plate",
-        result_count = yield
+        results = {{type="item", name="zinc-plate", amount=yield}}
       }
     })
   end
@@ -143,7 +142,7 @@ data:extend({
     category = "crafting",
     energy_required = 2.5,
     ingredients = {{type="item", name="brass-plate", amount=2}},
-    result = "bolted-flange",
+    results = {{type="item", name="bolted-flange", amount=1}},
     enabled = not mods["Krastorio2"],
     lasermill = {helium=1, productivity=true}
   },
@@ -164,7 +163,7 @@ data:extend({
     enabled = false,
     energy_required = 4,
     ingredients = {{type="item", name="brass-plate", amount=2}, {type="item", name="brass-balls", amount=4}, {type="fluid", name="lubricant", amount=5}},
-    result = "bearing"
+    results = {{type="item", name="bearing", amount=1}},
   }
 })
 
@@ -177,7 +176,7 @@ if mods["bzcarbon"] or mods["BrimStuff"] then
       enabled = false,
       energy_required = 2.5,
       ingredients = {{type="item", name="bolted-flange", amount=1}, {type="item", name="graphite", amount=2}},
-      result = "airtight-seal",
+      results = {{type="item", name="airtight-seal", amount=1}},
       lasermill = {helium=data.raw.item["silver-brazing-alloy"] and 4 or 2, productivity=true}
     }
   })
@@ -220,7 +219,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       category = "crafting",
       energy_required = 2,
       ingredients = {{type="item", name="iron-gear-wheel", amount=1}, {type="item", name="zinc-plate", amount=3}},
-      result = "flywheel",
+      results = {{type="item", name="flywheel", amount=1}},
       lasermill = {helium = 2, productivity = true}
     },
     {
@@ -238,7 +237,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       energy_required = 2,
       ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, parts.nickel and {type="item", name="invar-plate", amount=1} or {type="item", name="iron-plate", amount=2}, 
                      parts.preferred({"bronze-plate", "brass-plate"}, {2, 2})},
-      result = "hardened-hull",
+      results = {{type="item", name="hardened-hull", amount=1}},
       enabled = false,
       lasermill = {helium=5, productivity=true}
     },
@@ -249,7 +248,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       energy_required = 8,
       ingredients = {{type="item", name="bearing", amount=1}, {type="item", name="galvanized-steel-plate", amount=1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {1, 4, 2}), 
                      {type="item", name="articulated-mechanism", amount=8}, {type="fluid", name="lubricant", amount=5}},
-      result = "complex-joint",
+      results = {{type="item", name="complex-joint", amount=1}},
       enabled = false,
     },
     {
@@ -268,7 +267,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       energy_required = 3,
       ingredients = {{type="item", name="gearbox", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 4 or 5)}, 
                      {type="item", name="bearing", amount=2}, {type="item", name="flywheel", amount=1}, {type="fluid", name="lubricant", amount=20}},
-      result = "advanced-gearbox",
+      results = {{type="item", name="advanced-gearbox", amount=1}},
       enabled = false
     }
   })
@@ -281,7 +280,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         category = parts.foundryEnabled and "founding" or "advanced-crafting",
         energy_required = parts.foundryEnabled and 6.4 or 3,
         ingredients = {{type="item", name="steel-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
-        result = "galvanized-steel-plate",
+        results = {{type="item", name="galvanized-steel-plate", amount=1}},
         enabled = false,
       }
     })
@@ -296,7 +295,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         energy_required = 6,
         ingredients = {{type="item", name="advanced-gearbox", amount=1}, {type="item", name="imersium-gear-wheel", amount=4}, {type="item", name="imersium-beam", amount=1}, 
                        parts.preferred({"se-heavy-bearing", "electric-engine-unit"}, {4, 1})},
-        result = "elite-gearbox",
+        results = {{type="item", name="elite-gearbox", amount=1}},
         enabled = false
       }
     })
@@ -389,7 +388,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         --preferred can't be used - ifnickel loads after this.
         ingredients = {{type="item", name="flywheel", amount=1}, {type="item", name="bearing", amount=2}, {type="item", name="advanced-circuit", amount=1}, 
                        (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
-        result = parts.gyroscope,
+        results = {{type="item", name=parts.gyroscope, amount=1}},
         enabled = false
       }
     })
@@ -404,7 +403,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         energy_required = 20,
         ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="low-density-structure", amount=1}, {type="item", name="electric-engine-unit", amount=1}, 
                         parts.preferred({"steel-gear-wheel", "iron-gear-wheel"}, {3, 6}), parts.preferred({"gyro", "gyroscope"}, {1, 1})},
-        result = "skyseeker-armature",
+        results = {{type="item", name="skyseeker-armature", amount=1}},
         enabled = false
       }
     })
@@ -430,7 +429,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         category = "crafting",
         energy_required = 2,
         ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, {type="item", name="ll-alumina", amount=1}, parts.preferred({"bronze-plate", "brass-plate"}, {2, 2})},
-        result = "hardened-hull",
+        results = {{type="item", name="hardened-hull", amount=1}},
         enabled = false,
         lasermill = {helium=5, productivity=true, convert=true}
       }
@@ -446,7 +445,7 @@ if parts.drill then
       category = "advanced-crafting",
       energy_required = 5,
       ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="electric-engine-unit", amount=1}, {type="item", name="tungsten-carbide", amount=2}, {type="item", name="diamond", amount=2}},
-      result = "industrial-drill-head",
+      results = {{type="item", name="industrial-drill-head", amount=1}},
       enabled = false
     },
   })
