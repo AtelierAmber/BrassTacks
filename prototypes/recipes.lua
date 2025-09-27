@@ -3,18 +3,18 @@ local parts = require("variable-parts")
 local yield = 1
 local cost = 1
 
-if script.active_mods["Krastorio2"] then
+if mods["Krastorio2"] then
   yield = 5
   cost = 10
-  if script.active_mods["space-exploration"] then
+  if mods["space-exploration"] then
     yield = 15
     cost = 20
   end
 end
 
-if not script.active_mods["galdocs-manufacturing"] then
-  if script.active_mods["Krastorio2"] then
-    if script.active_mods["bzaluminum"] then
+if not mods["galdocs-manufacturing"] then
+  if mods["Krastorio2"] then
+    if mods["bzaluminum"] then
       data:extend({
         {
           type = "recipe",
@@ -71,7 +71,7 @@ if not script.active_mods["galdocs-manufacturing"] then
         result = "brass-plate"
       }
     })
-    if script.active_mods["bzaluminum"] then
+    if mods["bzaluminum"] then
       data:extend({
         {
           type = "recipe",
@@ -121,7 +121,7 @@ if not script.active_mods["galdocs-manufacturing"] then
       })
     end
   end
-  if not script.active_mods["exotic-industries"] then
+  if not mods["exotic-industries"] then
     data:extend({
       {
         type = "recipe",
@@ -144,7 +144,7 @@ data:extend({
     energy_required = 2.5,
     ingredients = {{type="item", name="brass-plate", amount=2}},
     result = "bolted-flange",
-    enabled = not script.active_mods["Krastorio2"],
+    enabled = not mods["Krastorio2"],
     lasermill = {helium=1, productivity=true}
   },
   {
@@ -168,7 +168,7 @@ data:extend({
   }
 })
 
-if script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"] then
+if mods["bzcarbon"] or mods["BrimStuff"] then
   data:extend({
     {
       type = "recipe",
@@ -181,7 +181,7 @@ if script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"] then
       lasermill = {helium=data.raw.item["silver-brazing-alloy"] and 4 or 2, productivity=true}
     }
   })
-  if script.active_mods["space-exploration"] then
+  if mods["space-exploration"] then
     data:extend({
       {
         type = "recipe",
@@ -257,7 +257,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       name = "gearbox",
       category = "crafting",
       energy_required = 3,
-      ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(script.active_mods["Krastorio2"] and 8 or 10)}},
+      ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 8 or 10)}},
       results = {{type="item", name="gearbox",amount=2}},
       enabled = false
     },
@@ -266,14 +266,14 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
       name = "advanced-gearbox",
       category = "crafting-with-fluid",
       energy_required = 3,
-      ingredients = {{type="item", name="gearbox", amount=1}, {type="item", name="iron-gear-wheel", amount=(script.active_mods["Krastorio2"] and 4 or 5)}, 
+      ingredients = {{type="item", name="gearbox", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 4 or 5)}, 
                      {type="item", name="bearing", amount=2}, {type="item", name="flywheel", amount=1}, {type="fluid", name="lubricant", amount=20}},
       result = "advanced-gearbox",
       enabled = false
     }
   })
 
-  if not script.active_mods["galdocs-manufacturing"] then
+  if not mods["galdocs-manufacturing"] then
     data:extend({
       {
         type = "recipe",
@@ -287,7 +287,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
     })
   end
 
-  if script.active_mods["Krastorio2"] then
+  if mods["Krastorio2"] then
     data:extend({
       {
         type = "recipe",
@@ -302,7 +302,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
     })
   end
 
-  if script.active_mods["space-exploration"] then
+  if mods["space-exploration"] then
     data:extend({
       {
         type = "recipe",
@@ -345,7 +345,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
           },
          },
         energy_required = 48,
-        ingredients = {{type="item", name="se-iridium-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(script.active_mods["Krastorio2"] and 64 or 80)}, {type="item", name="electric-motor", amount=(script.active_mods["Krastorio2"] and 12 or 16)}},
+        ingredients = {{type="item", name="se-iridium-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 64 or 80)}, {type="item", name="electric-motor", amount=(mods["Krastorio2"] and 12 or 16)}},
         results = {{type="item", name="gearbox",amount=16}},
         enabled = false,
         always_show_products = true,
@@ -388,14 +388,14 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         energy_required = 5,
         --preferred can't be used - ifnickel loads after this.
         ingredients = {{type="item", name="flywheel", amount=1}, {type="item", name="bearing", amount=2}, {type="item", name="advanced-circuit", amount=1}, 
-                       (script.active_mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (script.active_mods["IfNickel"] and {type="item",name="motor", amount=1}) or (script.active_mods["Krastorio2"] and {type="item",name="steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
+                       (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
         result = parts.gyroscope,
         enabled = false
       }
     })
   end
 
-  if script.active_mods["aai-signal-transmission"] or script.active_mods["LunarLandings"] then
+  if mods["aai-signal-transmission"] or mods["LunarLandings"] then
     data:extend({
       {
         type = "recipe",
@@ -410,7 +410,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
     })
   end
 
-  if script.active_mods["LunarLandings"] and script.active_mods["IfNickel"] then
+  if mods["LunarLandings"] and mods["IfNickel"] then
     data:extend({
       {
         type = "recipe",
@@ -452,7 +452,7 @@ if parts.drill then
   })
 end
 
-if script.active_mods["Krastorio2"] then
+if mods["Krastorio2"] then
   local matterutil = require("__Krastorio2__/lib/public/data-stages/matter-util")
   data:extend(
     {
@@ -462,7 +462,7 @@ if script.active_mods["Krastorio2"] then
         category = "chemistry",
         energy_required = 3,
         ingredients = {{type="item", name="zinc-ore", amount=9}, {type="fluid", name="sulfuric-acid", amount=3}, {type="fluid", name="water", amount=25, catalyst_amount = 25}},
-        results = {{type="item", name="enriched-zinc", amount=(script.active_mods["space-exploration"] and 9 or 6)}, {type="fluid", name="dirty-water", amount=25, catalyst_amount=25}},
+        results = {{type="item", name="enriched-zinc", amount=(mods["space-exploration"] and 9 or 6)}, {type="fluid", name="dirty-water", amount=25, catalyst_amount=25}},
         main_product = "enriched-zinc",
         enabled = false
         --default white chemplant tint is fine for once!
@@ -552,7 +552,7 @@ if script.active_mods["Krastorio2"] then
   matterutil.createMatterRecipe({
     item_name = "zinc-plate",
     minimum_conversion_quantity = 10,
-    matter_value = script.active_mods["space-exploration"] and 7.5 or 10,
+    matter_value = mods["space-exploration"] and 7.5 or 10,
     energy_required = 3,
     only_deconversion = true,
     need_stabilizer = true,
@@ -560,7 +560,7 @@ if script.active_mods["Krastorio2"] then
   })
 end
 
-if script.active_mods["space-exploration"] then
+if mods["space-exploration"] then
   se_delivery_cannon_recipes["zinc-ore"] = {name= "zinc-ore"}
   se_delivery_cannon_recipes["zinc-plate"] = {name= "zinc-plate"}
   se_delivery_cannon_recipes["zinc-ingot"] = {name= "zinc-ingot"}
@@ -569,7 +569,7 @@ if script.active_mods["space-exploration"] then
   if parts.experimental then
     se_delivery_cannon_recipes["hardened-hull"] = {name= "hardened-hull"}
   end
-  if script.active_mods["Krastorio2"] then
+  if mods["Krastorio2"] then
     se_delivery_cannon_recipes["enriched-zinc"] = {name= "enriched-zinc"}
   end
 
@@ -583,8 +583,8 @@ if script.active_mods["space-exploration"] then
         name = "molten-zinc",
         category = "smelting",
         energy_required = 60,
-        ingredients = {{type="item", name=(script.active_mods["Krastorio2"] and "enriched-zinc" or "zinc-ore"), amount=24}, {type="fluid", name="se-pyroflux", amount=10}},
-        results = {{type="fluid", name="molten-zinc", amount= script.active_mods["Krastorio2"] and 750 or 900}},
+        ingredients = {{type="item", name=(mods["Krastorio2"] and "enriched-zinc" or "zinc-ore"), amount=24}, {type="fluid", name="se-pyroflux", amount=10}},
+        results = {{type="fluid", name="molten-zinc", amount= mods["Krastorio2"] and 750 or 900}},
         enabled = false
       },
       {
@@ -664,7 +664,7 @@ if script.active_mods["space-exploration"] then
   end
 end
 
-if script.active_mods["FreightForwarding"] then
+if mods["FreightForwarding"] then
   data:extend({
     {
       type = "recipe",
@@ -692,7 +692,7 @@ if script.active_mods["FreightForwarding"] then
   })
 end
 
-if script.active_mods["248k"] then
+if mods["248k"] then
   data:extend({
     {
       type = "recipe",
@@ -737,7 +737,7 @@ if script.active_mods["248k"] then
   })
 end
 
-if script.active_mods["LunarLandings"] then
+if mods["LunarLandings"] then
   data:extend({
     {
       type = "recipe",

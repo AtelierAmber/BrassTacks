@@ -1,6 +1,6 @@
 local resource_autoplace = require("resource-autoplace")
 
-if script.active_mods["galdocs-manufacturing"] then
+if mods["galdocs-manufacturing"] then
   return
 end
 
@@ -62,7 +62,7 @@ data:extend({
     type = "autoplace-control",
     category = "resource",
     name = "zinc-ore",
-    localised_name = {"", (script.active_mods["LunarLandings"] and "[virtual-signal=ll-nauvis] " or "") .. "[entity=zinc-ore] ", {"entity-name.zinc-ore"}},
+    localised_name = {"", (mods["LunarLandings"] and "[virtual-signal=ll-nauvis] " or "") .. "[entity=zinc-ore] ", {"entity-name.zinc-ore"}},
     richness = true,
     order = "b-da"
   },
@@ -72,7 +72,7 @@ data:extend({
   }
 })
 
-if script.active_mods["LunarLandings"] then
+if mods["LunarLandings"] then
   data:extend({
     {
       type = "resource",

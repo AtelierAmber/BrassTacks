@@ -4,11 +4,11 @@ local parts = require("variable-parts")
 local cu = require("category-utils")
 
 local advfitting = "bolted-flange"
-if script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"] then
+if mods["bzcarbon"] or mods["BrimStuff"] then
   advfitting = "airtight-seal"
 end
 
-if script.active_mods["space-exploration"] then
+if mods["space-exploration"] then
   rm.AddIngredient("se-vulcanite-rocket-fuel", advfitting, 1)
   rm.RemoveProduct("se-core-fragment-omni", "zinc-ore", 3)
 
@@ -19,14 +19,14 @@ if script.active_mods["space-exploration"] then
   end
 end
 
-if script.active_mods["Krastorio2"] then
+if mods["Krastorio2"] then
   if not parts.nickel then
     local ing = {}
     ing = data.raw.recipe["pumpjack"].ingredients
     data.raw.recipe["kr-mineral-water-pumpjack"].ingredients = ing
   end
 
-  if script.active_mods["bzlead"] and parts.experimental then
+  if mods["bzlead"] and parts.experimental then
     rm.RemoveIngredient("kr-fluid-storage-1", "lead-plate", 10)
     rm.RemoveIngredient("kr-fluid-storage-2", "lead-plate", 30)
     rm.RemoveIngredient("kr-advanced-furnace", "lead-plate", 20)
@@ -38,7 +38,7 @@ if script.active_mods["Krastorio2"] then
     rm.ReplaceIngredient("chemical-science-pack", "glass", "battery", 5)
   end
 
-  if not script.active_mods["space-exploration"] then
+  if not mods["space-exploration"] then
     if rm.CheckIngredient("production-science-pack", "fast-transport-belt") then
       rm.AddIngredient("production-science-pack", "kr-steel-pump", 1)
     end
@@ -69,7 +69,7 @@ if false then
   end
 end
 
-if script.active_mods["Krastorio2"] or parts.nickelExperiment or parts.drill or data.raw.item["skyseeker-armature"] then
+if mods["Krastorio2"] or parts.nickelExperiment or parts.drill or data.raw.item["skyseeker-armature"] then
   cu.moveItem("articulated-mechanism", "articulated-components", "a")
   cu.moveItem("inserter-parts", "articulated-components", "b")
   cu.moveItem("automation-core", "articulated-components", "c")
@@ -82,13 +82,13 @@ if script.active_mods["Krastorio2"] or parts.nickelExperiment or parts.drill or 
   cu.moveItem("industrial-drill-head", "articulated-components", "j")
 end
 
-if script.active_mods["space-exploration"] then
+if mods["space-exploration"] then
   cu.moveItem("gimbaled-thruster", "rocket-part", "p")
   cu.moveItem("skyseeker-armature", "intersurface-part", "r")
 end
 
 if data.raw.recipe["airtight-seal"] or parts.nickelExperiment then
-  if not (parts.nickelExperiment and data.raw.recipe["airtight-seal"] and data.raw.recipe["titanium-palladium-flange"] and script.active_mods["space-exploration"]) then
+  if not (parts.nickelExperiment and data.raw.recipe["airtight-seal"] and data.raw.recipe["titanium-palladium-flange"] and mods["space-exploration"]) then
     cu.moveItem("empty-barrel", "plumbing-components", "a")
     cu.moveRecipe("empty-barrel", "plumbing-components", "a")
   end
@@ -105,12 +105,12 @@ if data.raw.recipe["airtight-seal"] or parts.nickelExperiment then
   cu.moveItem("self-regulating-valve", "plumbing-components", "i")
 end
 
-if script.active_mods["space-exploration"] then
+if mods["space-exploration"] then
   cu.moveItem("rocket-engine-nozzle", "rocket-part", "o")
   cu.moveRecipe("rocket-engine-nozzle", "rocket-part", "o")
 end
 
-if (parts.experimental and parts.nickelExperiment) or not script.active_mods["IfNickel"] then
+if (parts.experimental and parts.nickelExperiment) or not mods["IfNickel"] then
   cu.moveItem("iron-gear-wheel", "rotary-components", "a")
   cu.moveItem("flywheel", "rotary-components", "b")
   cu.moveItem("drive-belt", "rotary-components", "c")
@@ -120,19 +120,19 @@ if (parts.experimental and parts.nickelExperiment) or not script.active_mods["If
   if parts.gyroscope then
     cu.moveItem(parts.gyroscope, "rotary-components", "g")
   end
-  if not script.active_mods["IfNickel"] then
+  if not mods["IfNickel"] then
     cu.moveItem("motor", "rotary-components", "h")
     cu.moveItem("electric-motor", "rotary-components", "i")
     cu.moveItem("engine-unit", "rotary-components", "j")
     cu.moveItem("electric-engine-unit", "rotary-components", "k")
   end
-else if parts.experimental and script.active_mods["Krastorio2"] then
+else if parts.experimental and mods["Krastorio2"] then
   cu.moveItem("flywheel", "gear-components", "g")
   cu.moveItem("brass-balls", "gear-components", "h")
   cu.moveItem("bearing", "gear-components", "i") -- 9 gear components. one extra slot will be taken up by the alt gearbox if SE is installed.
 end end
 
-if parts.experimental and script.active_mods["Krastorio2"] then
+if parts.experimental and mods["Krastorio2"] then
   cu.moveItem("iron-gear-wheel", "gear-components", "a")
   cu.moveItem("steel-gear-wheel", "gear-components", "b")
   cu.moveItem("imersium-gear-wheel", "gear-components", "c")
@@ -141,11 +141,11 @@ if parts.experimental and script.active_mods["Krastorio2"] then
   cu.moveItem("elite-gearbox", "gear-components", "f")
 end
 
-if parts.experimental or script.active_mods["Krastorio2"] then
+if parts.experimental or mods["Krastorio2"] then
   cu.moveItem("iron-stick", "frame-components", "a")
   cu.moveItem("iron-beam", "frame-components", "b")
   cu.moveItem("steel-beam", "frame-components", "c")
-  if script.active_mods["Krastorio2"] then
+  if mods["Krastorio2"] then
     cu.moveItem("galvanized-steel-plate", "frame-components", "ca")
   end
   cu.moveItem("imersium-beam", "frame-components", "d")
@@ -155,7 +155,7 @@ if parts.experimental or script.active_mods["Krastorio2"] then
   cu.moveRecipe("low-density-structure", "frame-components", "g")
   cu.moveRecipe("low-density-structure-nanotubes", "frame-components", "ga")
   cu.moveRecipe("se-low-density-structure-beryllium", "frame-components", "gb")
-  if script.active_mods["LunarLandings"] then
+  if mods["LunarLandings"] then
     cu.moveRecipe("ll-low-density-structure-aluminium", "frame-components", "h")
     cu.moveItem("ll-heat-shielding", "frame-components", "i")
     cu.moveRecipe("ll-heat-shielding", "frame-components", "i")

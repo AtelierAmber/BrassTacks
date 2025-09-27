@@ -3,30 +3,30 @@ local tf = require("techfuncs")
 local parts = require("variable-parts")
 
 local advfitting = "bolted-flange"
-if script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"] then
+if mods["bzcarbon"] or mods["BrimStuff"] then
   advfitting = "airtight-seal"
 end
 
-if script.active_mods["advanced-chemical-plant"] and not script.active_mods["Krastorio2"] then
-  if advfitting == "airtight-seal" and not script.active_mods["IfNickel"] then
+if mods["advanced-chemical-plant"] and not mods["Krastorio2"] then
+  if advfitting == "airtight-seal" and not mods["IfNickel"] then
     rm.AddIngredient("kr-advanced-chemical-plant", "airtight-seal", 32)
   end
   if parts.experimental then
     rm.AddIngredient("kr-advanced-chemical-plant", "advanced-gearbox", 4)
-  else if not script.active_mods["space-exploration"] then
+  else if not mods["space-exploration"] then
     rm.AddIngredient("kr-advanced-chemical-plant", "bearing", 16)
   end end
   rm.AddIngredient("kr-advanced-chemical-plant", "electric-engine-unit", 4) --nobody can escape my insistence on shoving this item in every high end recipe. nobody!
 end
 
-if script.active_mods["AdvancedAssemblyMachineStandalone"] and not script.active_mods["Krastorio2"] then
+if mods["AdvancedAssemblyMachineStandalone"] and not mods["Krastorio2"] then
   rm.RemoveIngredient("assembling-machine-3", "electric-engine-unit", 99999) -- :O
   if parts.experimental then
     rm.AddIngredient("kr-advanced-assembling-machine", "hardened-hull", 122)
   end
 end
 
-if script.active_mods["advanced-centrifuge"] then
+if mods["advanced-centrifuge"] then
   if parts.experimental then
     rm.AddIngredient("k11-advanced-centrifuge", "advanced-gearbox", 10)
   else
@@ -34,7 +34,7 @@ if script.active_mods["advanced-centrifuge"] then
   end
 end
 
-if script.active_mods["Krastorio2"] then
+if mods["Krastorio2"] then
     rm.RemoveIngredient("steel-gear-wheel", "steel-plate", 1)
     if not rm.CheckIngredient("steel-gear-wheel", "steel-plate") then
         rm.multiply("steel-gear-wheel", 4, true, true, true)
@@ -45,7 +45,7 @@ if script.active_mods["Krastorio2"] then
     --rm.AddIngredient("imersium-gear-wheel", "brass-plate", 2, 2)
 
     if parts.experimental then
-      if script.active_mods["space-exploration"] then
+      if mods["space-exploration"] then
         tf.addRecipeUnlock("se-heavy-bearing", "elite-gearbox")
       else
         tf.addRecipeUnlock("kr-imersium-processing", "elite-gearbox")
@@ -96,7 +96,7 @@ if script.active_mods["Krastorio2"] then
       rm.RemoveIngredient("kr-se-deep-space-loader-black", "imersium-gear-wheel", 10)
       rm.AddIngredient("kr-se-deep-space-loader-black", "elite-gearbox", 2)
 
-      if script.active_mods["space-exploration"] then
+      if mods["space-exploration"] then
         rm.ReplaceIngredient("se-deep-space-transport-belt", "se-heavy-bearing", "elite-gearbox", 1)
         rm.ReplaceProportional("se-heavy-assembly", "imersium-beam", "elite-gearbox", 0.5)
       end
@@ -121,7 +121,7 @@ if script.active_mods["Krastorio2"] then
       end
 
       rm.AddIngredient("kr-electric-mining-drill-mk2", "gearbox", 2)
-      if script.active_mods["aai-industry"] then
+      if mods["aai-industry"] then
         rm.AddIngredient("kr-electric-mining-drill-mk3", "elite-gearbox", 2)
         rm.RemoveIngredient("kr-electric-mining-drill-mk3", "imersium-gear-wheel", 5)
         rm.RemoveIngredient("kr-electric-mining-drill-mk3", "se-heavy-bearing", 10)
@@ -209,7 +209,7 @@ if script.active_mods["Krastorio2"] then
       rm.AddIngredient("kr-superior-transport-belt-loader", "bearing", 5)
 
       rm.AddIngredient("kr-advanced-splitter", "bearing", 4)
-      if not script.active_mods["space-exploration"] then
+      if not mods["space-exploration"] then
         rm.AddIngredient("kr-superior-splitter", "bearing", 10)
       end
 
@@ -219,7 +219,7 @@ if script.active_mods["Krastorio2"] then
       rm.AddIngredient("kr-big-buffer-container", "iron-gear-wheel", 10)
       rm.AddIngredient("kr-big-storage-container", "iron-gear-wheel", 10)
 
-      if not script.active_mods["space-exploration"] then
+      if not mods["space-exploration"] then
         rm.AddIngredient("kr-superior-inserter", "bearing", 2)
         rm.AddIngredient("kr-superior-long-inserter", "bearing", 2)
         rm.AddIngredient("kr-superior-filter-inserter", "bearing", 2)
@@ -233,7 +233,7 @@ if script.active_mods["Krastorio2"] then
 
     tf.addRecipeUnlock("kr-basic-fluid-handling", "bolted-flange")
 
-    if script.active_mods["space-exploration"] then
+    if mods["space-exploration"] then
       --se heavy bearings in superior belts
       if parts.experimental then
         --rm.AddIngredient("kr-advanced-transport-belt", "complex-joint", 1, 1)
@@ -259,7 +259,7 @@ if script.active_mods["Krastorio2"] then
     rm.AddIngredient("kr-medium-buffer-container", "iron-gear-wheel", 2)
     rm.AddIngredient("kr-medium-storage-container", "iron-gear-wheel", 2)
 
-    if not script.active_mods["aai-industry"] then
+    if not mods["aai-industry"] then
       rm.AddIngredient("kr-electric-mining-drill-mk3", "bearing", 20)
     end
 
@@ -275,9 +275,9 @@ if script.active_mods["Krastorio2"] then
     tf.addRecipeUnlock("kr-enriched-ores", "dirty-water-filtration-zinc")
 end
 
-if script.active_mods["FluidMustFlow"] then
+if mods["FluidMustFlow"] then
   if parts.experimental then
-    if script.active_mods["Expensive_Fluid_Must_Flow_Recipes"] then
+    if mods["Expensive_Fluid_Must_Flow_Recipes"] then
       rm.ReplaceIngredient("duct-small", "steel-plate", "hardened-hull", 4)
       rm.ReplaceIngredient("duct", "steel-plate", "hardened-hull", 8)
       rm.ReplaceIngredient("duct-long", "steel-plate", "hardened-hull", 16)
@@ -286,7 +286,7 @@ if script.active_mods["FluidMustFlow"] then
       rm.ReplaceIngredient("duct-cross", "steel-plate", "hardened-hull", 8)
       rm.ReplaceIngredient("duct-underground", "steel-plate", "hardened-hull", 60)
       rm.ReplaceIngredient("non-return-duct", "steel-plate", "hardened-hull", 8)
-      if not script.active_mods["IfNickel"] then
+      if not mods["IfNickel"] then
         rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 8)
         rm.RemoveIngredient("non-return-duct", "steel-gear-wheel", 4)
       end
@@ -309,7 +309,7 @@ if script.active_mods["FluidMustFlow"] then
       rm.AddIngredient("duct-underground", "hardened-hull", 15)
       rm.AddIngredient("non-return-duct", "hardened-hull", 2)
 
-      if not script.active_mods["IfNickel"] then
+      if not mods["IfNickel"] then
         rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 4)
       end
     end
@@ -325,7 +325,7 @@ if script.active_mods["FluidMustFlow"] then
   rm.AddIngredient("duct-cross", "bolted-flange", 4)
   rm.AddIngredient("duct-underground", "bolted-flange", 2)
   rm.AddIngredient("non-return-duct", "bolted-flange", 2)
-  if not script.active_mods["IfNickel"] then
+  if not mods["IfNickel"] then
     rm.ReplaceIngredient("duct-end-point-intake", "pipe", advfitting, 6)
     rm.ReplaceIngredient("duct-end-point-outtake", "pipe", advfitting, 6)
     rm.RemoveIngredient("duct-end-point-intake", "kr-steel-pipe", 6)
@@ -343,7 +343,7 @@ if script.active_mods["FluidMustFlow"] then
   end
 end
 
-if script.active_mods["Krastorio2-more-locomotives"] then
+if mods["Krastorio2-more-locomotives"] then
   if parts.experimental then
     rm.ReplaceProportional("kr-fusion-locomotive", "steel-gear-wheel", "advanced-gearbox", 0.2)
     rm.ReplaceProportional("kr-antimatter-locomotive", "imersium-gear-wheel", "elite-gearbox", 0.2)

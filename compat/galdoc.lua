@@ -3,7 +3,7 @@ local tf = require("techfuncs")
 local parts = require("variable-parts")
 local cu = require("category-utils")
 
-if not script.active_mods["galdocs-manufacturing"] then return end
+if not mods["galdocs-manufacturing"] then return end
 
 local galdoc_advanced = data.raw.item["basic-large-paneling-machined-part"]
 local advfitting = data.raw.item["airtight-seal"] and "airtight-seal" or "bolted-flange"

@@ -1,5 +1,5 @@
 local pipe_material = "iron-plate"
-if script.active_mods["bzlead"] then
+if mods["bzlead"] then
   pipe_material = "lead-plate"
 end
 

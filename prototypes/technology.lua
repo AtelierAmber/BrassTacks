@@ -1,10 +1,10 @@
 local parts = require("variable-parts")
 
-local red_science = script.active_mods["exotic-industries"] and "ei_dark-age-tech" or "automation-science-pack"
-local green_science = script.active_mods["exotic-industries"] and "ei_steam-age-tech" or "logistic-science-pack"
-local blue_science = script.active_mods["exotic-industries"] and "ei_electricity-age-tech" or "chemical-science-pack"
+local red_science = mods["exotic-industries"] and "ei_dark-age-tech" or "automation-science-pack"
+local green_science = mods["exotic-industries"] and "ei_steam-age-tech" or "logistic-science-pack"
+local blue_science = mods["exotic-industries"] and "ei_electricity-age-tech" or "chemical-science-pack"
 
-if (script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"]) and script.active_mods["space-exploration"] then
+if (mods["bzcarbon"] or mods["BrimStuff"]) and mods["space-exploration"] then
   data:extend({
     {
       type = "technology",
@@ -58,16 +58,16 @@ if parts.experimental then
           recipe = "hardened-hull"
         }
       },
-      prerequisites = {not (script.active_mods["Krastorio2"] or script.active_mods["MoreScience"]) and "logistic-science-pack" or nil, "steel-processing", script.active_mods["galdocs-manufacturing"] and "gm-nickel-and-invar-machined-part-processing" or (script.active_mods["IfNickel"] and "invar-processing" or nil), not parts.foundryEnabled and "automation" or nil},
+      prerequisites = {not (mods["Krastorio2"] or mods["MoreScience"]) and "logistic-science-pack" or nil, "steel-processing", mods["galdocs-manufacturing"] and "gm-nickel-and-invar-machined-part-processing" or (mods["IfNickel"] and "invar-processing" or nil), not parts.foundryEnabled and "automation" or nil},
       unit =
       {
         count = 50,
         ingredients =
         {
           {red_science, 1},
-          not (script.active_mods["Krastorio2"] or script.active_mods["MoreScience"]) and {green_science, 1} or nil
+          not (mods["Krastorio2"] or mods["MoreScience"]) and {green_science, 1} or nil
         },
-        time = (script.active_mods["Krastorio2"] or script.active_mods["MoreScience"]) and 15 or 30
+        time = (mods["Krastorio2"] or mods["MoreScience"]) and 15 or 30
       },
       order = "e"
     },
@@ -132,7 +132,7 @@ if parts.experimental then
     }
   })
 
-  if script.active_mods["space-exploration"] then
+  if mods["space-exploration"] then
     data:extend({
       {
         type = "technology",
@@ -216,7 +216,7 @@ if parts.experimental then
     })
   end
 
-  if script.active_mods["aai-signal-transmission"] or script.active_mods["LunarLandings"] then
+  if mods["aai-signal-transmission"] or mods["LunarLandings"] then
     data:extend({
       {
         type = "technology",
@@ -230,7 +230,7 @@ if parts.experimental then
             recipe = "skyseeker-armature"
           }
         },
-        prerequisites = {"mechanical-engineering-2", "electric-engine", "low-density-structure", parts.gyroscope, script.active_mods["space-exploration"] and "se-rocket-science-pack"},
+        prerequisites = {"mechanical-engineering-2", "electric-engine", "low-density-structure", parts.gyroscope, mods["space-exploration"] and "se-rocket-science-pack"},
         unit =
         {
           count = 100,
@@ -239,7 +239,7 @@ if parts.experimental then
             {"automation-science-pack", 1},
             {"logistic-science-pack", 1},
             {"chemical-science-pack", 1},
-            script.active_mods["space-exploration"] and {"se-rocket-science-pack", 1}
+            mods["space-exploration"] and {"se-rocket-science-pack", 1}
           },
           time = 30
         },
@@ -250,7 +250,7 @@ if parts.experimental then
 end
 
 
-if script.active_mods["248k"] then
+if mods["248k"] then
   data:extend({
     {
       type = "technology",
@@ -294,7 +294,7 @@ if script.active_mods["248k"] then
 end
 
 
-if script.active_mods["LunarLandings"] then
+if mods["LunarLandings"] then
   data:extend({
     {
           type = "technology",

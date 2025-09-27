@@ -1,7 +1,7 @@
 local parts = require("variable-parts")
 
 local stacksize_override = nil
-if script.active_mods["Krastorio2"] then
+if mods["Krastorio2"] then
   stacksize_override = tonumber(settings.startup["kr-stack-size"].value)
 else
   data:extend({
@@ -20,7 +20,7 @@ else
   })
 end
 
-if not script.active_mods["galdocs-manufacturing"] then
+if not mods["galdocs-manufacturing"] then
   data:extend({
     {
       type = "item",
@@ -45,7 +45,7 @@ if not script.active_mods["galdocs-manufacturing"] then
       stack_size = stacksize_override or 100
     }
   })
-  if not script.active_mods["exotic-industries"] then
+  if not mods["exotic-industries"] then
     data:extend({
       {
         type = "item",
@@ -131,7 +131,7 @@ data:extend({
   }
 })
 
-if script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"] then
+if mods["bzcarbon"] or mods["BrimStuff"] then
   data:extend({
     {
       type = "item",
@@ -203,7 +203,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
     }
   })
 
-  if not script.active_mods["galdocs-manufacturing"] then
+  if not mods["galdocs-manufacturing"] then
     data:extend({
       {
         type = "item",
@@ -219,7 +219,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
     })
   end
 
-  if script.active_mods["Krastorio2"] then
+  if mods["Krastorio2"] then
     data:extend({
       {
         type = "item",
@@ -266,7 +266,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
     })
   end
 
-  if script.active_mods["aai-signal-transmission"] or script.active_mods["LunarLandings"] then
+  if mods["aai-signal-transmission"] or mods["LunarLandings"] then
     data:extend({
       {
         type = "item",
@@ -281,7 +281,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
 end
 end
 
-if script.active_mods["Krastorio2"] then
+if mods["Krastorio2"] then
   data:extend({
     {
       type = "item",
@@ -309,7 +309,7 @@ if parts.drill then
   })
 end
 
-if script.active_mods["space-exploration"] then
+if mods["space-exploration"] then
   data:extend({
     {
         type = "item-subgroup",
@@ -351,7 +351,7 @@ if script.active_mods["space-exploration"] then
   })
 end
 
-if script.active_mods["FreightForwarding"] then
+if mods["FreightForwarding"] then
   data:extend({
     {
       type = "item",
@@ -366,7 +366,7 @@ if script.active_mods["FreightForwarding"] then
   })
 end
 
-if script.active_mods["248k"] then
+if mods["248k"] then
   data:extend({
     {
       type = "fluid",
@@ -405,7 +405,7 @@ if script.active_mods["248k"] then
   })
 end
 
-if script.active_mods["LunarLandings"] then
+if mods["LunarLandings"] then
   data:extend({
     {
       type = "item",
