@@ -2,12 +2,12 @@ local rm = require("recipe-modify")
 local tf = require("techfuncs")
 local parts = require("variable-parts")
 
-if mods["underwater-pipes"] and parts.experimental then
+if script.active_mods["underwater-pipes"] and parts.experimental then
   rm.RemoveIngredient("underwater-pipe", "steel-plate", 999)
   rm.AddIngredient("underwater-pipe", "hardened-hull", 3)
 end
 
-if mods["IntermodalContainers"] then
+if script.active_mods["IntermodalContainers"] then
   if parts.experimental then
     rm.AddIngredient("ic-container", "articulated-mechanism", 1)
     rm.AddIngredient("ic-containerization-machine-2", "gearbox", 2)
@@ -18,7 +18,7 @@ if mods["IntermodalContainers"] then
   end
 end
 
-if mods["cargo-ships"] and parts.experimental then
+if script.active_mods["cargo-ships"] and parts.experimental then
   rm.ReplaceProportional("boat", "steel-plate", "galvanized-steel-plate", 1)
   rm.ReplaceProportional("port", "steel-plate", "galvanized-steel-plate", 1)
 
@@ -33,11 +33,11 @@ if mods["cargo-ships"] and parts.experimental then
   end
 end
 
-if mods["Mini_Trains"] and parts.experimental then
+if script.active_mods["Mini_Trains"] and parts.experimental then
   rm.AddIngredient("mini-locomotive", "flywheel", 1)
 end
 
-if mods["FreightForwarding"] then
+if script.active_mods["FreightForwarding"] then
   rm.ReplaceProportional("cargo-wagon", "iron-gear-wheel", "bearing", 1)
   rm.ReplaceProportional("fluid-wagon", "iron-gear-wheel", "bearing", 1)
 
@@ -45,7 +45,7 @@ if mods["FreightForwarding"] then
   tf.addRecipeUnlock("ff-dredging", "brazen-nodule-washing")
 end
 
-if mods["ch-concentrated-solar"] then
+if script.active_mods["ch-concentrated-solar"] then
   if parts.experimental then
     rm.ReplaceIngredient("chcs-heliostat-mirror", "steel-plate", "complex-joint", 1)
     rm.ReplaceProportional("chcs-heliostat-mirror", "steel-plate", "galvanized-steel-plate", 1)

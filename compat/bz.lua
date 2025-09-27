@@ -2,7 +2,7 @@ local rm = require("recipe-modify")
 local tf = require("techfuncs")
 local parts = require("variable-parts")
 
-if mods["bztin"] and settings.startup["brasstacks-solder-absorption"].value then
+if script.active_mods["bztin"] and settings.startup["brasstacks-solder-absorption"].value then
   rm.AddIngredient("bolted-flange", "solder", 1)
   rm.RemoveIngredient("storage-tank", "solder", 4)
   rm.RemoveIngredient("kr-fluid-storage-1", "solder", 4)
@@ -16,17 +16,17 @@ if mods["bztin"] and settings.startup["brasstacks-solder-absorption"].value then
   rm.RemoveIngredient("gas-boiler", "solder", 1)
 end
 
-if mods["bztin"] and data.raw.item["bronze-plate"] then
+if script.active_mods["bztin"] and data.raw.item["bronze-plate"] then
   rm.RemoveIngredient("electric-engine-unit", "bronze-plate", 1)
   rm.ReplaceIngredient("bearing", "brass-plate", "bronze-plate", 1)
 end
 
-if mods["bzfoundry"] and parts.experimental then
+if script.active_mods["bzfoundry"] and parts.experimental then
   rm.ReplaceIngredient("electric-foundry", "steel-plate", "hardened-hull", 10)
 end
 
-if mods["bzlead"] and parts.experimental then
-  if mods["FreightForwarding"] then
+if script.active_mods["bzlead"] and parts.experimental then
+  if script.active_mods["FreightForwarding"] then
     rm.AddIngredient("hardened-hull", "lead-plate", 2)
   else
     rm.AddIngredient("hardened-hull", "lead-plate", 1)
@@ -38,16 +38,16 @@ if mods["bzlead"] and parts.experimental then
   --why is it there anyway lol. lead has a low melting point
 end
 
-if mods["bzgold"] then
+if script.active_mods["bzgold"] then
   if data.raw.item["silver-brazing-alloy"] then
     rm.multiply("airtight-seal", 2, true, true, true)
     rm.AddIngredient("airtight-seal", "silver-brazing-alloy", 2)
     rm.RemoveIngredient("airtight-seal", "bolted-flange", 1)
     rm.AddIngredient("airtight-seal-vitalic", "silver-brazing-alloy", 50)
     rm.RemoveIngredient("airtight-seal-vitalic", "bolted-flange", 50)
-    if mods["IfNickel"] then
+    if script.active_mods["IfNickel"] then
       tf.addPrereq("valves", "silver-processing")
-    else if mods["BrimStuff"] then
+    else if script.active_mods["BrimStuff"] then
       tf.addPrereq("rubber", "silver-processing")
     else
       tf.addPrereq("fluid-handling", "silver-processing")
@@ -55,7 +55,7 @@ if mods["bzgold"] then
   end
 end
 
-if parts.experimental and mods["bztungsten"] and (not mods["IfNickel"]) and (not mods["Krastorio2"]) then
+if parts.experimental and script.active_mods["bztungsten"] and (not script.active_mods["IfNickel"]) and (not script.active_mods["Krastorio2"]) then
   if data.raw.item["cuw"] then
     rm.ReplaceIngredient("hardened-hull", "iron-plate", "cuw", 2)
   else
@@ -64,12 +64,12 @@ if parts.experimental and mods["bztungsten"] and (not mods["IfNickel"]) and (not
   tf.addPrereq("hardened-hull", "tungsten-processing")
 end
 
-if mods["manganese"] then
+if script.active_mods["manganese"] then
   if parts.experimental then
     tf.addPrereq("hardened-hull", "mangalloy")
     --galvanized steel is 6 ore, mangalloy is 2 ore
     rm.ReplaceProportional("hardened-hull", "galvanized-steel-plate", "mangalloy", 3)
-    if mods["space-exploration"] then
+    if script.active_mods["space-exploration"] then
       rm.ReplaceProportional("hardened-hull-iridium", "galvanized-steel-plate", "mangalloy", 3)
     end
     if parts.drill then

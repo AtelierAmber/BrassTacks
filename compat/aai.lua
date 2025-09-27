@@ -4,11 +4,11 @@ local parts = require("variable-parts")
 local cu = require("category-utils")
 
 local advfitting = "bolted-flange"
-if mods["bzcarbon"] or mods["BrimStuff"] then
+if script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"] then
   advfitting = "airtight-seal"
 end
 
-if mods["aai-containers"] then
+if script.active_mods["aai-containers"] then
   rm.AddIngredient("aai-strongbox-passive-provider", "iron-gear-wheel", 2)
   if parts.experimental then
     rm.AddIngredient("aai-strongbox", "articulated-mechanism", 5)
@@ -31,7 +31,7 @@ if mods["aai-containers"] then
   end
 end
 
-if mods["textplates"] and not mods["galdocs-manufacturing"] then
+if script.active_mods["textplates"] and not script.active_mods["galdocs-manufacturing"] then
   if parts.experimental then
     rm.ReplaceIngredient("textplate-small-steel", "steel-plate", "galvanized-steel-plate", 1)
     rm.ReplaceIngredient("textplate-large-steel", "steel-plate", "galvanized-steel-plate", 4)
@@ -47,7 +47,7 @@ if mods["textplates"] and not mods["galdocs-manufacturing"] then
   end
 end
 
-if mods["aai-signal-transmission"] then
+if script.active_mods["aai-signal-transmission"] then
   if parts.experimental then
     tf.addPrereq("aai-signal-transmission", "skyseeker-armature")
 
@@ -58,7 +58,7 @@ if mods["aai-signal-transmission"] then
   end
 end
 
-if mods["aai-industry"] then
+if script.active_mods["aai-industry"] then
   if parts.experimental then
     if parts.nickelExperiment then
       rm.RemoveIngredient("area-mining-drill", "steel-plate", 20)
@@ -76,7 +76,7 @@ if mods["aai-industry"] then
     end
 
     rm.RemoveIngredient("industrial-furnace", "steel-plate", 16)
-    if mods["IfNickel"] then
+    if script.active_mods["IfNickel"] then
       rm.AddIngredient("industrial-furnace", "hardened-hull", 8)
     else
       rm.AddIngredient("industrial-furnace", "hardened-hull", 12)
@@ -84,7 +84,7 @@ if mods["aai-industry"] then
   end
 end
 
-if mods["big-mining-drill"] then
+if script.active_mods["big-mining-drill"] then
   if parts.experimental then
     if parts.nickelExperiment then
       rm.RemoveIngredient("big-mining-drill", "steel-plate", 20)
@@ -103,7 +103,7 @@ if mods["big-mining-drill"] then
   end
 end
 
-if mods["jetpack"] and parts.experimental then
+if script.active_mods["jetpack"] and parts.experimental then
   if parts.gyroscope then
     rm.RemoveIngredient("jetpack-2", parts.gyroscope, 99)
     rm.ReplaceIngredient("jetpack-2", "advanced-circuit", parts.gyroscope, 20)
@@ -117,7 +117,7 @@ if mods["jetpack"] and parts.experimental then
   end
 end
 
-if mods["space-exploration"] then
+if script.active_mods["space-exploration"] then
 
   rm.AddProductRaw("se-scrap-recycling", {type="item", name="zinc-ore", amount=1, probability=0.05})
 
@@ -267,13 +267,13 @@ if mods["space-exploration"] then
     rm.AddIngredient("se-space-splitter", "iron-gear-wheel", 10)
   end
 
-  if not mods["IfNickel"] then
+  if not script.active_mods["IfNickel"] then
     rm.ReplaceIngredient("se-canister", "steel-plate", advfitting, 1)
   end
   rm.RemoveIngredient("se-canister", "graphite", 5)
   rm.AddIngredient("se-space-pipe", advfitting, 1)
   rm.AddIngredient("se-nutrient-vat", advfitting, 1)
-  if advfitting == "airtight-seal" and mods["bzgold"] then
+  if advfitting == "airtight-seal" and script.active_mods["bzgold"] then
     rm.RemoveIngredient("se-space-pipe", "silver-brazing-alloy", 99999)
   end
 
@@ -324,7 +324,7 @@ if mods["space-exploration"] then
   tf.addRecipeUnlock("se-pyroflux-smelting", "brass-ingot-to-plate")
 end
 
-if mods["se-space-trains"] then
+if script.active_mods["se-space-trains"] then
   if parts.experimental then
     if parts.gyroscope then
         rm.RemoveIngredient("recipe-space-locomotive", parts.gyroscope, 99999)

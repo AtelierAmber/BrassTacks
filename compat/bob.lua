@@ -2,7 +2,7 @@ local rm = require("recipe-modify")
 local tf = require("techfuncs")
 local parts = require("variable-parts")
 
-if mods["boblogistics"] then
+if script.active_mods["boblogistics"] then
   rm.multiply("copper-pipe", 5, true, true, true)
   rm.AddIngredient("copper-pipe", "bolted-flange", 1)
 

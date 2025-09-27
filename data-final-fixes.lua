@@ -27,9 +27,9 @@ local allowed_recipes = {
 
   "cheese-ore-processing",
 
-  mods["Krastorio2"] and "gearbox" or nil,
-  mods["Krastorio2"] and "gearbox-iridium" or nil,
-  mods["Krastorio2"] and "advanced-gearbox" or nil,
+  script.active_mods["Krastorio2"] and "gearbox" or nil,
+  script.active_mods["Krastorio2"] and "gearbox-iridium" or nil,
+  script.active_mods["Krastorio2"] and "advanced-gearbox" or nil,
 }
 --brass precursor not included to avoid "double dipping"
 --relatively little brass is needed in the grand scheme, being able to get +40% for relatively cheap is overkill
@@ -57,7 +57,7 @@ for k, v in pairs(data.raw["map-gen-presets"]["default"]) do
   end
 end
 
-if mods["LunarLandings"] then
+if script.active_mods["LunarLandings"] then
   tf.addRecipeUnlock("lunar-cheese-exploitation", "cheese-ore-processing-heat")
   data.raw.recipe["cheese-ore-processing-heat"].enabled = false
 end

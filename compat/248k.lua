@@ -4,14 +4,14 @@ local parts = require("variable-parts")
 local cu = require("category-utils")
 
 local advfitting = "bolted-flange"
-if mods["bzcarbon"] or mods["BrimStuff"] then
+if script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"] then
   advfitting = "airtight-seal"
 end
 
-if mods["248k"] then
+if script.active_mods["248k"] then
   -- electric era
   if parts.experimental then
-    rm.ReplaceIngredient("gearbox", "galvanized-steel-plate", "el_materials_ALK", mods["Krastorio2"] and 4 or 2)
+    rm.ReplaceIngredient("gearbox", "galvanized-steel-plate", "el_materials_ALK", script.active_mods["Krastorio2"] and 4 or 2)
     rm.RemoveIngredient("fast-transport-belt", "el_materials_ALK", 1)
     rm.RemoveIngredient("fast-splitter", "el_materials_ALK", 3)
     rm.RemoveIngredient("fast-underground-belt", "el_materials_ALK", 8)
@@ -53,7 +53,7 @@ if mods["248k"] then
 
   rm.AddIngredient("fi_empty_solution", advfitting, 1)
 
-  if mods["aai-industry"] or mods["ThemTharHills"] then
+  if script.active_mods["aai-industry"] or script.active_mods["ThemTharHills"] then
     rm.ReplaceProportional("fi_crusher_recipe", "engine-unit", "electric-engine-unit", 0.67)
     rm.ReplaceProportional("fi_fiberer_recipe", "engine-unit", "electric-engine-unit", 0.67)
     rm.ReplaceProportional("fi_compound_machine_recipe", "engine-unit", "electric-engine-unit", 0.67)
@@ -84,7 +84,7 @@ if mods["248k"] then
     rm.AddIngredient("fu_turbine_recipe", "advanced-gearbox", 10)
   end
 
-  if mods["Krastorio2"] then
+  if script.active_mods["Krastorio2"] then
     rm.RemoveIngredient("gr_wheel_recipe", "fu_iron", 99999)
     data.raw.recipe["gr_wheel_recipe"].category = "chemistry"
     rm.AddIngredient("gr_wheel_recipe", "fu_copper", 250)

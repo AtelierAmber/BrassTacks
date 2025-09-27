@@ -3,7 +3,7 @@ local tf = require("techfuncs")
 local parts = require("variable-parts")
 
 local advfitting = "bolted-flange"
-if mods["bzcarbon"] or mods["BrimStuff"] then
+if script.active_mods["bzcarbon"] or script.active_mods["BrimStuff"] then
   advfitting = "airtight-seal"
   rm.RemoveIngredient("pump", "graphite", 2)
   if parts.nickel then
@@ -12,8 +12,8 @@ if mods["bzcarbon"] or mods["BrimStuff"] then
     tf.addRecipeUnlock("fluid-handling", "airtight-seal")
   end
 
-  if mods["BrimStuff"] then
-    if mods["bzcarbon"] then
+  if script.active_mods["BrimStuff"] then
+    if script.active_mods["bzcarbon"] then
       rm.ReplaceIngredient("airtight-seal", "graphite", "rubber", 1)
       rm.ReplaceIngredient("airtight-seal-vitalic", "graphite", "rubber", 25)
     else
@@ -24,7 +24,7 @@ if mods["bzcarbon"] or mods["BrimStuff"] then
 end
 
 if parts.experimental then
-  if not mods["galdocs-manufacturing"] then
+  if not script.active_mods["galdocs-manufacturing"] then
     tf.addRecipeUnlock("steel-processing", "galvanized-steel-plate")
   end
   rm.RemoveIngredient("splitter", "iron-plate", 8)
@@ -48,31 +48,31 @@ if parts.experimental then
     rm.ReplaceIngredient("electric-mining-drill", "iron-gear-wheel", "articulated-mechanism", 2)
   end
 
-  if mods["aai-industry"] then
+  if script.active_mods["aai-industry"] then
     rm.AddIngredient("gearbox", "electric-motor", 2)
   else if parts.nickel then
     rm.AddIngredient("gearbox", "motor", 2)
   end end
 
-  if mods["Krastorio2"] then
+  if script.active_mods["Krastorio2"] then
     rm.multiply("gearbox", 2, true, true, true)
     rm.RemoveIngredient("gearbox", "galvanized-steel-plate", 1)
-    if mods["aai-industry"] then
+    if script.active_mods["aai-industry"] then
       rm.RemoveIngredient("gearbox", "electric-motor", 1) --aai motors are expensive
     end
   end
 
   rm.AddIngredient("electric-mining-drill", "flywheel", 1)
 
-  if mods["aai-industry"] then
-    if not mods["Krastorio2"] then -- inserter parts use AM
+  if script.active_mods["aai-industry"] then
+    if not script.active_mods["Krastorio2"] then -- inserter parts use AM
       rm.RemoveIngredient("burner-inserter", "iron-stick", 2)
       rm.AddIngredient("burner-inserter", "articulated-mechanism", 1)
     end
   else
     rm.ReplaceIngredient("inserter", "iron-plate", "articulated-mechanism", 1)
   end
-  if mods["Krastorio2"] and not mods["aai-industry"] then
+  if script.active_mods["Krastorio2"] and not script.active_mods["aai-industry"] then
     rm.ReplaceIngredient("long-handed-inserter", "iron-plate", "articulated-mechanism", 2)
   else
     rm.ReplaceIngredient("long-handed-inserter", "iron-plate", "articulated-mechanism", 1)
@@ -81,12 +81,12 @@ if parts.experimental then
   rm.RemoveIngredient("long-handed-inserter", "aluminum-plate", 1)
 
   tf.addPrereq("fluid-handling", "hardened-hull")
-  if not mods["Krastorio2"] then
+  if not script.active_mods["Krastorio2"] then
     rm.ReplaceIngredient("storage-tank", "steel-plate", "hardened-hull", 5)
     rm.RemoveIngredient("storage-tank", "bronze-plate", 10)
   end
-  if not (mods["Krastorio2"] or mods["galdocs-manufacturing"]) then
-    if mods["aai-industry"] then
+  if not (script.active_mods["Krastorio2"] or script.active_mods["galdocs-manufacturing"]) then
+    if script.active_mods["aai-industry"] then
       rm.ReplaceIngredient("pump", "steel-plate", "galvanized-steel-plate", 1)
     else
       rm.ReplaceIngredient("pump", "steel-plate", "galvanized-steel-plate", 1)
@@ -94,9 +94,9 @@ if parts.experimental then
     rm.RemoveIngredient("pump", "bronze-plate", 2)
   end
 
-  if not mods["galdocs-manufacturing"] then
+  if not script.active_mods["galdocs-manufacturing"] then
     rm.ReplaceIngredient("refined-concrete", "steel-plate", "galvanized-steel-plate", 1)
-    if mods["Krastorio2"] then
+    if script.active_mods["Krastorio2"] then
       rm.ReplaceIngredient("big-electric-pole", "steel-beam", "galvanized-steel-plate", 4)
       rm.ReplaceIngredient("substation", "steel-beam", "galvanized-steel-plate", 8)
       rm.ReplaceIngredient("steel-chest", "steel-plate", "galvanized-steel-plate", 4)
@@ -117,8 +117,8 @@ if parts.experimental then
 
   rm.ReplaceIngredient("assembling-machine-1", "iron-gear-wheel", "articulated-mechanism", 5)
 
-  if not mods["space-exploration"] then
-    if mods["MoreScience"] then
+  if not script.active_mods["space-exploration"] then
+    if script.active_mods["MoreScience"] then
       rm.RemoveIngredient("production-science-fluid", "rail", 90)
       rm.AddIngredient("production-science-fluid", "advanced-gearbox", 18)
       rm.AddIngredient("utility-science-fluid", "complex-joint", 9)
@@ -136,7 +136,7 @@ if parts.experimental then
   end
 
   tf.addPrereq("automation-2", "mechanical-engineering")
-  if mods["galdocs-manufacturing"] then
+  if script.active_mods["galdocs-manufacturing"] then
     if rm.CheckIngredient("assembling-machine-2", "tungsten-carbide") then
       rm.ReplaceIngredient("assembling-machine-2", "steel-plate", "galvanized-steel-plate", 1)
     else
@@ -146,7 +146,7 @@ if parts.experimental then
   rm.RemoveIngredient("assembling-machine-2", "iron-gear-wheel", 5)
   rm.ReplaceIngredient("assembling-machine-2", "galvanized-steel-plate", "gearbox", 1)
 
-  if mods["aai-industry"] then
+  if script.active_mods["aai-industry"] then
     rm.AddIngredient("engine-unit", "articulated-mechanism", 2)
     --for the much more limited scope item that AAI makes the combustion engine, 5 ingredients is OK
   else
@@ -164,8 +164,8 @@ if parts.experimental then
     rm.AddIngredient("electric-furnace", "hardened-hull", 8)
   end
 
-  if not mods["galdocs-manufacturing"] then
-    if mods["aai-industry"] then
+  if not script.active_mods["galdocs-manufacturing"] then
+    if script.active_mods["aai-industry"] then
       rm.ReplaceIngredient("pumpjack", "steel-plate", "galvanized-steel-plate", 15)
     else
       rm.ReplaceIngredient("pumpjack", "steel-plate", "galvanized-steel-plate", 5)
@@ -178,7 +178,7 @@ if parts.experimental then
 
   rm.ReplaceIngredient("heat-exchanger", "steel-plate", "hardened-hull", 10)
   rm.ReplaceIngredient("nuclear-reactor", "steel-plate", "hardened-hull", 500)
-  if mods["LunarLandings"] then
+  if script.active_mods["LunarLandings"] then
     rm.ReplaceIngredient("rocket-silo", "steel-plate", "hardened-hull", 100)
   else
     rm.ReplaceIngredient("rocket-silo", "steel-plate", "hardened-hull", 500)
@@ -194,14 +194,14 @@ if parts.experimental then
   rm.ReplaceIngredient("chemical-plant", "steel-plate", "hardened-hull", 5)
   rm.ReplaceIngredient("tank", "steel-plate", "hardened-hull", 30)
   rm.ReplaceIngredient("artillery-wagon", "steel-plate", "hardened-hull", 20)
-  if not mods["galdocs-manufacturing"] then
+  if not script.active_mods["galdocs-manufacturing"] then
     rm.ReplaceIngredient("fluid-wagon", "steel-plate", "galvanized-steel-plate", 16)
     rm.ReplaceIngredient("artillery-wagon", "steel-plate", "galvanized-steel-plate", 20)
   end
   --rm.ReplaceIngredient("cargo-wagon", "steel-plate", "galvanized-steel-plate", 20, 20)
   --rm.ReplaceIngredient("locomotive", "steel-plate", "galvanized-steel-plate", 30, 30)
 
-  if not mods["FreightForwarding"] then
+  if not script.active_mods["FreightForwarding"] then
     --in FF the locomotive is electric only, meaning it doesn't need a flywheel to even out the engine stroke cycle.
     --yes, i am going to be this pedantic.
     rm.AddIngredient("locomotive", "flywheel", 2)
@@ -213,7 +213,7 @@ if parts.experimental then
   rm.AddIngredient("fast-transport-belt", "gearbox", 1)
 
   rm.RemoveIngredient("fast-underground-belt", "iron-gear-wheel", 40)
-  if not mods["Krastorio2"] then
+  if not script.active_mods["Krastorio2"] then
     rm.AddIngredient("fast-underground-belt", "gearbox", 8)
   end
 
@@ -232,7 +232,7 @@ if parts.experimental then
   rm.AddIngredient("gate", "hardened-hull", 1)
   tf.addPrereq("gate", "hardened-hull")
 
-  if not mods["galdocs-manufacturing"] then
+  if not script.active_mods["galdocs-manufacturing"] then
     rm.ReplaceIngredient("solar-panel", "steel-plate", "galvanized-steel-plate", 5)
     rm.ReplaceIngredient("laser-turret", "steel-plate", "galvanized-steel-plate", 20)
   end
@@ -257,7 +257,7 @@ if parts.experimental then
   rm.AddIngredient("express-transport-belt", "advanced-gearbox", 1)
 
   rm.RemoveIngredient("express-underground-belt", "iron-gear-wheel", 80)
-  if not mods["Krastorio2"] then
+  if not script.active_mods["Krastorio2"] then
     rm.AddIngredient("express-underground-belt", "advanced-gearbox", 8)
   end
 
@@ -287,7 +287,7 @@ if parts.experimental then
 
     rm.RemoveIngredient("flying-robot-frame", parts.gyroscope, 99)
     rm.RemoveIngredient("flying-robot-frame", "electronic-circuit", 99)
-    if mods["aai-industry"] then
+    if script.active_mods["aai-industry"] then
       rm.AddIngredient("flying-robot-frame", parts.gyroscope, 1)
     else
       rm.AddIngredient("flying-robot-frame", parts.gyroscope, 1)
@@ -308,7 +308,7 @@ if parts.experimental then
     tf.addPrereq("skyseeker-armature", "gyro")
   end
 
-  if mods["aai-signal-transmission"] or mods["LunarLandings"] then
+  if script.active_mods["aai-signal-transmission"] or script.active_mods["LunarLandings"] then
 
     tf.addPrereq("artillery", "skyseeker-armature")
     rm.RemoveIngredient("artillery-wagon", "gyro", 99)
@@ -333,7 +333,7 @@ if parts.experimental then
     end
   end
 else
-  if not mods["galdocs-manufacturing"] then
+  if not script.active_mods["galdocs-manufacturing"] then
     rm.ReplaceIngredient("splitter", "iron-plate", "iron-gear-wheel", 3)
     rm.RemoveIngredient("splitter", "aluminum-plate", 3)
 
@@ -351,9 +351,9 @@ else
   rm.AddIngredient("car", "iron-gear-wheel", 10)
 end
 
-if not mods["galdocs-manufacturing"] then
-  if mods["Krastorio2"] then
-    if mods["space-exploration"] then
+if not script.active_mods["galdocs-manufacturing"] then
+  if script.active_mods["Krastorio2"] then
+    if script.active_mods["space-exploration"] then
       rm.ReplaceIngredient("iron-gear-wheel", "iron-plate", "brass-plate", 1)
     else
       rm.ReplaceIngredient("iron-gear-wheel", "iron-plate", "brass-plate", 4)
@@ -365,9 +365,9 @@ if not mods["galdocs-manufacturing"] then
   if rm.CheckIngredient("iron-gear-wheel", "iron-plate") then
     data.raw.item["iron-gear-wheel"].icon = parts.qualityIconPath("brasstacks", "icons/iron-gear-wheel.png")
   else
-    data.raw.item["iron-gear-wheel"].icon = parts.qualityIconPath("brasstacks", "icons/iron-gear-wheel-krastorio.png")
-    data.raw.item["iron-gear-wheel"].localised_name = {"item-name.brass-gear-wheel"}
-    if mods["Krastorio2"] and ((not mods["space-exploration"]) or mods["space-exploration"] < "0.6.121") then
+    --data.raw.item["iron-gear-wheel"].icon = parts.qualityIconPath("brasstacks", "icons/iron-gear-wheel-krastorio.png")
+    --data.raw.item["iron-gear-wheel"].localised_name = {"item-name.brass-gear-wheel"}
+    if script.active_mods["Krastorio2"] and ((not script.active_mods["space-exploration"]) or script.active_mods["space-exploration"] < "0.6.121") then
       rm.multiply("kr-s-c-iron-gear-wheel-enriched", 2, true, true, true)
       rm.ReplaceIngredient("kr-s-c-iron-gear-wheel-enriched", "enriched-iron", "enriched-zinc", 1)
       rm.ReplaceIngredient("kr-s-c-iron-gear-wheel-enriched", "enriched-iron", "enriched-copper", 1)
@@ -386,7 +386,7 @@ if not mods["galdocs-manufacturing"] then
 
   rm.ReplaceIngredient("fast-inserter", "iron-plate", "iron-gear-wheel", 2)
   rm.RemoveIngredient("fast-inserter", "aluminum-plate", 2)
-  if mods["Krastorio2"] and not mods["aai-industry"] then
+  if script.active_mods["Krastorio2"] and not script.active_mods["aai-industry"] then
     rm.ReplaceIngredient("filter-inserter", "iron-plate", "iron-gear-wheel", 2)
     rm.RemoveIngredient("filter-inserter", "aluminum-plate", 2)
   end
@@ -395,21 +395,21 @@ end
 rm.AddIngredient("storage-tank", "bolted-flange", 4)
 rm.AddIngredient("pump", advfitting, 2)
 
-if mods["FreightForwarding"] then
+if script.active_mods["FreightForwarding"] then
   rm.AddIngredient("locomotive", "bearing", 20)
-elseif not mods["galdocs-manufacturing"] then
+elseif not script.active_mods["galdocs-manufacturing"] then
   rm.AddIngredient("locomotive", "iron-gear-wheel", 10)
 end
-if mods["galdocs-manufacturing"] then
+if script.active_mods["galdocs-manufacturing"] then
   rm.AddIngredient("construction-robot", "bearing", 1)
 else
   rm.AddIngredient("construction-robot", "iron-gear-wheel", 2)
 end
 rm.AddIngredient("logistic-robot", "bearing", 2)
 
-if not mods["galdocs-manufacturing"] then
+if not script.active_mods["galdocs-manufacturing"] then
   rm.AddIngredient("logistic-chest-passive-provider", "iron-gear-wheel", 1)
-  if not mods["aai-containers"] then
+  if not script.active_mods["aai-containers"] then
     rm.AddIngredient("logistic-chest-active-provider", "iron-gear-wheel", 1)
     rm.AddIngredient("logistic-chest-storage", "iron-gear-wheel", 1)
     rm.AddIngredient("logistic-chest-requester", "iron-gear-wheel", 1)
@@ -419,14 +419,14 @@ end
 
 rm.AddIngredient("electric-engine-unit", "bearing", 1)
 
-if not mods["galdocs-manufacturing"] then
+if not script.active_mods["galdocs-manufacturing"] then
   rm.AddIngredient("battery", "zinc-plate", 1)
 end
 
 tf.addRecipeUnlock("lubricant", "brass-balls")
 tf.addRecipeUnlock("lubricant", "bearing")
 
-if not mods["aai-industry"] then
+if not script.active_mods["aai-industry"] then
   --aai already adds this
   tf.addPrereq("automation-3", "electric-engine")
   rm.AddIngredient("assembling-machine-3", "electric-engine-unit", 2)
@@ -437,8 +437,8 @@ rm.AddIngredient("centrifuge", "bearing", 20)
 rm.AddIngredient("steam-turbine", "bearing", 5)
 
 if not parts.gyroscope then
-  local thegear = mods["Krastorio2"] and "steel-gear-wheel" or "iron-gear-wheel"
-  if mods["IfNickel"] or mods["aai-industry"] then
+  local thegear = script.active_mods["Krastorio2"] and "steel-gear-wheel" or "iron-gear-wheel"
+  if script.active_mods["IfNickel"] or script.active_mods["aai-industry"] then
     rm.AddIngredient("laser-turret", thegear, 5)
   else
     rm.AddIngredient("laser-turret", thegear, 10)
@@ -448,12 +448,12 @@ end
 --never use the bloody thing because it's so expensive but hey!
 rm.ReplaceIngredient("flamethrower-ammo", "steel-plate", advfitting, 1)
 
-if not mods["galdocs-manufacturing"] then
+if not script.active_mods["galdocs-manufacturing"] then
   rm.AddIngredient("firearm-magazine", "brass-plate", 1)
   rm.AddIngredient("shotgun-shell", "brass-plate", 1)
   rm.AddIngredient("cannon-shell", "brass-plate", 2)
   rm.AddIngredient("explosive-cannon-shell", "brass-plate", 2)
-  if mods["bzlead"] and settings.startup["bzlead-more-ammo"].value == "yes" then
+  if script.active_mods["bzlead"] and settings.startup["bzlead-more-ammo"].value == "yes" then
     --it produces 2 mags, so 2x the casings
     rm.AddIngredient("firearm-magazine-iron-lead", "brass-plate", 2)
     rm.AddIngredient("firearm-magazine-iron-only", "brass-plate", 1)
@@ -465,7 +465,7 @@ if not mods["galdocs-manufacturing"] then
   end
 end
 
-if not mods["LunarLandings"] then
+if not script.active_mods["LunarLandings"] then
   rm.AddIngredient("rocket-fuel", advfitting, 1)
 end
 
@@ -479,7 +479,7 @@ else
   tf.addRecipeUnlock("copper-processing", "brass-precursor-foundry")
 end
 
-if mods["MoreScience"] and parts.experimental then
+if script.active_mods["MoreScience"] and parts.experimental then
   if parts.gyroscope then
     tf.addPrereq(parts.gyroscope, "electric-power-science-pack")
     tf.addSciencePack(parts.gyroscope, "electric-power-science-pack")
@@ -488,8 +488,8 @@ if mods["MoreScience"] and parts.experimental then
   tf.addSciencePack("mechanical-engineering-2", "advanced-automation-science-pack")
 end
 
-if mods["vtk-deep-core-mining"] and parts.experimental then
-  if not mods["galdocs-manufacturing"] then
+if script.active_mods["vtk-deep-core-mining"] and parts.experimental then
+  if not script.active_mods["galdocs-manufacturing"] then
     rm.ReplaceIngredient("vtk-deepcore-mining-moho", "steel-plate", "galvanized-steel-plate", 20)
     rm.ReplaceIngredient("vtk-deepcore-mining-drill", "steel-plate", "hardened-hull", 20)
     rm.ReplaceIngredient("vtk-deepcore-mining-drill-advanced", "steel-plate", "hardened-hull", 50)
@@ -519,22 +519,22 @@ if mods["vtk-deep-core-mining"] and parts.experimental then
   end
 end
 
-if mods["Flow Control"] and not mods["IfNickel"] and advfitting == "airtight-seal" then
+if script.active_mods["Flow Control"] and not script.active_mods["IfNickel"] and advfitting == "airtight-seal" then
   rm.AddIngredient("check-valve", "airtight-seal", 1)
   rm.AddIngredient("overflow-valve", "airtight-seal", 1)
   rm.AddIngredient("underflow-valve", "airtight-seal", 1)
 end
 
-if mods["leighzerscrapyards"] and data.raw.recipe["iron-gear-wheel-reclamation"] then
+if script.active_mods["leighzerscrapyards"] and data.raw.recipe["iron-gear-wheel-reclamation"] then
   rm.AddIngredient("iron-gear-wheel-reclamation", "iron-gear-wheel", 2)
   rm.AddProductRaw("iron-gear-wheel-reclamation", {type="item", name="brass-plate", amount=1})
-  if mods["Krastorio2"] then
+  if script.active_mods["Krastorio2"] then
     rm.RemoveProduct("iron-gear-wheel-reclamation", "iron-plate", 99999)
     data.raw.recipe["iron-gear-wheel-reclamation"].icons[2].icon = parts.qualityIconPath("brasstacks", "icons/brass-plate.png")
   end
 end
 
-if mods["LunarLandings"] then
+if script.active_mods["LunarLandings"] then
   rm.AddIngredient("ll-core-extractor", "electric-engine-unit", 5)
   rm.ReplaceIngredient("ll-core-extractor", "iron-gear-wheel", "bearing", 25)
   rm.AddIngredient("ll-low-grav-assembling-machine", "electric-engine-unit", 2)
@@ -552,7 +552,7 @@ if mods["LunarLandings"] then
     end
     rm.AddIngredient("ll-rocket-silo-interstellar", "complex-joint", 200)
 
-    if mods["IfNickel"] then
+    if script.active_mods["IfNickel"] then
       tf.addRecipeUnlock("ll-rich-moon-rock-processing", "hardened-hull-alumina")
     end
 
