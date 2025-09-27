@@ -17,7 +17,7 @@ function parts.qualityIconPath(mod, icon)
   --I intend to reuse this function between mods, hence checking for itself and specifying which mod to look in.
   --Other mods may add an alternate recipe and need to look up an icon, etc.
   --Possible that I am over-engineering this system.
-  if mod == "brasstacks" and mods["BrassTacks"] then
+  if mod == "brasstacks" and mods["BrassTacks-Updated"] then
     if settings.startup["brasstacks-classic-icons"].value then
       prefix = "__BrassTacks__/graphics/classic/"
     else
