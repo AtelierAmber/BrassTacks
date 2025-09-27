@@ -1,7 +1,7 @@
 local parts = require("variable-parts")
 
 if deadlock then
-  deadlock.add_stack("zinc-ore", "__BrassTacks__/graphics/icons/zinc-ore-stacked.png", "deadlock-stacking-1", 64)
+  deadlock.add_stack("zinc-ore", "__BrassTacks-Updated__/graphics/icons/zinc-ore-stacked.png", "deadlock-stacking-1", 64)
   deadlock.add_stack("zinc-plate", parts.qualityIconPath("brasstacks", "icons/stacking/zinc-plate-stacked.png"), "deadlock-stacking-1", 64)
   deadlock.add_stack("brass-plate", parts.qualityIconPath("brasstacks", "icons/stacking/brass-plate-stacked.png"), "deadlock-stacking-1", 64)
   if data.raw.item["iron-gear-wheel"].localised_name then

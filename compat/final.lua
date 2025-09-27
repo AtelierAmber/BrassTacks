@@ -134,7 +134,7 @@ end end
 
 if parts.experimental and mods["Krastorio2"] then
   cu.moveItem("iron-gear-wheel", "gear-components", "a")
-  cu.moveItem("steel-gear-wheel", "gear-components", "b")
+  cu.moveItem("kr-steel-gear-wheel", "gear-components", "b")
   cu.moveItem("imersium-gear-wheel", "gear-components", "c")
   cu.moveItem("gearbox", "gear-components", "d")
   cu.moveItem("advanced-gearbox", "gear-components", "e")

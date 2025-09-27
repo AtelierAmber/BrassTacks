@@ -4,15 +4,28 @@ if mods["galdocs-manufacturing"] then
   return
 end
 
+data.raw.planet.nauvis.map_gen_settings.autoplace_controls["zinc-ore"] = {}
+data.raw.planet.nauvis.map_gen_settings.autoplace_settings.entity.settings["zinc-ore"] = {}
+resource_autoplace.initialize_patch_set("zinc-ore", true)
+
 data:extend({
+  {
+    type = "autoplace-control",
+    category = "resource",
+    name = "zinc-ore",
+    localised_name = {"", (mods["LunarLandings"] and "[virtual-signal=ll-nauvis] " or "") .. "[entity=zinc-ore] ", {"entity-name.zinc-ore"}},
+    richness = true,
+    order = "b-da"
+  },
   {
     type = "resource",
     name = "zinc-ore",
-    icon = "__BrassTacks__/graphics/icons/zinc-ore.png",
+    icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",
     icon_size = 64,
     icon_mipmaps = 4,
     flags = {"placeable-neutral"},
     order="a-b-x",
+    map_color = {0.9, 0.9, 0.9},
     tree_removal_probability = 0.8,
     tree_removal_max_distance = 32 * 32,
     minable =
@@ -39,14 +52,14 @@ data:extend({
     {
       sheet =
       {
-        filename = "__BrassTacks__/graphics/ore/zinc-ore.png",
+        filename = "__BrassTacks-Updated__/graphics/ore/zinc-ore.png",
         priority = "extra-high",
         size = 64,
         frame_count = 8,
         variation_count = 8,
         hr_version =
         {
-          filename = "__BrassTacks__/graphics/ore/hr-zinc-ore.png",
+          filename = "__BrassTacks-Updated__/graphics/ore/hr-zinc-ore.png",
           priority = "extra-high",
           size = 128,
           frame_count = 8,
@@ -55,20 +68,7 @@ data:extend({
         }
       }
     },
-    map_color = {0.9, 0.9, 0.9},
     mining_visualisation_tint = {r=0.7, g=0.7, b=0.75}
-  },
-  {
-    type = "autoplace-control",
-    category = "resource",
-    name = "zinc-ore",
-    localised_name = {"", (mods["LunarLandings"] and "[virtual-signal=ll-nauvis] " or "") .. "[entity=zinc-ore] ", {"entity-name.zinc-ore"}},
-    richness = true,
-    order = "b-da"
-  },
-  {
-    type = "noise-layer",
-    name = "zinc-ore"
   }
 })
 
@@ -77,7 +77,7 @@ if mods["LunarLandings"] then
     {
       type = "resource",
       name = "cheese-ore",
-      icon = "__BrassTacks__/graphics/icons/cheese-ore.png",
+      icon = "__BrassTacks-Updated__/graphics/icons/cheese-ore.png",
       icon_size = 64,
       icon_mipmaps = 4,
       flags = {"placeable-neutral"},
@@ -108,14 +108,14 @@ if mods["LunarLandings"] then
       {
         sheet =
         {
-          filename = "__BrassTacks__/graphics/ore/cheese-ore.png",
+          filename = "__BrassTacks-Updated__/graphics/ore/cheese-ore.png",
           priority = "extra-high",
           size = 64,
           frame_count = 8,
           variation_count = 8,
           hr_version =
           {
-            filename = "__BrassTacks__/graphics/ore/hr-cheese-ore.png",
+            filename = "__BrassTacks-Updated__/graphics/ore/hr-cheese-ore.png",
             priority = "extra-high",
             size = 128,
             frame_count = 8,
@@ -134,10 +134,6 @@ if mods["LunarLandings"] then
       localised_name = {"", "[virtual-signal=ll-luna] [entity=cheese-ore] ", {"entity-name.cheese-ore"}},
       richness = true,
       order = "d-ca"
-    },
-    {
-      type = "noise-layer",
-      name = "cheese-ore"
     }
   })
   data.raw.resource["cheese-ore"].autoplace.default_enabled = false

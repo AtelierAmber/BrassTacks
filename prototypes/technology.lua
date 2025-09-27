@@ -301,7 +301,7 @@ if mods["LunarLandings"] then
           name = "lunar-cheese-exploitation",
           icons = {
             {
-              icon = "__BrassTacks__/graphics/technology/lunar-cheese-exploitation.png",
+              icon = "__BrassTacks-Updated__/graphics/technology/lunar-cheese-exploitation.png",
               icon_size = 64,
               icon_mipmaps = 4
             }

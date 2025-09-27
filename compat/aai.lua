@@ -287,7 +287,7 @@ if mods["space-exploration"] then
           icon_size = 64, icon_mipmaps = 4
         },
         {
-          icon = "__BrassTacks__/graphics/icons/zinc-ore.png",
+          icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",
           icon_size = 64, icon_mipmaps = 4, scale = 0.25
         }
       },
@@ -332,7 +332,7 @@ if mods["se-space-trains"] then
         rm.AddIngredient("recipe-space-cargo-wagon", parts.gyroscope, 1)
         rm.AddIngredient("recipe-space-fluid-wagon", parts.gyroscope, 1)
     end
-    rm.ReplaceProportional("recipe-space-locomotive", "steel-gear-wheel", "advanced-gearbox", 0.1)
+    rm.ReplaceProportional("recipe-space-locomotive", "kr-steel-gear-wheel", "advanced-gearbox", 0.1)
     rm.ReplaceProportional("recipe-space-locomotive", "iron-gear-wheel", "advanced-gearbox", 0.1)
   end
 end

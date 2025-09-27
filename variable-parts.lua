@@ -19,9 +19,9 @@ function parts.qualityIconPath(mod, icon)
   --Possible that I am over-engineering this system.
   if mod == "brasstacks" and mods["BrassTacks-Updated"] then
     if settings.startup["brasstacks-classic-icons"].value then
-      prefix = "__BrassTacks__/graphics/classic/"
+      prefix = "__BrassTacks-Updated__/graphics/classic/"
     else
-      prefix = "__BrassTacks__/graphics/galdoc/"
+      prefix = "__BrassTacks-Updated__/graphics/galdoc/"
     end
   end
   if prefix ~= "" then

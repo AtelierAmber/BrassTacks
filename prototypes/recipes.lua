@@ -387,7 +387,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         energy_required = 5,
         --preferred can't be used - ifnickel loads after this.
         ingredients = {{type="item", name="flywheel", amount=1}, {type="item", name="bearing", amount=2}, {type="item", name="advanced-circuit", amount=1}, 
-                       (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
+                       (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="kr-steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
         results = {{type="item", name=parts.gyroscope, amount=1}},
         enabled = false
       }
@@ -402,7 +402,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         category = "crafting",
         energy_required = 20,
         ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="low-density-structure", amount=1}, {type="item", name="electric-engine-unit", amount=1}, 
-                        parts.preferred({"steel-gear-wheel", "iron-gear-wheel"}, {3, 6}), parts.preferred({"gyro", "gyroscope"}, {1, 1})},
+                        parts.preferred({"kr-steel-gear-wheel", "iron-gear-wheel"}, {3, 6}), parts.preferred({"gyro", "gyroscope"}, {1, 1})},
         results = {{type="item", name="skyseeker-armature", amount=1}},
         enabled = false
       }
@@ -452,7 +452,7 @@ if parts.drill then
 end
 
 if mods["Krastorio2"] then
-  local matterutil = require("__Krastorio2__/lib/public/data-stages/matter-util")
+  local matterutil = require("__Krastorio2__/prototypes/libraries/matter")
   data:extend(
     {
       {
@@ -461,7 +461,7 @@ if mods["Krastorio2"] then
         category = "chemistry",
         energy_required = 3,
         ingredients = {{type="item", name="zinc-ore", amount=9}, {type="fluid", name="sulfuric-acid", amount=3}, {type="fluid", name="water", amount=25, catalyst_amount = 25}},
-        results = {{type="item", name="enriched-zinc", amount=(mods["space-exploration"] and 9 or 6)}, {type="fluid", name="dirty-water", amount=25, catalyst_amount=25}},
+        results = {{type="item", name="enriched-zinc", amount=(mods["space-exploration"] and 9 or 6)}, {type="fluid", name="kr-dirty-water", amount=25, catalyst_amount=25}},
         main_product = "enriched-zinc",
         enabled = false
         --default white chemplant tint is fine for once!
@@ -484,22 +484,22 @@ if mods["Krastorio2"] then
     		name = "dirty-water-filtration-zinc",
         subgroup = "raw-material",
     		order = "w013[dirty-water-filtration-zinc]",
-    		category = "fluid-filtration",
+    		category = "kr-fluid-filtration",
     		icons =
     		{
     			{
-    				icon = data.raw.fluid["dirty-water"].icon,
-    				icon_size = data.raw.fluid["dirty-water"].icon_size
+    				icon = data.raw.fluid["kr-dirty-water"].icon,
+    				icon_size = data.raw.fluid["kr-dirty-water"].icon_size
     			},
     			{
-    				icon = "__BrassTacks__/graphics/icons/zinc-ore.png",
+    				icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",
     				icon_size =	64,
     				scale = 0.2,
     				shift = {0, 4}
     			}
     		},
     		energy_required = 2,
-    		ingredients = { {type = "fluid", name = "dirty-water", amount = 100, catalyst_amount = 100} },
+    		ingredients = { {type = "fluid", name = "kr-dirty-water", amount = 100, catalyst_amount = 100} },
     		results =	{ {type = "fluid", name = "water", amount = 90, catalyst_amount = 90}, {type = "item",  name = "stone", probability = 0.3, amount = 1}, {type = "item",  name = "zinc-ore", probability = 0.1, amount = 1},
     		},
     		crafting_machine_tint =
@@ -519,7 +519,7 @@ if mods["Krastorio2"] then
             icon_mipmaps = 4,
           },
           {
-            icon = "__BrassTacks__/graphics/icons/zinc-ore.png",
+            icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",
             icon_size = 64,
             icon_mipmaps = 4,
             scale = 2
@@ -533,25 +533,23 @@ if mods["Krastorio2"] then
           ingredients = {
             { "production-science-pack", 1 },
             { "utility-science-pack", 1 },
-            { "matter-tech-card", 1 },
+            { "kr-matter-tech-card", 1 },
           },
           time = 45
         }
       }
     }
   )
-  matterutil.createMatterRecipe({
-    item_name = "zinc-ore",
-    minimum_conversion_quantity = 10,
-    matter_value = 5,
+  matterutil.make_recipes({
+    material = {type = "item", name = "zinc-ore", amount=10},
+    matter_count = 8,
     energy_required = 1,
     need_stabilizer = false,
     unlocked_by_technology = "kr-matter-zinc-processing"
   })
-  matterutil.createMatterRecipe({
-    item_name = "zinc-plate",
-    minimum_conversion_quantity = 10,
-    matter_value = mods["space-exploration"] and 7.5 or 10,
+  matterutil.make_deconversion_recipe({
+    material = {type="item", name="zinc-plate", amount=10},
+    matter_count = mods["space-exploration"] and 7.5 or 10,
     energy_required = 3,
     only_deconversion = true,
     need_stabilizer = true,
@@ -648,7 +646,7 @@ if mods["space-exploration"] then
         icons = {
           {icon = "__space-exploration-graphics__/graphics/blank.png", icon_size = 64, scale = 0.5},
           {icon = "__space-exploration-graphics__/graphics/icons/fluid/particle-stream.png", icon_size = 64,  scale = 0.33, shift = {-8,8}},
-          {icon = "__BrassTacks__/graphics/icons/zinc-ore.png", icon_size = 64, scale = 0.33, shift={8, -8}},
+          {icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png", icon_size = 64, scale = 0.33, shift={8, -8}},
           {icon = "__space-exploration-graphics__/graphics/icons/transition-arrow.png", icon_size = 64, scale = 0.5},
         },
         category = "space-materialisation",
@@ -744,7 +742,7 @@ if mods["LunarLandings"] then
       category = "ll-electric-smelting",
       subgroup = "ll-raw-material-moon",
       order = "a[moon-rock]-c",
-      icon = "__BrassTacks__/graphics/icons/cheese-ore.png",
+      icon = "__BrassTacks-Updated__/graphics/icons/cheese-ore.png",
       icon_size = 64,
       energy_required = 10,
       ingredients = { {type="item", name="cheese-ore", amount=20} },

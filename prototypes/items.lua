@@ -2,7 +2,7 @@ local parts = require("variable-parts")
 
 local stacksize_override = nil
 if mods["Krastorio2"] then
-  stacksize_override = tonumber(settings.startup["kr-stack-size"].value)
+  --stacksize_override = tonumber(settings.startup["kr-stack-size"].value)
 else
   data:extend({
     {
@@ -50,14 +50,14 @@ if not mods["galdocs-manufacturing"] then
       {
         type = "item",
         name = "zinc-ore",
-        icon = "__BrassTacks__/graphics/icons/zinc-ore.png",
+        icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",
         icon_size = 64, icon_mipmaps = 4,
         pictures =
             {
-              { size = 64, filename = "__BrassTacks__/graphics/icons/zinc-ore.png",   scale = 0.25, mipmap_count = 4 },
-              { size = 64, filename = "__BrassTacks__/graphics/icons/zinc-ore-1.png", scale = 0.25, mipmap_count = 4 },
-              { size = 64, filename = "__BrassTacks__/graphics/icons/zinc-ore-2.png", scale = 0.25, mipmap_count = 4 },
-              { size = 64, filename = "__BrassTacks__/graphics/icons/zinc-ore-3.png", scale = 0.25, mipmap_count = 4 }
+              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",   scale = 0.25, mipmap_count = 4 },
+              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-1.png", scale = 0.25, mipmap_count = 4 },
+              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-2.png", scale = 0.25, mipmap_count = 4 },
+              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-3.png", scale = 0.25, mipmap_count = 4 }
             },
         subgroup = "raw-resource",
         --copper = e
@@ -371,7 +371,7 @@ if mods["248k"] then
     {
       type = "fluid",
       name = "248k-zinc-atom",
-      icon = "__BrassTacks__/graphics/icons/248k-zinc-atom.png",
+      icon = "__BrassTacks-Updated__/graphics/icons/248k-zinc-atom.png",
       icon_size = 64,
       subgroup = "fu_item_subgroup_f",
       order = "a-a",
@@ -385,7 +385,7 @@ if mods["248k"] then
       name = "248k-zinc-atom-hot",
       icons = {
           {
-            icon = "__BrassTacks__/graphics/icons/248k-zinc-atom.png",
+            icon = "__BrassTacks-Updated__/graphics/icons/248k-zinc-atom.png",
             icon_size = 64,
           },
           {
@@ -410,14 +410,14 @@ if mods["LunarLandings"] then
     {
       type = "item",
       name = "cheese-ore",
-      icon = "__BrassTacks__/graphics/icons/cheese-ore.png",
+      icon = "__BrassTacks-Updated__/graphics/icons/cheese-ore.png",
       icon_size = 64, icon_mipmaps = 4,
       pictures =
           {
-            { size = 64, filename = "__BrassTacks__/graphics/icons/cheese-ore.png",   scale = 0.25, mipmap_count = 4 },
-            { size = 64, filename = "__BrassTacks__/graphics/icons/cheese-ore-1.png", scale = 0.25, mipmap_count = 4 },
-            { size = 64, filename = "__BrassTacks__/graphics/icons/cheese-ore-2.png", scale = 0.25, mipmap_count = 4 },
-            { size = 64, filename = "__BrassTacks__/graphics/icons/cheese-ore-3.png", scale = 0.25, mipmap_count = 4 }
+            { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/cheese-ore.png",   scale = 0.25, mipmap_count = 4 },
+            { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/cheese-ore-1.png", scale = 0.25, mipmap_count = 4 },
+            { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/cheese-ore-2.png", scale = 0.25, mipmap_count = 4 },
+            { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/cheese-ore-3.png", scale = 0.25, mipmap_count = 4 }
           },
       subgroup = "raw-resource",
       order = "h2",

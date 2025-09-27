@@ -35,13 +35,13 @@ if mods["advanced-centrifuge"] then
 end
 
 if mods["Krastorio2"] then
-    rm.RemoveIngredient("steel-gear-wheel", "steel-plate", 1)
-    if not rm.CheckIngredient("steel-gear-wheel", "steel-plate") then
-        rm.multiply("steel-gear-wheel", 4, true, true, true)
-        rm.AddIngredient("steel-gear-wheel", "steel-plate", 3)
+    rm.RemoveIngredient("kr-steel-gear-wheel", "steel-plate", 1)
+    if not rm.CheckIngredient("kr-steel-gear-wheel", "steel-plate") then
+        rm.multiply("kr-steel-gear-wheel", 4, true, true, true)
+        rm.AddIngredient("kr-steel-gear-wheel", "steel-plate", 3)
     end
-    rm.AddIngredient("steel-gear-wheel", "brass-plate", 3)
-    rm.ReplaceIngredient("kr-s-c-steel-gear-wheel", "iron-plate", "brass-plate", 3)
+    rm.AddIngredient("kr-steel-gear-wheel", "brass-plate", 3)
+    rm.ReplaceIngredient("kr-s-c-kr-steel-gear-wheel", "iron-plate", "brass-plate", 3)
     --rm.AddIngredient("imersium-gear-wheel", "brass-plate", 2, 2)
 
     if parts.experimental then
@@ -56,16 +56,16 @@ if mods["Krastorio2"] then
       rm.AddIngredient("inserter-parts", "articulated-mechanism", 2)
 
       --gearboxes
-      rm.ReplaceProportional("advanced-gearbox", "iron-gear-wheel", "steel-gear-wheel", 1)
-      rm.RemoveIngredient("express-transport-belt", "steel-gear-wheel", 10)
-      rm.RemoveIngredient("express-underground-belt", "steel-gear-wheel", 20)
-      rm.RemoveIngredient("express-splitter", "steel-gear-wheel", 20)
-      rm.RemoveIngredient("express-transport-belt-loader", "steel-gear-wheel", 40)
-      rm.RemoveIngredient("express-transport-belt-beltbox", "steel-gear-wheel", 40)
+      rm.ReplaceProportional("advanced-gearbox", "iron-gear-wheel", "kr-steel-gear-wheel", 1)
+      rm.RemoveIngredient("express-transport-belt", "kr-steel-gear-wheel", 10)
+      rm.RemoveIngredient("express-underground-belt", "kr-steel-gear-wheel", 20)
+      rm.RemoveIngredient("express-splitter", "kr-steel-gear-wheel", 20)
+      rm.RemoveIngredient("express-transport-belt-loader", "kr-steel-gear-wheel", 40)
+      rm.RemoveIngredient("express-transport-belt-beltbox", "kr-steel-gear-wheel", 40)
 
       rm.RemoveIngredient("kr-fast-loader", "iron-gear-wheel", 10)
       rm.AddIngredient("kr-fast-loader", "gearbox", 2)
-      rm.RemoveIngredient("kr-express-loader", "steel-gear-wheel", 10)
+      rm.RemoveIngredient("kr-express-loader", "kr-steel-gear-wheel", 10)
       rm.AddIngredient("kr-express-loader", "advanced-gearbox", 2)
 
       rm.AddIngredient("kr-advanced-loader", "complex-joint", 1)
@@ -79,7 +79,7 @@ if mods["Krastorio2"] then
       rm.AddIngredient("kr-advanced-splitter", "advanced-gearbox", 2)
       rm.RemoveIngredient("kr-advanced-splitter", "imersium-gear-wheel", 2)
 
-      rm.RemoveIngredient("kr-se-loader", "steel-gear-wheel", 10)
+      rm.RemoveIngredient("kr-se-loader", "kr-steel-gear-wheel", 10)
       rm.AddIngredient("kr-se-loader", "advanced-gearbox", 2)
 
       rm.RemoveIngredient("kr-superior-loader", "imersium-gear-wheel", 10)
@@ -105,7 +105,7 @@ if mods["Krastorio2"] then
       data.raw.item["galvanized-steel-plate"].localised_name = {"item-name.galvanized-steel-beam"}
 
       rm.AddIngredient("kr-gas-power-station", "flywheel", 2)
-      rm.RemoveIngredient("kr-advanced-steam-turbine", "steel-gear-wheel", 10)
+      rm.RemoveIngredient("kr-advanced-steam-turbine", "kr-steel-gear-wheel", 10)
       rm.AddIngredient("kr-advanced-steam-turbine", "advanced-gearbox", 2)
 
       --k2 makes the steam turbine an upgrade that takes the steam engine as a component.
@@ -162,7 +162,7 @@ if mods["Krastorio2"] then
       rm.ReplaceIngredient("kr-fluid-storage-2", "steel-beam", "hardened-hull", 20)
       rm.ReplaceIngredient("kr-steel-pump", "steel-beam", "galvanized-steel-plate")
 
-      rm.RemoveIngredient("kr-nuclear-locomotive", "steel-gear-wheel", 20)
+      rm.RemoveIngredient("kr-nuclear-locomotive", "kr-steel-gear-wheel", 20)
       rm.AddIngredient("kr-nuclear-locomotive", "advanced-gearbox", 4)
 
       --hardened hulls
@@ -288,7 +288,7 @@ if mods["FluidMustFlow"] then
       rm.ReplaceIngredient("non-return-duct", "steel-plate", "hardened-hull", 8)
       if not mods["IfNickel"] then
         rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 8)
-        rm.RemoveIngredient("non-return-duct", "steel-gear-wheel", 4)
+        rm.RemoveIngredient("non-return-duct", "kr-steel-gear-wheel", 4)
       end
     else
       rm.RemoveIngredient("duct-small", "iron-plate", 4)
@@ -345,7 +345,7 @@ end
 
 if mods["Krastorio2-more-locomotives"] then
   if parts.experimental then
-    rm.ReplaceProportional("kr-fusion-locomotive", "steel-gear-wheel", "advanced-gearbox", 0.2)
+    rm.ReplaceProportional("kr-fusion-locomotive", "kr-steel-gear-wheel", "advanced-gearbox", 0.2)
     rm.ReplaceProportional("kr-antimatter-locomotive", "imersium-gear-wheel", "elite-gearbox", 0.2)
   else
     rm.AddIngredient("kr-fusion-locomotive", "bearing", 20)

@@ -242,7 +242,7 @@ if parts.experimental then
   tf.addPrereq("automation-3", "mechanical-engineering-2")
   rm.ReplaceIngredient("assembling-machine-3", "cermet", "complex-joint", 5)
   rm.AddIngredient("assembling-machine-3", "advanced-gearbox", 2)
-  rm.RemoveIngredient("assembling-machine-3", "steel-gear-wheel", 5)
+  rm.RemoveIngredient("assembling-machine-3", "kr-steel-gear-wheel", 5)
 
   tf.addPrereq("rocket-silo", "mechanical-engineering-2")
   rm.AddIngredient("rocket-silo", "complex-joint", 100)
@@ -368,19 +368,19 @@ if not mods["galdocs-manufacturing"] then
     data.raw.item["iron-gear-wheel"].icon = parts.qualityIconPath("brasstacks", "icons/iron-gear-wheel-krastorio.png")
     data.raw.item["iron-gear-wheel"].localised_name = {"item-name.brass-gear-wheel"}
     if mods["Krastorio2"] and ((not mods["space-exploration"]) or mods["space-exploration"] < "0.6.121") then
-      rm.multiply("kr-s-c-iron-gear-wheel-enriched", 2, true, true, true)
-      rm.ReplaceIngredient("kr-s-c-iron-gear-wheel-enriched", "enriched-iron", "enriched-zinc", 1)
-      rm.ReplaceIngredient("kr-s-c-iron-gear-wheel-enriched", "enriched-iron", "enriched-copper", 1)
-      data.raw.recipe["kr-s-c-iron-gear-wheel-enriched"].icons[1].icon = parts.qualityIconPath("brasstacks", "icons/iron-gear-wheel-krastorio.png")
-      data.raw.recipe["kr-s-c-iron-gear-wheel-enriched"].icons[2].icon = parts.qualityIconPath("brasstacks", "icons/brass-precursor.png")
+      rm.multiply("kr-iron-gear-wheel-from-enriched-iron", 2, true, true, true)
+      rm.ReplaceIngredient("kr-iron-gear-wheel-from-enriched-iron", "kr-enriched-iron", "enriched-zinc", 1)
+      rm.ReplaceIngredient("kr-iron-gear-wheel-from-enriched-iron", "kr-enriched-iron", "kr-enriched-copper", 1)
+      data.raw.recipe["kr-iron-gear-wheel-from-enriched-iron"].icons[1].icon = parts.qualityIconPath("brasstacks", "icons/iron-gear-wheel-krastorio.png")
+      data.raw.recipe["kr-iron-gear-wheel-from-enriched-iron"].icons[2].icon = parts.qualityIconPath("brasstacks", "icons/brass-precursor.png")
 
-      rm.multiply("kr-s-c-iron-gear-wheel", 2, true, true, true)
-      rm.ReplaceIngredient("kr-s-c-iron-gear-wheel", "iron-ore", "copper-ore", 2)
-      rm.ReplaceIngredient("kr-s-c-iron-gear-wheel", "iron-ore", "zinc-ore", 2)
-      data.raw.recipe["kr-s-c-iron-gear-wheel"].icons[1].icon = parts.qualityIconPath("brasstacks", "icons/iron-gear-wheel-krastorio.png")
-      data.raw.recipe["kr-s-c-iron-gear-wheel"].icons[2].icon = "__base__/graphics/icons/copper-ore.png"
+      rm.multiply("kr-iron-gear-wheel-from-iron-ore", 2, true, true, true)
+      rm.ReplaceIngredient("kr-iron-gear-wheel-from-iron-ore", "iron-ore", "copper-ore", 2)
+      rm.ReplaceIngredient("kr-iron-gear-wheel-from-iron-ore", "iron-ore", "zinc-ore", 2)
+      data.raw.recipe["kr-iron-gear-wheel-from-iron-ore"].icons[1].icon = parts.qualityIconPath("brasstacks", "icons/iron-gear-wheel-krastorio.png")
+      data.raw.recipe["kr-iron-gear-wheel-from-iron-ore"].icons[2].icon = "__base__/graphics/icons/copper-ore.png"
 
-      --tf.removeRecipeUnlock("kr-automation", "kr-s-c-iron-gear-wheel")
+      --tf.removeRecipeUnlock("kr-automation", "kr-iron-gear-wheel-from-iron-ore")
     end
   end
 
@@ -437,7 +437,7 @@ rm.AddIngredient("centrifuge", "bearing", 20)
 rm.AddIngredient("steam-turbine", "bearing", 5)
 
 if not parts.gyroscope then
-  local thegear = mods["Krastorio2"] and "steel-gear-wheel" or "iron-gear-wheel"
+  local thegear = mods["Krastorio2"] and "kr-steel-gear-wheel" or "iron-gear-wheel"
   if mods["IfNickel"] or mods["aai-industry"] then
     rm.AddIngredient("laser-turret", thegear, 5)
   else
