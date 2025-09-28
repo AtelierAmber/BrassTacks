@@ -16,10 +16,10 @@ if mods["aai-containers"] then
     rm.AddIngredient("aai-warehouse", "articulated-mechanism", 20)
     rm.AddIngredient("aai-warehouse-passive-provider", "complex-joint", 5)
     tf.addPrereq("aai-warehouse-storage", "mechanical-engineering-2")
-    if rm.CheckIngredient("aai-strongbox", "steel-beam") then
-      rm.ReplaceIngredient("aai-strongbox", "steel-beam", "galvanized-steel-plate", 5)
-      rm.ReplaceIngredient("aai-storehouse", "steel-beam", "galvanized-steel-plate", 25)
-      rm.ReplaceIngredient("aai-warehouse", "steel-beam", "galvanized-steel-plate", 50)
+    if rm.CheckIngredient("aai-strongbox", "kr-steel-beam") then
+      rm.ReplaceIngredient("aai-strongbox", "kr-steel-beam", "galvanized-steel-plate", 5)
+      rm.ReplaceIngredient("aai-storehouse", "kr-steel-beam", "galvanized-steel-plate", 25)
+      rm.ReplaceIngredient("aai-warehouse", "kr-steel-beam", "galvanized-steel-plate", 50)
     else
       rm.ReplaceIngredient("aai-strongbox", "steel-plate", "galvanized-steel-plate", 25)
       rm.ReplaceIngredient("aai-storehouse", "steel-plate", "galvanized-steel-plate", 50)

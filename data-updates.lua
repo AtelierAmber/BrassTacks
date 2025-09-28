@@ -97,8 +97,8 @@ if parts.experimental then
   if not mods["galdocs-manufacturing"] then
     rm.ReplaceIngredient("refined-concrete", "steel-plate", "galvanized-steel-plate", 1)
     if mods["Krastorio2"] then
-      rm.ReplaceIngredient("big-electric-pole", "steel-beam", "galvanized-steel-plate", 4)
-      rm.ReplaceIngredient("substation", "steel-beam", "galvanized-steel-plate", 8)
+      rm.ReplaceIngredient("big-electric-pole", "kr-steel-beam", "galvanized-steel-plate", 4)
+      rm.ReplaceIngredient("substation", "kr-steel-beam", "galvanized-steel-plate", 8)
       rm.ReplaceIngredient("steel-chest", "steel-plate", "galvanized-steel-plate", 4)
       rm.RemoveIngredient("steel-chest", "steel-plate", 4)
     else

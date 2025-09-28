@@ -101,7 +101,7 @@ if mods["Krastorio2"] then
         rm.ReplaceProportional("se-heavy-assembly", "imersium-beam", "elite-gearbox", 0.5)
       end
 
-      rm.ReplaceIngredient("galvanized-steel-plate", "steel-plate", "steel-beam", 1)
+      rm.ReplaceIngredient("galvanized-steel-plate", "steel-plate", "kr-steel-beam", 1)
       data.raw.item["galvanized-steel-plate"].localised_name = {"item-name.galvanized-steel-beam"}
 
       rm.AddIngredient("kr-gas-power-station", "flywheel", 2)
@@ -113,7 +113,7 @@ if mods["Krastorio2"] then
       rm.RemoveIngredient("steam-turbine", "iron-gear-wheel", 99999)
       rm.AddIngredient("steam-turbine", "gearbox", 2)
 
-      rm.RemoveIngredient("kr-advanced-furnace", "steel-beam", 80)
+      rm.RemoveIngredient("kr-advanced-furnace", "kr-steel-beam", 80)
       if parts.nickel then
         rm.AddIngredient("kr-advanced-furnace", "hardened-hull", 40)
       else
@@ -143,9 +143,9 @@ if mods["Krastorio2"] then
       end
 
       rm.AddIngredient("kr-medium-container", "articulated-mechanism", 5)
-      rm.ReplaceIngredient("kr-medium-container", "steel-beam", "galvanized-steel-plate", 5)
+      rm.ReplaceIngredient("kr-medium-container", "kr-steel-beam", "galvanized-steel-plate", 5)
       rm.AddIngredient("kr-big-container", "articulated-mechanism", 20)
-      rm.ReplaceIngredient("kr-big-container", "steel-beam", "galvanized-steel-plate", 50)
+      rm.ReplaceIngredient("kr-big-container", "kr-steel-beam", "galvanized-steel-plate", 50)
 
       rm.AddIngredient("kr-big-passive-provider-container", "complex-joint", 5)
       rm.AddIngredient("kr-big-active-provider-container", "complex-joint", 5)
@@ -158,25 +158,25 @@ if mods["Krastorio2"] then
       rm.AddIngredient("kr-superior-filter-inserter", "complex-joint", 1)
       rm.AddIngredient("kr-superior-long-filter-inserter", "complex-joint", 2)
 
-      rm.ReplaceIngredient("kr-fluid-storage-1", "steel-beam", "hardened-hull", 10)
-      rm.ReplaceIngredient("kr-fluid-storage-2", "steel-beam", "hardened-hull", 20)
-      rm.ReplaceIngredient("kr-steel-pump", "steel-beam", "galvanized-steel-plate")
+      rm.ReplaceIngredient("kr-fluid-storage-1", "kr-steel-beam", "hardened-hull", 10)
+      rm.ReplaceIngredient("kr-fluid-storage-2", "kr-steel-beam", "hardened-hull", 20)
+      rm.ReplaceIngredient("kr-steel-pump", "kr-steel-beam", "galvanized-steel-plate")
 
       rm.RemoveIngredient("kr-nuclear-locomotive", "kr-steel-gear-wheel", 20)
       rm.AddIngredient("kr-nuclear-locomotive", "advanced-gearbox", 4)
 
       --hardened hulls
-      rm.RemoveIngredient("pumpjack", "steel-beam", 4)
-      rm.RemoveIngredient("oil-refinery", "steel-beam", 4)
-      rm.RemoveIngredient("chemical-plant", "steel-beam", 4)
+      rm.RemoveIngredient("pumpjack", "kr-steel-beam", 4)
+      rm.RemoveIngredient("oil-refinery", "kr-steel-beam", 4)
+      rm.RemoveIngredient("chemical-plant", "kr-steel-beam", 4)
 
-      rm.ReplaceIngredient("kr-steel-pump", "steel-beam", "galvanized-steel-plate", 1)
+      rm.ReplaceIngredient("kr-steel-pump", "kr-steel-beam", "galvanized-steel-plate", 1)
 
       tf.addPrereq("kr-fluids-chemistry", "hardened-hull")
 
-      rm.ReplaceIngredient("kr-electrolysis-plant", "steel-beam", "galvanized-steel-plate", 10)
-      rm.ReplaceIngredient("kr-filtration-plant", "steel-beam", "galvanized-steel-plate", 10)
-      rm.ReplaceIngredient("kr-atmospheric-condenser", "steel-beam", "galvanized-steel-plate", 10)
+      rm.ReplaceIngredient("kr-electrolysis-plant", "kr-steel-beam", "galvanized-steel-plate", 10)
+      rm.ReplaceIngredient("kr-filtration-plant", "kr-steel-beam", "galvanized-steel-plate", 10)
+      rm.ReplaceIngredient("kr-atmospheric-condenser", "kr-steel-beam", "galvanized-steel-plate", 10)
 
       rm.ReplaceIngredient("kr-fusion-reactor", "steel-plate", "hardened-hull", 500)
 

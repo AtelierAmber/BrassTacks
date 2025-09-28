@@ -144,7 +144,7 @@ end
 if parts.experimental or mods["Krastorio2"] then
   cu.moveItem("iron-stick", "frame-components", "a")
   cu.moveItem("iron-beam", "frame-components", "b")
-  cu.moveItem("steel-beam", "frame-components", "c")
+  cu.moveItem("kr-steel-beam", "frame-components", "c")
   if mods["Krastorio2"] then
     cu.moveItem("galvanized-steel-plate", "frame-components", "ca")
   end
