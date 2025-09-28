@@ -50,7 +50,7 @@ if mods["bzgold"] then
     else if mods["BrimStuff-Updated"] then
       tf.addPrereq("rubber", "silver-processing")
     else
-      tf.addPrereq("fluid-handling", "silver-processing")
+      tf.addPrereq("basic-fluid-handling", "silver-processing")
     end end
   end
 end
