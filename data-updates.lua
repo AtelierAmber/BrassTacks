@@ -3,7 +3,7 @@ local tf = require("techfuncs")
 local parts = require("variable-parts")
 
 local advfitting = "bolted-flange"
-if mods["bzcarbon"] or mods["BrimStuff"] then
+if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
   advfitting = "airtight-seal"
   rm.RemoveIngredient("pump", "graphite", 2)
   if parts.nickel then
@@ -12,7 +12,7 @@ if mods["bzcarbon"] or mods["BrimStuff"] then
     tf.addRecipeUnlock("fluid-handling", "airtight-seal")
   end
 
-  if mods["BrimStuff"] then
+  if mods["BrimStuff-Updated"] then
     if mods["bzcarbon"] then
       rm.ReplaceIngredient("airtight-seal", "graphite", "rubber", 1)
       rm.ReplaceIngredient("airtight-seal-vitalic", "graphite", "rubber", 25)

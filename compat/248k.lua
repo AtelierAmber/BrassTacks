@@ -4,7 +4,7 @@ local parts = require("variable-parts")
 local cu = require("category-utils")
 
 local advfitting = "bolted-flange"
-if mods["bzcarbon"] or mods["BrimStuff"] then
+if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
   advfitting = "airtight-seal"
 end
 
@@ -53,7 +53,7 @@ if mods["248k"] then
 
   rm.AddIngredient("fi_empty_solution", advfitting, 1)
 
-  if mods["aai-industry"] or mods["ThemTharHills"] then
+  if mods["aai-industry"] or mods["ThemTharHills-Updated"] then
     rm.ReplaceProportional("fi_crusher_recipe", "engine-unit", "electric-engine-unit", 0.67)
     rm.ReplaceProportional("fi_fiberer_recipe", "engine-unit", "electric-engine-unit", 0.67)
     rm.ReplaceProportional("fi_compound_machine_recipe", "engine-unit", "electric-engine-unit", 0.67)

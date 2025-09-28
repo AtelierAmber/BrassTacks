@@ -47,7 +47,7 @@ if mods["bzgold"] then
     rm.RemoveIngredient("airtight-seal-vitalic", "bolted-flange", 50)
     if mods["IfNickel-Updated"] then
       tf.addPrereq("valves", "silver-processing")
-    else if mods["BrimStuff"] then
+    else if mods["BrimStuff-Updated"] then
       tf.addPrereq("rubber", "silver-processing")
     else
       tf.addPrereq("fluid-handling", "silver-processing")

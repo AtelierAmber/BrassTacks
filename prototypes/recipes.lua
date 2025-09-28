@@ -167,7 +167,7 @@ data:extend({
   }
 })
 
-if mods["bzcarbon"] or mods["BrimStuff"] then
+if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
   data:extend({
     {
       type = "recipe",

@@ -5,7 +5,7 @@ local red_science = mods["exotic-industries"] and "ei_dark-age-tech" or "automat
 local green_science = mods["exotic-industries"] and "ei_steam-age-tech" or "logistic-science-pack"
 local blue_science = mods["exotic-industries"] and "ei_electricity-age-tech" or "chemical-science-pack"
 
-if (mods["bzcarbon"] or mods["BrimStuff"]) and mods["space-exploration"] then
+if (mods["bzcarbon"] or mods["BrimStuff-Updated"]) and mods["space-exploration"] then
   data:extend({
     {
       type = "technology",
