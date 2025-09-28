@@ -1,5 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.4.1
+Date: 09/27/2025
+  Bugfixes:
+    - Fixed crash on startup when a recipe ingredient or prereq was being removed
+---------------------------------------------------------------------------------------------------
 Version: 1.4.0
+Date: 09/27/2025
   Changes:
     - Updated to 2.0 and fixed k2 compat and name definitions.
 
