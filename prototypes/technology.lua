@@ -59,7 +59,7 @@ if parts.experimental then
           recipe = "hardened-hull"
         }
       },
-      prerequisites = techfuncs.compilePrereqs{not (mods["Krastorio2"] or mods["MoreScience"]) and "logistic-science-pack" or nil, "steel-processing", mods["galdocs-manufacturing"] and "gm-nickel-and-invar-machined-part-processing" or (mods["IfNickel"] and "invar-processing" or nil), not parts.foundryEnabled and "automation" or nil},
+      prerequisites = techfuncs.compilePrereqs{not (mods["Krastorio2"] or mods["MoreScience"]) and "logistic-science-pack" or nil, "steel-processing", mods["galdocs-manufacturing"] and "gm-nickel-and-invar-machined-part-processing" or (mods["IfNickel-Updated"] and "invar-processing" or nil), not parts.foundryEnabled and "automation" or nil},
       unit =
       {
         count = 50,

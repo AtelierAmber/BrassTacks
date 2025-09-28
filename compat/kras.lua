@@ -8,7 +8,7 @@ if mods["bzcarbon"] or mods["BrimStuff"] then
 end
 
 if mods["advanced-chemical-plant"] and not mods["Krastorio2"] then
-  if advfitting == "airtight-seal" and not mods["IfNickel"] then
+  if advfitting == "airtight-seal" and not mods["IfNickel-Updated"] then
     rm.AddIngredient("kr-advanced-chemical-plant", "airtight-seal", 32)
   end
   if parts.experimental then
@@ -286,7 +286,7 @@ if mods["FluidMustFlow"] then
       rm.ReplaceIngredient("duct-cross", "steel-plate", "hardened-hull", 8)
       rm.ReplaceIngredient("duct-underground", "steel-plate", "hardened-hull", 60)
       rm.ReplaceIngredient("non-return-duct", "steel-plate", "hardened-hull", 8)
-      if not mods["IfNickel"] then
+      if not mods["IfNickel-Updated"] then
         rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 8)
         rm.RemoveIngredient("non-return-duct", "kr-steel-gear-wheel", 4)
       end
@@ -309,7 +309,7 @@ if mods["FluidMustFlow"] then
       rm.AddIngredient("duct-underground", "hardened-hull", 15)
       rm.AddIngredient("non-return-duct", "hardened-hull", 2)
 
-      if not mods["IfNickel"] then
+      if not mods["IfNickel-Updated"] then
         rm.ReplaceIngredient("non-return-duct", "iron-gear-wheel", "articulated-mechanism", 4)
       end
     end
@@ -325,7 +325,7 @@ if mods["FluidMustFlow"] then
   rm.AddIngredient("duct-cross", "bolted-flange", 4)
   rm.AddIngredient("duct-underground", "bolted-flange", 2)
   rm.AddIngredient("non-return-duct", "bolted-flange", 2)
-  if not mods["IfNickel"] then
+  if not mods["IfNickel-Updated"] then
     rm.ReplaceIngredient("duct-end-point-intake", "pipe", advfitting, 6)
     rm.ReplaceIngredient("duct-end-point-outtake", "pipe", advfitting, 6)
     rm.RemoveIngredient("duct-end-point-intake", "kr-steel-pipe", 6)

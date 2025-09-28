@@ -76,7 +76,7 @@ if mods["aai-industry"] then
     end
 
     rm.RemoveIngredient("industrial-furnace", "steel-plate", 16)
-    if mods["IfNickel"] then
+    if mods["IfNickel-Updated"] then
       rm.AddIngredient("industrial-furnace", "hardened-hull", 8)
     else
       rm.AddIngredient("industrial-furnace", "hardened-hull", 12)
@@ -267,7 +267,7 @@ if mods["space-exploration"] then
     rm.AddIngredient("se-space-splitter", "iron-gear-wheel", 10)
   end
 
-  if not mods["IfNickel"] then
+  if not mods["IfNickel-Updated"] then
     rm.ReplaceIngredient("se-canister", "steel-plate", advfitting, 1)
   end
   rm.RemoveIngredient("se-canister", "graphite", 5)

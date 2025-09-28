@@ -1,7 +1,7 @@
 local parts = {}
 
 parts.experimental = settings.startup["brasstacks-experimental-intermediates"].value
-parts.nickel = mods["IfNickel"] and true or false
+parts.nickel = mods["IfNickel-Updated"] and true or false
 if parts.nickel then
   parts.steelValve = settings.startup["ifnickel-steel-valve"].value
   parts.nickelExperiment = settings.startup["ifnickel-experimental-intermediates"].value

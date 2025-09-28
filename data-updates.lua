@@ -438,7 +438,7 @@ rm.AddIngredient("steam-turbine", "bearing", 5)
 
 if not parts.gyroscope then
   local thegear = mods["Krastorio2"] and "kr-steel-gear-wheel" or "iron-gear-wheel"
-  if mods["IfNickel"] or mods["aai-industry"] then
+  if mods["IfNickel-Updated"] or mods["aai-industry"] then
     rm.AddIngredient("laser-turret", thegear, 5)
   else
     rm.AddIngredient("laser-turret", thegear, 10)
@@ -523,7 +523,7 @@ if mods["vtk-deep-core-mining"] and parts.experimental then
   end
 end
 
-if mods["Flow Control"] and not mods["IfNickel"] and advfitting == "airtight-seal" then
+if mods["Flow Control"] and not mods["IfNickel-Updated"] and advfitting == "airtight-seal" then
   rm.AddIngredient("check-valve", "airtight-seal", 1)
   rm.AddIngredient("overflow-valve", "airtight-seal", 1)
   rm.AddIngredient("underflow-valve", "airtight-seal", 1)
@@ -556,7 +556,7 @@ if mods["LunarLandings"] then
     end
     rm.AddIngredient("ll-rocket-silo-interstellar", "complex-joint", 200)
 
-    if mods["IfNickel"] then
+    if mods["IfNickel-Updated"] then
       tf.addRecipeUnlock("ll-rich-moon-rock-processing", "hardened-hull-alumina")
     end
 

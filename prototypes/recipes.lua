@@ -387,7 +387,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         energy_required = 5,
         --preferred can't be used - ifnickel loads after this.
         ingredients = {{type="item", name="flywheel", amount=1}, {type="item", name="bearing", amount=2}, {type="item", name="advanced-circuit", amount=1}, 
-                       (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="kr-steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
+                       (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel-Updated"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="kr-steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
         results = {{type="item", name=parts.gyroscope, amount=1}},
         enabled = false
       }
@@ -409,7 +409,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
     })
   end
 
-  if mods["LunarLandings"] and mods["IfNickel"] then
+  if mods["LunarLandings"] and mods["IfNickel-Updated"] then
     data:extend({
       {
         type = "recipe",
