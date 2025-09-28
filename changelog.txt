@@ -1,7 +1,12 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.2
-Date: ????
-  Changes:
+Date: 2025-09-27
+  Bugfixes:
+    - Fixed crashes when Krastorio 2 was enabled with the hardmode option enabled
+    - Fixed crash with If I Had A Nickel was enabled
+    - Fixed crash when technologies had pre-reqs removed
+    - Migrated Factorio 1.1 technology names to Factorio 2.0 technology names
+    - Fixed an issue with the gyroscope setting when If I Had A Nickel was enabled
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2025-09-27
@@ -9,7 +14,7 @@ Date: 2025-09-27
     - Fixed crash on startup when a recipe ingredient or prereq was being removed
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.0
-Date: 09/27/2025
+Date: 2025-09-27
   Changes:
     - Updated to 2.0 and fixed k2 compat and name definitions.
 
