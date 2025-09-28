@@ -25,12 +25,16 @@ function techfuncs.removeRecipeUnlock(tech, rec)
 		return
 	end
 	if data.raw.technology[tech].effects then
+    local fi = -1
 		for k, v in pairs(data.raw.technology[tech].effects) do
 			if v.recipe == rec then
-				data.raw.technology[tech].effects[k] = nil
+				fi = k
 				break
 			end
 		end
+    if fi > 0 then
+      table.remove(data.raw.technology[tech].effects, fi)
+    end
 	end
 end
 
@@ -61,13 +65,17 @@ function techfuncs.removePrereq(tech, prereq)
 		return
 	end
 	local pr = data.raw.technology[tech].prerequisites
+  local fi = -1
 	if pr then
 		for k, v in pairs(pr) do
 			if v == prereq then
-				pr[k] = nil
+				fi = k
 				break
 			end
 		end
+    if fi > 0 then
+      table.remove(pr, fi)
+    end
 	end
 end
 
@@ -103,12 +111,16 @@ function techfuncs.removeSciencePackFromDifficulty(tech, item)
 	if tech then
 		if tech.unit then
 			if tech.unit.ingredients then
+        local fi = -1
 				for k, v in pairs(tech.unit.ingredients) do
 					if v[1] == item or v["name"] == item then
-						tech.unit.ingredients[k] = nil
+						fi = k
 						break
 					end
 				end
+        if fi > 0 then
+          table.remove(tech.unit.ingredients, fi)
+        end
 			end
 		end
 	end
