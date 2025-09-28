@@ -42,7 +42,7 @@ if mods["Krastorio2"] then
     end
     rm.AddIngredient("kr-steel-gear-wheel", "brass-plate", 3)
     rm.ReplaceIngredient("kr-s-c-kr-steel-gear-wheel", "iron-plate", "brass-plate", 3)
-    --rm.AddIngredient("imersium-gear-wheel", "brass-plate", 2, 2)
+    --rm.AddIngredient("kr-imersium-gear-wheel", "brass-plate", 2, 2)
 
     if parts.experimental then
       if mods["space-exploration"] then
@@ -75,30 +75,30 @@ if mods["Krastorio2"] then
 
       rm.AddIngredient("kr-advanced-loader", "advanced-gearbox", 2)
       rm.AddIngredient("kr-advanced-transport-belt", "advanced-gearbox", 1)
-      rm.RemoveIngredient("kr-advanced-transport-belt", "imersium-gear-wheel", 3)
+      rm.RemoveIngredient("kr-advanced-transport-belt", "kr-imersium-gear-wheel", 3)
       rm.AddIngredient("kr-advanced-splitter", "advanced-gearbox", 2)
-      rm.RemoveIngredient("kr-advanced-splitter", "imersium-gear-wheel", 2)
+      rm.RemoveIngredient("kr-advanced-splitter", "kr-imersium-gear-wheel", 2)
 
       rm.RemoveIngredient("kr-se-loader", "kr-steel-gear-wheel", 10)
       rm.AddIngredient("kr-se-loader", "advanced-gearbox", 2)
 
-      rm.RemoveIngredient("kr-superior-loader", "imersium-gear-wheel", 10)
+      rm.RemoveIngredient("kr-superior-loader", "kr-imersium-gear-wheel", 10)
       rm.AddIngredient("kr-superior-loader", "elite-gearbox", 2)
 
-      rm.RemoveIngredient("kr-superior-transport-belt", "imersium-gear-wheel", 10)
+      rm.RemoveIngredient("kr-superior-transport-belt", "kr-imersium-gear-wheel", 10)
       rm.RemoveIngredient("kr-superior-transport-belt", "se-heavy-bearing", 4)
       rm.AddIngredient("kr-superior-transport-belt", "elite-gearbox", 1)
 
-      rm.RemoveIngredient("kr-superior-splitter", "imersium-gear-wheel", 10)
+      rm.RemoveIngredient("kr-superior-splitter", "kr-imersium-gear-wheel", 10)
       rm.RemoveIngredient("kr-superior-splitter", "se-heavy-bearing", 4)
       rm.AddIngredient("kr-superior-splitter", "elite-gearbox", 2)
 
-      rm.RemoveIngredient("kr-se-deep-space-loader-black", "imersium-gear-wheel", 10)
+      rm.RemoveIngredient("kr-se-deep-space-loader-black", "kr-imersium-gear-wheel", 10)
       rm.AddIngredient("kr-se-deep-space-loader-black", "elite-gearbox", 2)
 
       if mods["space-exploration"] then
         rm.ReplaceIngredient("se-deep-space-transport-belt", "se-heavy-bearing", "elite-gearbox", 1)
-        rm.ReplaceProportional("se-heavy-assembly", "imersium-beam", "elite-gearbox", 0.5)
+        rm.ReplaceProportional("se-heavy-assembly", "kr-imersium-beam", "elite-gearbox", 0.5)
       end
 
       rm.ReplaceIngredient("galvanized-steel-plate", "steel-plate", "kr-steel-beam", 1)
@@ -123,7 +123,7 @@ if mods["Krastorio2"] then
       rm.AddIngredient("kr-electric-mining-drill-mk2", "gearbox", 2)
       if mods["aai-industry"] then
         rm.AddIngredient("kr-electric-mining-drill-mk3", "elite-gearbox", 2)
-        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "imersium-gear-wheel", 5)
+        rm.RemoveIngredient("kr-electric-mining-drill-mk3", "kr-imersium-gear-wheel", 5)
         rm.RemoveIngredient("kr-electric-mining-drill-mk3", "se-heavy-bearing", 10)
       else
         rm.AddIngredient("kr-electric-mining-drill-mk3", "advanced-gearbox", 2)
@@ -346,7 +346,7 @@ end
 if mods["Krastorio2-more-locomotives"] then
   if parts.experimental then
     rm.ReplaceProportional("kr-fusion-locomotive", "kr-steel-gear-wheel", "advanced-gearbox", 0.2)
-    rm.ReplaceProportional("kr-antimatter-locomotive", "imersium-gear-wheel", "elite-gearbox", 0.2)
+    rm.ReplaceProportional("kr-antimatter-locomotive", "kr-imersium-gear-wheel", "elite-gearbox", 0.2)
   else
     rm.AddIngredient("kr-fusion-locomotive", "bearing", 20)
     rm.AddIngredient("kr-antimatter-locomotive", "bearing", 100)

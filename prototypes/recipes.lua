@@ -293,7 +293,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         name = "elite-gearbox",
         category = "advanced-crafting",
         energy_required = 6,
-        ingredients = {{type="item", name="advanced-gearbox", amount=1}, {type="item", name="imersium-gear-wheel", amount=4}, {type="item", name="imersium-beam", amount=1}, 
+        ingredients = {{type="item", name="advanced-gearbox", amount=1}, {type="item", name="kr-imersium-gear-wheel", amount=4}, {type="item", name="kr-imersium-beam", amount=1}, 
                        parts.preferred({"se-heavy-bearing", "electric-engine-unit"}, {4, 1})},
         results = {{type="item", name="elite-gearbox", amount=1}},
         enabled = false

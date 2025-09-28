@@ -135,7 +135,7 @@ end end
 if parts.experimental and mods["Krastorio2"] then
   cu.moveItem("iron-gear-wheel", "gear-components", "a")
   cu.moveItem("kr-steel-gear-wheel", "gear-components", "b")
-  cu.moveItem("imersium-gear-wheel", "gear-components", "c")
+  cu.moveItem("kr-imersium-gear-wheel", "gear-components", "c")
   cu.moveItem("gearbox", "gear-components", "d")
   cu.moveItem("advanced-gearbox", "gear-components", "e")
   cu.moveItem("elite-gearbox", "gear-components", "f")
@@ -148,7 +148,7 @@ if parts.experimental or mods["Krastorio2"] then
   if mods["Krastorio2"] then
     cu.moveItem("galvanized-steel-plate", "frame-components", "ca")
   end
-  cu.moveItem("imersium-beam", "frame-components", "d")
+  cu.moveItem("kr-imersium-beam", "frame-components", "d")
   cu.moveItem("hardened-hull", "frame-components", "e")
   cu.moveRecipe("hardened-hull-iridium", "frame-components", "f")
   cu.moveItem("low-density-structure", "frame-components", "g")
