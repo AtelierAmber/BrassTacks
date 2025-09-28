@@ -134,4 +134,14 @@ function techfuncs.removeSciencePack(tech, item)
 	techfuncs.removeSciencePackFromDifficulty(t, item)
 end
 
+function techfuncs.compilePrereqs(...)
+  local pr = {}
+  for k, v in pairs(...) do
+    if k and v then
+      table.insert(pr, v)
+    end
+  end
+  return pr
+end
+
 return techfuncs

@@ -1,4 +1,5 @@
 local parts = require("variable-parts")
+local techfuncs = require("techfuncs")
 
 local red_science = mods["exotic-industries"] and "ei_dark-age-tech" or "automation-science-pack"
 local green_science = mods["exotic-industries"] and "ei_steam-age-tech" or "logistic-science-pack"
@@ -58,7 +59,7 @@ if parts.experimental then
           recipe = "hardened-hull"
         }
       },
-      prerequisites = {not (mods["Krastorio2"] or mods["MoreScience"]) and "logistic-science-pack" or nil, "steel-processing", mods["galdocs-manufacturing"] and "gm-nickel-and-invar-machined-part-processing" or (mods["IfNickel"] and "invar-processing" or nil), not parts.foundryEnabled and "automation" or nil},
+      prerequisites = techfuncs.compilePrereqs{not (mods["Krastorio2"] or mods["MoreScience"]) and "logistic-science-pack" or nil, "steel-processing", mods["galdocs-manufacturing"] and "gm-nickel-and-invar-machined-part-processing" or (mods["IfNickel"] and "invar-processing" or nil), not parts.foundryEnabled and "automation" or nil},
       unit =
       {
         count = 50,
@@ -116,7 +117,7 @@ if parts.experimental then
           recipe = "industrial-drill-head"
         } or nil
       },
-      prerequisites = {"lubricant", "mechanical-engineering", data.raw.technology["cermet"] and "cermet" or nil},
+      prerequisites = techfuncs.compilePrereqs{"lubricant", "mechanical-engineering", data.raw.technology["cermet"] and "cermet" or nil},
       unit =
       {
         count = 100,
@@ -230,7 +231,7 @@ if parts.experimental then
             recipe = "skyseeker-armature"
           }
         },
-        prerequisites = {"mechanical-engineering-2", "electric-engine", "low-density-structure", parts.gyroscope, mods["space-exploration"] and "se-rocket-science-pack"},
+        prerequisites = techfuncs.compilePrereqs{"mechanical-engineering-2", "electric-engine", "low-density-structure", parts.gyroscope, mods["space-exploration"] and "se-rocket-science-pack"},
         unit =
         {
           count = 100,
