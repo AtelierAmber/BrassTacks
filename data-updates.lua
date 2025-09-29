@@ -9,7 +9,7 @@ if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
   if parts.nickel then
     tf.addRecipeUnlock("valves", "airtight-seal")
   else
-    tf.addRecipeUnlock("basic-fluid-handling", "airtight-seal")
+    tf.addRecipeUnlock(mods["aai-industry"] and "basic-fluid-handling" or "fluid-handling", "airtight-seal")
   end
 
   if mods["BrimStuff-Updated"] then
@@ -80,7 +80,7 @@ if parts.experimental then
   rm.RemoveIngredient("inserter", "aluminum-plate", 1)
   rm.RemoveIngredient("long-handed-inserter", "aluminum-plate", 1)
 
-  tf.addPrereq("basic-fluid-handling", "hardened-hull")
+  tf.addPrereq(mods["aai-industry"] and "basic-fluid-handling" or "fluid-handling", "hardened-hull")
   if not mods["Krastorio2"] then
     rm.ReplaceIngredient("storage-tank", "steel-plate", "hardened-hull", 5)
     rm.RemoveIngredient("storage-tank", "bronze-plate", 10)
