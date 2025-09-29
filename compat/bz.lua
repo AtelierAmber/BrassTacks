@@ -67,8 +67,11 @@ end
 if mods["manganese"] then
   if parts.experimental then
     tf.addPrereq("hardened-hull", "mangalloy")
+    tf.removePrereq("mangalloy", "steel-processing")
     --galvanized steel is 6 ore, mangalloy is 2 ore
     rm.ReplaceProportional("hardened-hull", "galvanized-steel-plate", "mangalloy", 3)
+    tf.addPrereq("hardened-hull", "mangalloy")
+    tf.removePrereq("hardened-hull", "steel-processing")
     if mods["space-exploration"] then
       rm.ReplaceProportional("hardened-hull-iridium", "galvanized-steel-plate", "mangalloy", 3)
     end
