@@ -1,7 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.4.4
-Date: ????
+Version: 2.4.4
+Date: 2025-09-29
   Changes:
+    - Changed mod version to major 2.X
+  Bugfixes:
+    - Fixed IfNickel-Updated compatibility
+    - Fixed naming for other planetfall-Updated mods to be released
+    - Fixes to technologies being used
+    - Fixed AAI compatibility
+    - Fixed issue with main_products not being defined when modifying recipes
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.3
 Date: 2025-09-28
