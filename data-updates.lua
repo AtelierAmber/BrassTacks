@@ -294,9 +294,6 @@ if parts.experimental then
     end
     tf.addPrereq("robotics", parts.gyroscope)
 
-    rm.RemoveIngredient("rocket-control-unit", parts.gyroscope, 99)
-    rm.AddIngredient("rocket-control-unit", parts.gyroscope, 1)
-
     tf.addPrereq("artillery", parts.gyroscope)
     rm.RemoveIngredient("artillery-shell", parts.gyroscope, 99)
     rm.AddIngredient("artillery-shell", parts.gyroscope, 1)
@@ -547,7 +544,6 @@ if mods["LunarLandings"] then
     rm.ReplaceProportional("ll-heat-shielding", "steel-plate", "hardened-hull", 0.5)
     rm.ReplaceProportional("ll-arc-furnace", "steel-plate", "hardened-hull", 0.4)
 
-    rm.RemoveIngredient("rocket-control-unit", "advanced-circuit", 1) --gyroscope replacement
     if parts.nickelExperiment then
       rm.ReplaceIngredient("ll-low-grav-assembling-machine", "steel-plate", "complex-joint", 10)
     else

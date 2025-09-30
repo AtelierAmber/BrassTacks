@@ -193,7 +193,7 @@ if mods["space-exploration"] then
       rm.AddIngredient("se-thruster-suit-2", parts.gyroscope, 10)
 
       rm.RemoveIngredient("se-spaceship-console", parts.gyroscope, 99)
-      rm.AddIngredient("se-spaceship-console", "rocket-control-unit", 10)
+      rm.AddIngredient("se-spaceship-console", parts.gyroscope, 10)
     end
 
     if settings.startup["brasstacks-se-maintenance"].value then

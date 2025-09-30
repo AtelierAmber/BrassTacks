@@ -11,12 +11,6 @@ end
 if mods["space-exploration"] then
   rm.AddIngredient("se-vulcanite-rocket-fuel", advfitting, 1)
   rm.RemoveProduct("se-core-fragment-omni", "zinc-ore", 3)
-
-  if parts.gyroscope then
-    -- gyroscope already added - this is mostly a consolation prize
-    rm.RemoveIngredient("rocket-control-unit", "iron-plate", 5)
-    rm.RemoveIngredient("rocket-control-unit", "aluminum-plate", 5)
-  end
 end
 
 if mods["Krastorio2"] then
