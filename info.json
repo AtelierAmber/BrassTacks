@@ -8,7 +8,7 @@
   "factorio_version": "2.0",
   "dependencies": ["base >= 2.0", "? bzlead", "? bzaluminum", "? bzcarbon", "? bztin", "? bzfoundry", "? bzzirconium", "? bzlead", "? space-exploration", "? aai-industry", 
   "? aai-containers", "? aai-signal-transmission", "? deadlock-beltboxes-loaders", "? DeadlockCrating", "? vtk-deep-core-mining", "? Krastorio2", "? FluidMustFlow", 
-  "? Expensive_Fluid_Must_Flow_Recipes", "? bzgold", "? cargo-ships", "? underwater-pipes", "? IntermodalContainers", "? FreightForwarding", "? 248k", "? LunarLandings", "? IfNickel-Updated"],
+  "? Expensive_Fluid_Must_Flow_Recipes", "? bzgold", "? cargo-ships", "? underwater-pipes", "? IntermodalContainers", "? FreightForwarding", "? 248k", "? LunarLandings"],
   "package": {
     "git_publish_branch": "main",
     "ignore": [ "imgui.ini", "screenshots/*" ],
