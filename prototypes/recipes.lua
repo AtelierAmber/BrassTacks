@@ -1,7 +1,13 @@
 local parts = require("variable-parts")
+local tf = require("techfuncs")
 
 local yield = 1
 local cost = 1
+
+for k, v in pairs(data.raw["technology"]) do
+  tf.removeRecipeUnlock(v.name, "iron-stick")
+end
+data.raw.recipe["iron-stick"].enabled = true
 
 if mods["Krastorio2"] then
   yield = 5
