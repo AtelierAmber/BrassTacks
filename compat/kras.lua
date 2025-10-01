@@ -337,7 +337,7 @@ if mods["FluidMustFlow"] then
     rm.AddIngredient("duct-end-point-outtake", "bearing", 6)
   else
     --don't worry electric engine unit. i still love you
-    tf.addPrereq("Ducts", "electric-engine")
+    tf.addPrereq("ducts", "electric-engine")
     rm.AddIngredient("duct-end-point-intake", "electric-engine-unit", 1)
     rm.AddIngredient("duct-end-point-outtake", "electric-engine-unit", 1)
   end
