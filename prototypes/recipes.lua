@@ -181,7 +181,7 @@ if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
       category = "advanced-crafting",
       enabled = false,
       energy_required = 2.5,
-      ingredients = {{type="item", name="bolted-flange", amount=1}, {type="item", name="graphite", amount=2}},
+      ingredients = {{type="item", name="bolted-flange", amount=1}, {type="item", name=mods["bzcarbon"] and "graphite" or "rubber", amount=2}},
       results = {{type="item", name="airtight-seal", amount=1}},
       lasermill = {helium=data.raw.item["silver-brazing-alloy"] and 4 or 2, productivity=true}
     }

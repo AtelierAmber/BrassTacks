@@ -14,10 +14,10 @@ if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
 
   if mods["BrimStuff-Updated"] then
     if mods["bzcarbon"] then
-      rm.ReplaceIngredient("airtight-seal", "graphite", "rubber", 1)
+      rm.ReplaceIngredient("airtight-seal", "graphite", "rubber", 2)
       rm.ReplaceIngredient("airtight-seal-vitalic", "graphite", "rubber", 25)
     else
-      rm.ReplaceIngredient("airtight-seal", "graphite", "rubber", 2)
+      rm.ReplaceIngredient("airtight-seal", "graphite", "rubber", 4)
       rm.ReplaceIngredient("airtight-seal-vitalic", "graphite", "rubber", 50)
     end
   end
