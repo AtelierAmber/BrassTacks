@@ -1,8 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.6
-Date: ????
+Date: 2025-09-30
   Changes:
     - Removed RCU references. Will need to replace these with something
+  Bugfixes:
+    - Fixed Fluids Must Flow & Flow Control incompatibility
+    - Fixed softlock with Iron Sticks not being unlocked. How did this even work in the 1.1 mod??
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.5
 Date: 2025-09-29
