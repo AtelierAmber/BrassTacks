@@ -471,12 +471,12 @@ rm.AddIngredient("pipe", "bolted-flange", 1)
 
 if parts.foundryEnabled then
   tf.addRecipeUnlock("foundry", "brass-plate-foundry")
-else
+elseif data.raw.technology["copper-processing"] then
   if data.raw.recipe["brass-plate-foundry"] then
-    tf.addRecipeUnlock("kr-matter-copper-processing", "brass-plate-foundry")
+    tf.addRecipeUnlock("copper-processing", "brass-plate-foundry")
   end
   if data.raw.recipe["brass-precursor-foundry"] then
-    tf.addRecipeUnlock("kr-matter-copper-processing", "brass-precursor-foundry")
+    tf.addRecipeUnlock("copper-processing", "brass-precursor-foundry")
   end
 end
 
