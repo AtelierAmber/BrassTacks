@@ -1,4 +1,4 @@
-local parts = require("variable-parts")
+local parts = require("optionals")
 
 if deadlock then
   deadlock.add_stack("zinc-ore", "__BrassTacks-Updated__/graphics/icons/zinc-ore-stacked.png", "deadlock-stacking-1", 64)

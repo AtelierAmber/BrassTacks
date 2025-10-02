@@ -1,6 +1,8 @@
+brasstacks_logger:flush()
+
 local rm = require("recipe-modify")
 local tf = require("techfuncs")
-local parts = require("variable-parts")
+local parts = require("optionals")
 
 local advfitting = "bolted-flange"
 if mods["bzcarbon"] or mods["BrimStuff-Updated"] then

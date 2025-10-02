@@ -22,7 +22,7 @@ if not mods["galdocs-manufacturing"] then
   if mods["Krastorio2"] then
     if mods["bzaluminum"] then
       data:extend({
-        {
+        {--
           type = "recipe",
           name = "brass-plate",
           category = "smelting",
@@ -31,7 +31,7 @@ if not mods["galdocs-manufacturing"] then
           results = {{type="item", name="brass-plate", amount=yield*2}},
           main_product = "brass-plate",
         },
-        {
+        {--
           type = "recipe",
           name = "brass-plate-foundry",
           category = parts.foundryEnabled and "founding" or "smelting",
@@ -43,7 +43,7 @@ if not mods["galdocs-manufacturing"] then
       })
     else
       data:extend({
-        {
+        {--
           type = "recipe",
           name = "brass-plate",
           category = "smelting",
@@ -54,7 +54,7 @@ if not mods["galdocs-manufacturing"] then
       })
       if parts.foundryEnabled then
         data:extend({
-          {
+          {--
             type = "recipe",
             name = "brass-plate-foundry",
             category = "founding",
@@ -68,7 +68,7 @@ if not mods["galdocs-manufacturing"] then
     end
   else
     data:extend({
-      {
+      {--
         type = "recipe",
         name = "brass-plate",
         category = "smelting",
@@ -79,7 +79,7 @@ if not mods["galdocs-manufacturing"] then
     })
     if mods["bzaluminum"] then
       data:extend({
-        {
+        {--
           type = "recipe",
           name = "brass-precursor",
           category = "crafting",
@@ -90,7 +90,7 @@ if not mods["galdocs-manufacturing"] then
       })
       if not parts.foundryEnabled then
         data:extend({
-          {
+          {--
             type = "recipe",
             name = "brass-precursor-foundry",
             category = "crafting",
@@ -103,7 +103,7 @@ if not mods["galdocs-manufacturing"] then
       end
     else
       data:extend({
-        {
+        {--
           type = "recipe",
           name = "brass-precursor",
           category = "crafting",
@@ -115,7 +115,7 @@ if not mods["galdocs-manufacturing"] then
     end
     if parts.foundryEnabled then
       data:extend({
-        {
+        {--
           type = "recipe",
           name = "brass-plate-foundry",
           category = "founding",
@@ -129,7 +129,7 @@ if not mods["galdocs-manufacturing"] then
   end
   if not mods["exotic-industries"] then
     data:extend({
-      {
+      {--
         type = "recipe",
         name = "zinc-plate",
         category = "smelting",
@@ -142,7 +142,7 @@ if not mods["galdocs-manufacturing"] then
 end
 
 data:extend({
-  {
+  {--
     type = "recipe",
     name = "bolted-flange",
     category = "crafting",
@@ -152,7 +152,7 @@ data:extend({
     enabled = not mods["Krastorio2"],
     lasermill = {helium=1, productivity=true}
   },
-  {
+  {--
     type = "recipe",
     name = "brass-balls",
     category = "advanced-crafting",
@@ -162,7 +162,7 @@ data:extend({
     results = {{type="item", name="brass-balls",amount=2}},
     lasermill = {helium=1, productivity=true, type="gubbins", multiply=2}
   },
-  {
+  {--
     type = "recipe",
     name = "bearing",
     category = "crafting-with-fluid",

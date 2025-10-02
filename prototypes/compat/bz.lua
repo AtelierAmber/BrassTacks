@@ -1,6 +1,6 @@
 local rm = require("recipe-modify")
 local tf = require("techfuncs")
-local parts = require("variable-parts")
+local parts = require("optionals")
 
 if mods["bztin"] and settings.startup["brasstacks-solder-absorption"].value then
   rm.AddIngredient("bolted-flange", "solder", 1)

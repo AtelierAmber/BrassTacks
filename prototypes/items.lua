@@ -1,4 +1,4 @@
-local parts = require("variable-parts")
+local parts = require("optionals")
 
 local stacksize_override = nil
 if mods["Krastorio2"] then

@@ -1,4 +1,4 @@
-local parts = require("variable-parts")
+local parts = require("optionals")
 local techfuncs = require("techfuncs")
 
 local red_science = mods["exotic-industries"] and "ei_dark-age-tech" or "automation-science-pack"

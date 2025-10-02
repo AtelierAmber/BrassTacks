@@ -1,6 +1,6 @@
 local rm = require("recipe-modify")
 local tf = require("techfuncs")
-local parts = require("variable-parts")
+local parts = require("optionals")
 
 if mods["boblogistics"] then
   rm.multiply("copper-pipe", 5, true, true, true)

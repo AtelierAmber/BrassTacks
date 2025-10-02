@@ -1,6 +1,6 @@
 local rm = require("recipe-modify")
 local tf = require("techfuncs")
-local parts = require("variable-parts")
+local parts = require("optionals")
 
 if mods["underwater-pipes"] and parts.experimental then
   rm.RemoveIngredient("underwater-pipe", "steel-plate", 999)

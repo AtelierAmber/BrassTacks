@@ -1,5 +1,5 @@
 local rm = require("recipe-modify")
-local parts = require("variable-parts")
+local parts = require("optionals")
 local tf = require("techfuncs")
 
 local allowed_recipes = {
