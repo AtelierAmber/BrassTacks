@@ -59,14 +59,10 @@ function helper.preferred(definitions)
       brasstacks_logger:remove_last_prototype_warning(def.name, def.type)
     end
   end
+  brasstacks_logger.error("Trying to add preferred of " .. serpent.line(definitions) .. " but none exist yet!")
   return nil
 end
 
-function parts.optionalIngredient(item, amount)
-  if data.raw.item[item] then
-    return {type="item", name=item, amount=amount}
-  end
-end
 
 ---Returns an icon definition from the classic or galdoc icons
 ---@param name string
