@@ -1,18 +1,21 @@
-local parts = {}
+local helper = require("prototypes.lib.prototype_helper")
+local optionals = {}
 
-parts.experimental = settings.startup["brasstacks-experimental-intermediates"].value
-parts.nickel = mods["IfNickel-Updated"] and true or false
-if parts.nickel then
-  parts.steelValve = settings.startup["ifnickel-steel-valve"].value
-  parts.nickelExperiment = settings.startup["ifnickel-experimental-intermediates"].value
+optionals.experimental = settings.startup["brasstacks-experimental-intermediates"].value
+optionals.nickel = mods["IfNickel-Updated"] and true or false
+if optionals.nickel then
+  optionals.steelValve = settings.startup["ifnickel-steel-valve"].value
+  optionals.nickelExperiment = settings.startup["ifnickel-experimental-intermediates"].value
 else
-  parts.steelValve = false
-  parts.nickelExperiment = false
+  optionals.steelValve = false
+  optionals.nickelExperiment = false
 end
 
-parts.oldicons = not settings.startup["brasstacks-classic-icons"].value
+optionals.oldicons = not settings.startup["brasstacks-classic-icons"].value
 
-function parts.qualityIconPath(mod, icon)
+optionals.items = {}
+
+function optionals.qualityIconPath(mod, icon)
   local prefix = ""
   --I intend to reuse this function between mods, hence checking for itself and specifying which mod to look in.
   --Other mods may add an alternate recipe and need to look up an icon, etc.
@@ -29,7 +32,7 @@ function parts.qualityIconPath(mod, icon)
   end
 end
 
-function parts.preferred(ingredients, quantities)
+function optionals.preferred(ingredients, quantities)
   for k, v in ipairs(ingredients) do
     if data.raw.item[v] then
       return {type="item", name=v, amount=quantities[k]}
@@ -37,32 +40,34 @@ function parts.preferred(ingredients, quantities)
   end
 end
 
-function parts.optionalIngredient(item, amount)
+function optionals.optionalIngredient(item, amount)
   if data.raw.item[item] then
     return {type="item", name=item, amount=amount}
   end
 end
 
 if mods["bzfoundry"] and not settings.startup["bzfoundry-minimal"].value then
-  parts.foundryEnabled = true
+  optionals.foundryEnabled = true
 else
-  parts.foundryEnabled = false
+  optionals.foundryEnabled = false
 end
 
-if parts.experimental then
+if optionals.experimental then
   if data.raw.item["gyro"] then
     if settings.startup["brasstacks-gyro-override"].value then
-      parts.gyroscope = "gyro"
+      optionals.gyroscope = "gyro"
     end
   else
-    parts.gyroscope = "gyroscope"
+    optionals.gyroscope = "gyroscope"
   end
 end
 
-if parts.experimental and data.raw.item["diamond"] and data.raw.item["tungsten-carbide"] and (mods["aai-industry"] or mods["big-mining-drill"] or mods["Krastorio2"] or mods["vtk-deep-core-mining"] or mods["248k"]) then
-  parts.drill = true
+if optionals.experimental and data.raw.item["diamond"] and data.raw.item["tungsten-carbide"] and (mods["aai-industry"] or mods["big-mining-drill"] or mods["Krastorio2"] or mods["vtk-deep-core-mining"] or mods["248k"]) then
+  optionals.drill = true
 else
-  parts.drill = false
+  optionals.drill = false
 end
 
-return parts
+optionals.useadvfitting = mods["bzcarbon"] or mods["BrimStuff-Updated"]
+
+return optionals
