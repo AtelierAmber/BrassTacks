@@ -136,8 +136,11 @@ if optionals.experimental then
         },
        },
       energy_required = 48,
-      ingredients = {{type="item", name="se-iridium-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 64 or 80)}, {type="item", name="electric-motor", amount=(mods["Krastorio2"] and 12 or 16)}},
-      results = {{type="item", name="gearbox",amount=16}},
+      ingredients = {
+        helper.item("se-iridium-plate"), 
+        helper.item("iron-gear-wheel", (mods["Krastorio2"] and 64 or 80)), 
+        helper.item("electric-motor", (mods["Krastorio2"] and 12 or 16))},
+      results = {helper.item("gearbox", 16)},
       enabled = false,
       always_show_products = true,
       localised_name = {"recipe-name.gearbox-iridium"}
