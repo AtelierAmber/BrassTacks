@@ -53,7 +53,7 @@ end
 ---@return any|nil
 function helper.preferred(definitions)
   for _, def in pairs(definitions) do
-    if data.raw[def.type] then
+    if data.raw[def.type][def.name] then
       return def
     elseif config.log_missing_prototypes and def.helper_tag then
       brasstacks_logger:remove_last_prototype_warning(def.name, def.type)
@@ -84,7 +84,7 @@ function helper.graphic(name, size, mod, extra)
   else
     prefix = prefix .. "graphics/galdoc/"
   end
-  local path = prefix .. icon
+  local path = prefix .. name
   local def = { icon = path, icon_size = size }
   if extra then
     for key, value in pairs(extra) do
@@ -107,7 +107,7 @@ function helper.icon(name, size, mod, extra)
     brasstacks_logger.warn("Trying to load an icon " .. name .. " from " .. mod .. ", but " .. mod .. " isn't enabled!")
   end
 
-  local path = "__" .. mod .. "__/graphics/icons/" .. icon
+  local path = "__" .. mod .. "__/graphics/icons/" .. name
   local def = { icon = path, icon_size = size }
   if extra then
     for key, value in pairs(extra) do
