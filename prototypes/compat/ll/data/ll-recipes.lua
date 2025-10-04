@@ -1,9 +1,8 @@
-optionals = require("optionals")
-helper = require("prototypes.lib.prototype_helper")
-
 if not mods["LunarLandings"] then
   return
 end
+local optionals = require("optionals")
+local helper = require("prototypes.lib.prototype_helper")
 
 data:extend({
   type = "recipe",
@@ -23,7 +22,7 @@ data:extend({
   enabled = false
 })
 
-if settings.startup["brasstacks-experimental-intermediates"].value then
+if optionals.experimental then
   if mods["IfNickel-Updated"] then
     data:extend({
       {
@@ -49,20 +48,6 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         results = {helper.item("hardened-hull", 1)},
         enabled = false,
         lasermill = {helium=5, productivity=true, convert=true}
-      }
-    })
-  end
-  if optionals.withskyseeker then
-    data:extend({
-      {
-        type = "recipe",
-        name = "skyseeker-armature",
-        category = "crafting",
-        energy_required = 20,
-        ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="low-density-structure", amount=1}, {type="item", name="electric-engine-unit", amount=1}, 
-                        parts.preferred({"kr-steel-gear-wheel", "iron-gear-wheel"}, {3, 6}), parts.preferred({"gyro", "gyroscope"}, {1, 1})},
-        results = {{type="item", name="skyseeker-armature", amount=1}},
-        enabled = false
       }
     })
   end
