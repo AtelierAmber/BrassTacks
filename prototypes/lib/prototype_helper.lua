@@ -55,6 +55,7 @@ function helper.preferred(definitions)
   for _, def in pairs(definitions) do
     if data.raw[def.type][def.name] then
       return def
+---@diagnostic disable-next-line: undefined-field Injected Field
     elseif config.log_missing_prototypes and def.helper_tag then
       brasstacks_logger:remove_last_prototype_warning(def.name, def.type)
     end
