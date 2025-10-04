@@ -69,5 +69,6 @@ else
 end
 
 optionals.useadvfitting = mods["bzcarbon"] or mods["BrimStuff-Updated"]
+optionals.withskyseeker = mods["aai-signal-transmission"] or mods["LunarLandings"]
 
 return optionals

@@ -161,7 +161,7 @@ if optionals.experimental then
           helper.item("zirconia", 4),
           helper.item("plastic-bar", 2)}), 
         helper.item("articulated-mechanism", 8), 
-        helper.item("lubricant", 5)},
+        helper.fluid("lubricant", 5)},
       results = {helper.item("complex-joint")},
       enabled = false,
     },
@@ -170,8 +170,10 @@ if optionals.experimental then
       name = "gearbox",
       category = "crafting",
       energy_required = 3,
-      ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 8 or 10)}},
-      results = {{type="item", name="gearbox",amount=2}},
+      ingredients = {
+        helper.item("galvanized-steel-plate", 1), 
+        helper.item("iron-gear-wheel", (mods["Krastorio2"] and 8 or 10))},
+      results = {helper.item("gearbox", 2)},
       enabled = false
     },
     {
@@ -179,39 +181,67 @@ if optionals.experimental then
       name = "advanced-gearbox",
       category = "crafting-with-fluid",
       energy_required = 3,
-      ingredients = {{type="item", name="gearbox", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 4 or 5)}, 
-                     {type="item", name="bearing", amount=2}, {type="item", name="flywheel", amount=1}, {type="fluid", name="lubricant", amount=20}},
-      results = {{type="item", name="advanced-gearbox", amount=1}},
+      ingredients = {
+        helper.item("gearbox"), 
+        helper.item("iron-gear-wheel", (mods["Krastorio2"] and 4 or 5)), 
+        helper.item("bearing", 2), 
+        helper.item("flywheel"), 
+        helper.fluid("lubricant", 20)},
+      results = {helper.item("advanced-gearbox")},
       enabled = false
     }
   })
+  
+  if not mods["galdocs-manufacturing"] then
+    data:extend({
+      {
+        type = "recipe",
+        name = "galvanized-steel-plate",
+        category = optionals.foundryEnabled and "founding" or "advanced-crafting",
+        energy_required = optionals.foundryEnabled and 6.4 or 3,
+        ingredients = {{type="item", name="steel-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
+        results = {{type="item", name="galvanized-steel-plate", amount=1}},
+        enabled = false,
+      }
+    })
+  end
 
   if optionals.gyroscope then
     data:extend({
       {
         type = "recipe",
-        name = parts.gyroscope,
+        name = optionals.gyroscope,
         category = "crafting",
         energy_required = 5,
-        --preferred can't be used - ifnickel loads after this.
-        ingredients = {{type="item", name="flywheel", amount=1}, {type="item", name="bearing", amount=2}, {type="item", name="advanced-circuit", amount=1}, 
-                       (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel-Updated"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="kr-steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
-        results = {{type="item", name=parts.gyroscope, amount=1}},
+        --preferred can't be used - ifnickel loads after this. Then modify it in update??
+        ingredients = {
+          helper.item("flywheel"), 
+          helper.item("bearing", 2), 
+          helper.item("advanced-circuit"), 
+          (mods["aai-industry"] and helper.item("electric-motor")) or 
+            (mods["IfNickel-Updated"] and helper.item("motor")) or 
+            (mods["Krastorio2"] and helper.item("kr-steel-gear-wheel")) or 
+            helper.item("iron-gear-wheel", 2)},
+        results = {helper.item(optionals.gyroscope)},
         enabled = false
       }
     })
   end
 end
 
-if parts.drill then
+if optionals.drill then
   data:extend({
     {
       type = "recipe",
       name = "industrial-drill-head",
       category = "advanced-crafting",
       energy_required = 5,
-      ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="electric-engine-unit", amount=1}, {type="item", name="tungsten-carbide", amount=2}, {type="item", name="diamond", amount=2}},
-      results = {{type="item", name="industrial-drill-head", amount=1}},
+      ingredients = {
+        helper.item("complex-joint"), 
+        helper.item("electric-engine-unit"), 
+        helper.item("tungsten-carbide", 2), 
+        helper.item("diamond", 2)},
+      results = {helper.item("industrial-drill-head")},
       enabled = false
     },
   })

@@ -65,6 +65,11 @@ function logger.flush(self)
       for _, message in pairs(info.outputs) do
         output = output .. "\n[" .. key .. "] : " .. message
       end
+    else
+      if DEBUG then
+        error("\n      BRASS TACKS PROTOTYPE ERROR: PROTOTYPE [" .. key .. 
+        serpent.line(data.raw[info.type][info.name].helper_tag) .. "] USED BEFORE CREATED!")
+      end
     end
   end
   self.prototype_warnings = {}

@@ -55,7 +55,7 @@ if settings.startup["brasstacks-experimental-intermediates"].value then
         helper.item("advanced-gearbox"), 
         helper.item("kr-imersium-gear-wheel", 4), 
         helper.item("kr-imersium-beam")},
-      results = helper.item("elite-gearbox"),
+      results = {helper.item("elite-gearbox")},
       enabled = false
     }
   })

@@ -1,4 +1,4 @@
-local parts = require("variable-parts")
+local parts = require("optionals")
 local tf = require("techfuncs")
 
 local yield = 1
