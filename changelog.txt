@@ -1,8 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.8
-Date: ????
+Date: 2025-10-07
   Changes:
-    - Fix for improper recipe being used for foundry tech (not that foundry is available yet though)
+    - Fix for improper recipe being used for foundry tech 
+    - Fix to catalyst recipes still using old definition
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.7
 Date: 2025-09-30
