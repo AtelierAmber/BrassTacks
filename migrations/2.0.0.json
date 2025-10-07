@@ -1,0 +1,16 @@
+{
+  "recipe":
+  [
+    ["bolted-flange", "pipe-flange"],
+    ["gearbox", "fast-gearbox"],
+    ["advanced-gearbox", "express-gearbox"],
+    ["articulated-mechanism", "linkages"]
+  ],
+  "item":
+  [
+    ["bolted-flange", "pipe-flange"],
+    ["gearbox", "fast-gearbox"],
+    ["advanced-gearbox", "express-gearbox"],
+    ["articulated-mechanism", "linkages"]
+  ]
+}

@@ -1,760 +1,1289 @@
-local parts = require("variable-parts")
-local tf = require("techfuncs")
+local rm = require("__pf-functions__/recipe-manipulation")
+local misc = require("__pf-functions__/misc")
 
-local yield = 1
-local cost = 1
-
-for k, v in pairs(data.raw["technology"]) do
-  tf.removeRecipeUnlock(v.name, "iron-stick")
-end
-data.raw.recipe["iron-stick"].enabled = true
-
-if mods["Krastorio2"] then
-  yield = 5
-  cost = 10
-  if mods["space-exploration"] then
-    yield = 15
-    cost = 20
-  end
-end
-
-if not mods["galdocs-manufacturing"] then
-  if mods["Krastorio2"] then
-    if mods["bzaluminum"] then
-      data:extend({
-        {
-          type = "recipe",
-          name = "brass-plate",
-          category = "smelting",
-          energy_required = 1.6 * yield,
-          ingredients = {{type="item", name="copper-ore", amount=cost}, {type="item", name="zinc-ore", amount=cost}},
-          results = {{type="item", name="brass-plate", amount=yield*2}},
-          main_product = "brass-plate",
-        },
-        {
-          type = "recipe",
-          name = "brass-plate-foundry",
-          category = parts.foundryEnabled and "founding" or "smelting",
-          enabled = false,
-          energy_required = 1.6 * yield,
-          ingredients = {{type="item", name="copper-plate", amount=yield}, {type="item", name="zinc-plate", amount=yield}},
-          results = {{type="item", name="brass-plate", amount=yield*2}},
-        }
-      })
-    else
-      data:extend({
-        {
-          type = "recipe",
-          name = "brass-plate",
-          category = "smelting",
-          energy_required = 1.6,
-          ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
-          results = {{type="item", name="brass-plate",amount=2}}
-        }
-      })
-      if parts.foundryEnabled then
-        data:extend({
-          {
-            type = "recipe",
-            name = "brass-plate-foundry",
-            category = "founding",
-            enabled = false,
-            energy_required = 1.6,
-            ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
-            results = {{type="item", name="brass-plate",amount=2}}
-          }
-        })
-      end
-    end
-  else
-    data:extend({
-      {
-        type = "recipe",
-        name = "brass-plate",
-        category = "smelting",
-        energy_required = 1.6,
-        ingredients = {{type="item", name="brass-precursor", amount=1}},
-        results = {{type="item", name="brass-plate", amount=1}},
-      }
-    })
-    if mods["bzaluminum"] then
-      data:extend({
-        {
-          type = "recipe",
-          name = "brass-precursor",
-          category = "crafting",
-          energy_required = 0.5,
-          ingredients = {{type="item", name="copper-ore", amount=2}, {type="item", name="zinc-ore", amount=2}},
-          results = {{type="item", name="brass-precursor",amount=2}}
-        }
-      })
-      if not parts.foundryEnabled then
-        data:extend({
-          {
-            type = "recipe",
-            name = "brass-precursor-foundry",
-            category = "crafting",
-            enabled = false,
-            energy_required = 0.5,
-            ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
-            results = {{type="item", name="brass-precursor",amount=2}}
-          }
-        })
-      end
-    else
-      data:extend({
-        {
-          type = "recipe",
-          name = "brass-precursor",
-          category = "crafting",
-          energy_required = 0.5,
-          ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
-          results = {{type="item", name="brass-precursor",amount=2}}
-        }
-      })
-    end
-    if parts.foundryEnabled then
-      data:extend({
-        {
-          type = "recipe",
-          name = "brass-plate-foundry",
-          category = "founding",
-          energy_required = 3.2,
-          ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
-          results = {{type="item", name="brass-plate",amount=2}},
-          enabled = false
-        }
-      })
-    end
-  end
-  if not mods["exotic-industries"] then
-    data:extend({
-      {
-        type = "recipe",
-        name = "zinc-plate",
-        category = "smelting",
-        energy_required = 3.2 * yield,
-        ingredients = {{type="item", name="zinc-ore", amount=cost}},
-        results = {{type="item", name="zinc-plate", amount=yield}}
-      }
-    })
-  end
+local gearbox_ingredients = {
+    {type="item", name="iron-gear-wheel", amount=10},
+    {type="item", name="galvanized-steel-plate", amount=1},
+    {type="item", name="iron-stick", amount=8}
+}
+if misc.difficulty == 3 then
+    gearbox_ingredients = {
+        {type="item", name="iron-gear-wheel", amount=5},
+        {type="item", name="malleable-logarithmic-casing", amount=1},
+        {type="item", name="iron-stick", amount=4}
+    }
 end
 
 data:extend({
-  {
-    type = "recipe",
-    name = "bolted-flange",
-    category = "crafting",
-    energy_required = 2.5,
-    ingredients = {{type="item", name="brass-plate", amount=2}},
-    results = {{type="item", name="bolted-flange", amount=1}},
-    enabled = not mods["Krastorio2"],
-    lasermill = {helium=1, productivity=true}
-  },
-  {
-    type = "recipe",
-    name = "brass-balls",
-    category = "advanced-crafting",
-    enabled = false,
-    energy_required = 0.5,
-    ingredients = {{type="item", name="brass-plate", amount=1}},
-    results = {{type="item", name="brass-balls",amount=2}},
-    lasermill = {helium=1, productivity=true, type="gubbins", multiply=2}
-  },
-  {
-    type = "recipe",
-    name = "bearing",
-    category = "crafting-with-fluid",
-    enabled = false,
-    energy_required = 4,
-    ingredients = {{type="item", name="brass-plate", amount=2}, {type="item", name="brass-balls", amount=4}, {type="fluid", name="lubricant", amount=5}},
-    results = {{type="item", name="bearing", amount=1}},
-  }
-})
-
-if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
-  data:extend({
     {
-      type = "recipe",
-      name = "airtight-seal",
-      category = "advanced-crafting",
-      enabled = false,
-      energy_required = 2.5,
-      ingredients = {{type="item", name="bolted-flange", amount=1}, {type="item", name=mods["bzcarbon"] and "graphite" or "rubber", amount=2}},
-      results = {{type="item", name="airtight-seal", amount=1}},
-      lasermill = {helium=data.raw.item["silver-brazing-alloy"] and 4 or 2, productivity=true}
-    }
-  })
-  if mods["space-exploration"] then
-    data:extend({
-      {
         type = "recipe",
-        name = "airtight-seal-vitalic",
-        category = "advanced-crafting",
-        icons = {
-          {
-            icon = parts.qualityIconPath("brasstacks", "icons/airtight-seal.png"),
-            icon_size = 64
-          },
-          {
-            icon = "__space-exploration-graphics__/graphics/icons/vitalic-epoxy.png",
-            icon_size = 64,
-            scale = 0.25,
-            shift = {-8, -8}
-          },
-         },
-        enabled = false,
-        allow_decomposition = false,
-        energy_required = 250,
-        ingredients = {{type="item", name="bolted-flange", amount=150}, {type="item", name="graphite", amount=50}, {type="item", name="se-vitalic-epoxy", amount=1}},
-        results = {{type="item", name="airtight-seal",amount=200}},
-        always_show_products = true,
-        localised_name = {"recipe-name.airtight-seal-vitalic"},
-        lasermill = {helium=100, convert=true, se_variant="space-crafting", se_tooltip_entity="se-space-assembling-machine", unlock="airtight-seal-vitalic", icon_offset={8, -8}}
-      }
-    })
-  end
-end
-
-if settings.startup["brasstacks-experimental-intermediates"].value then
-  data:extend({
-    {
-      type = "recipe",
-      name = "flywheel",
-      category = "crafting",
-      energy_required = 2,
-      ingredients = {{type="item", name="iron-gear-wheel", amount=1}, {type="item", name="zinc-plate", amount=3}},
-      results = {{type="item", name="flywheel", amount=1}},
-      lasermill = {helium = 2, productivity = true}
+        name = "zinc-plate",
+        category = "smelting",
+        ingredients = {
+            {type="item", name="zinc-ore", amount=1}
+        },
+        results = {
+            {type="item", name="zinc-plate", amount=1}
+        },
+        energy_required = 3.2,
+        allow_productivity = true,
+        enabled = true
     },
     {
-      type = "recipe",
-      name = "articulated-mechanism",
-      category = "crafting",
-      energy_required = 1,
-      ingredients = {{type="item", name="brass-plate", amount=1}, parts.preferred({"aluminum-plate", "iron-plate"}, {1, 1}), {type="item", name="iron-stick", amount=3}},
-      results = {{type="item", name="articulated-mechanism",amount=2}},
+        type = "recipe",
+        name = "brass-precursor",
+        category = "crafting",
+        ingredients = {
+            {type="item", name="zinc-plate", amount=1},
+            {type="item", name="copper-plate", amount=1}
+        },
+        results = {
+            {type="item", name="brass-precursor", amount=2}
+        },
+        energy_required = 0.5,
+        enabled = true
     },
     {
-      type = "recipe",
-      name = "hardened-hull",
-      category = "crafting",
-      energy_required = 2,
-      ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, parts.nickel and {type="item", name="invar-plate", amount=1} or {type="item", name="iron-plate", amount=2}, 
-                     parts.preferred({"bronze-plate", "brass-plate"}, {2, 2})},
-      results = {{type="item", name="hardened-hull", amount=1}},
-      enabled = false,
-      lasermill = {helium=5, productivity=true}
+        type = "recipe",
+        name = "brass-plate",
+        category = "smelting",
+        ingredients = {
+            {type="item", name="brass-precursor", amount=1}
+        },
+        results = {
+            {type="item", name="brass-plate", amount=1}
+        },
+        energy_required = 1.6,
+        allow_productivity = true,
+        auto_recycle = false,
+        enabled = true
     },
     {
-      type = "recipe",
-      name = "complex-joint",
-      category = "crafting-with-fluid",
-      energy_required = 8,
-      ingredients = {{type="item", name="bearing", amount=1}, {type="item", name="galvanized-steel-plate", amount=1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {1, 4, 2}), 
-                     {type="item", name="articulated-mechanism", amount=8}, {type="fluid", name="lubricant", amount=5}},
-      results = {{type="item", name="complex-joint", amount=1}},
-      enabled = false,
-    },
-    {
-      type = "recipe",
-      name = "gearbox",
-      category = "crafting",
-      energy_required = 3,
-      ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 8 or 10)}},
-      results = {{type="item", name="gearbox",amount=2}},
-      enabled = false
-    },
-    {
-      type = "recipe",
-      name = "advanced-gearbox",
-      category = "crafting-with-fluid",
-      energy_required = 3,
-      ingredients = {{type="item", name="gearbox", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 4 or 5)}, 
-                     {type="item", name="bearing", amount=2}, {type="item", name="flywheel", amount=1}, {type="fluid", name="lubricant", amount=20}},
-      results = {{type="item", name="advanced-gearbox", amount=1}},
-      enabled = false
-    }
-  })
-
-  if not mods["galdocs-manufacturing"] then
-    data:extend({
-      {
         type = "recipe",
         name = "galvanized-steel-plate",
-        category = parts.foundryEnabled and "founding" or "advanced-crafting",
-        energy_required = parts.foundryEnabled and 6.4 or 3,
-        ingredients = {{type="item", name="steel-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},
-        results = {{type="item", name="galvanized-steel-plate", amount=1}},
-        enabled = false,
-      }
-    })
-  end
-
-  if mods["Krastorio2"] then
-    data:extend({
-      {
-        type = "recipe",
-        name = "elite-gearbox",
-        category = "advanced-crafting",
-        energy_required = 6,
-        ingredients = {{type="item", name="advanced-gearbox", amount=1}, {type="item", name="kr-imersium-gear-wheel", amount=4}, {type="item", name="kr-imersium-beam", amount=1}, 
-                       parts.preferred({"se-heavy-bearing", "electric-engine-unit"}, {4, 1})},
-        results = {{type="item", name="elite-gearbox", amount=1}},
+        category = misc.difficulty == 3 and "electroplating" or "advanced-crafting",
+        ingredients = misc.difficulty == 3 and {
+            {type="item", name="steel-plate", amount=1},
+            {type="item", name="zinc-plate", amount=1},
+            {type="fluid", name="water", amount=50}
+        } or {
+            {type="item", name="steel-plate", amount=1},
+            {type="item", name="zinc-plate", amount=1}
+        },
+        results = misc.difficulty == 3 and {
+            {type="fluid", name="depleted-zinc-salts", amount=10},
+            {type="item", name="galvanized-steel-plate", amount=1, ignored_by_productivity=mods["quality"] and 1 or 0}
+        } or {
+            {type="item", name="galvanized-steel-plate", amount=1, ignored_by_productivity=mods["quality"] and 1 or 0}
+        },
+        main_product = "galvanized-steel-plate",
+        energy_required = misc.difficulty == 3 and 2 or 3,
+        allow_productivity = true,
+        auto_recycle = false,
         enabled = false
-      }
-    })
-  end
-
-  if mods["space-exploration"] then
-    data:extend({
-      {
+    },
+    {
         type = "recipe",
-        name = "complex-joint-iridium",
+        name = "brass-balls",
+        category = "advanced-crafting",
+        ingredients = {
+            {type="item", name="brass-plate", amount=1}
+        },
+        results = {
+            {type="item", name="brass-balls", amount=2}
+        },
+        energy_required = 0.5,
+        lasermill_vanilla = {helium = -1},
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "bearing",
         category = "crafting-with-fluid",
-        icons = {
-          {
-            icon = parts.qualityIconPath("brasstacks", "icons/complex-joint.png"),
-            icon_size = 64
-          },
-          {
-            icon = "__space-exploration-graphics__/graphics/icons/iridium-plate.png",
-            icon_size = 64,
-            scale = 0.25,
-            shift = {-8, -8}
-          },
-         },
-        localised_name = {"recipe-name.complex-joint-iridium"},
-        energy_required = 64,
-        ingredients = {{type="item", name="bearing", amount=8}, {type="item", name="se-iridium-plate", amount=1}, parts.preferred({"cermet", "zirconia", "plastic-bar"}, {8, 32, 16}), 
-                       {type="item", name="articulated-mechanism", amount=48}, {type="fluid", name="lubricant", amount=40}},
-        results = {{type="item", name="complex-joint",amount=8}},
-        enabled = false,
-        always_show_products = true,
-      },
-      {
-        type = "recipe",
-        name = "gearbox-iridium",
-        category = "advanced-crafting",
-        icons = {
-          {
-            icon = parts.qualityIconPath("brasstacks", "icons/gearbox.png"),
-            icon_size = 64
-          },
-          {
-            icon = "__space-exploration-graphics__/graphics/icons/iridium-plate.png",
-            icon_size = 64,
-            scale = 0.25,
-            shift = {-8, -8}
-          },
-         },
-        energy_required = 48,
-        ingredients = {{type="item", name="se-iridium-plate", amount=1}, {type="item", name="iron-gear-wheel", amount=(mods["Krastorio2"] and 64 or 80)}, {type="item", name="electric-motor", amount=(mods["Krastorio2"] and 12 or 16)}},
-        results = {{type="item", name="gearbox",amount=16}},
-        enabled = false,
-        always_show_products = true,
-        localised_name = {"recipe-name.gearbox-iridium"}
-      },
-      {
-        type = "recipe",
-        name = "hardened-hull-iridium",
-        category = "advanced-crafting",
-        icons = {
-          {
-            icon = parts.qualityIconPath("brasstacks", "icons/hardened-hull.png"),
-            icon_size = 64
-          },
-          {
-            icon = "__space-exploration-graphics__/graphics/icons/iridium-plate.png",
-            icon_size = 64,
-            scale = 0.25,
-            shift = {-8, -8}
-          },
-         },
-        energy_required = 16,
-        ingredients = {{type="item", name="se-iridium-plate", amount=1}, {type="item", name="galvanized-steel-plate", amount=4}, parts.nickel and 
-                       {type="item", name="invar-plate", amount=4} or {type="item", name="iron-plate", amount=8}, parts.preferred({"bronze-plate", "brass-plate"}, {16, 16}), parts.optionalIngredient("lead-plate", 8)},
-        results = {{type="item", name="hardened-hull",amount=8}},
-        enabled = false,
-        always_show_products = true,
-        localised_name = {"recipe-name.hardened-hull-iridium"},
-        lasermill = {helium=30, convert=true, se_variant="space-crafting", se_tooltip_entity="se-space-assembling-machine", unlock="se-heat-shielding-iridium", icon_offset={8, -8}}
-      }
-    })
-  end
-
-  if parts.gyroscope then
-    data:extend({
-      {
-        type = "recipe",
-        name = parts.gyroscope,
-        category = "crafting",
-        energy_required = 5,
-        --preferred can't be used - ifnickel loads after this.
-        ingredients = {{type="item", name="flywheel", amount=1}, {type="item", name="bearing", amount=2}, {type="item", name="advanced-circuit", amount=1}, 
-                       (mods["aai-industry"] and {type="item",name="electric-motor", amount=1}) or (mods["IfNickel-Updated"] and {type="item",name="motor", amount=1}) or (mods["Krastorio2"] and {type="item",name="kr-steel-gear-wheel", amount=1}) or {type="item",name="iron-gear-wheel", amount=2}},
-        results = {{type="item", name=parts.gyroscope, amount=1}},
+        ingredients = {
+            {type="item", name="brass-plate", amount=2},
+            {type="item", name="brass-balls", amount=4},
+            {type="fluid", name="lubricant", amount=5}
+        },
+        results = {
+            {type="item", name="bearing", amount=1}
+        },
+        energy_required = 4,
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
         enabled = false
-      }
-    })
-  end
-
-  if mods["aai-signal-transmission"] or mods["LunarLandings"] then
-    data:extend({
-      {
-        type = "recipe",
-        name = "skyseeker-armature",
-        category = "crafting",
-        energy_required = 20,
-        ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="low-density-structure", amount=1}, {type="item", name="electric-engine-unit", amount=1}, 
-                        parts.preferred({"kr-steel-gear-wheel", "iron-gear-wheel"}, {3, 6}), parts.preferred({"gyro", "gyroscope"}, {1, 1})},
-        results = {{type="item", name="skyseeker-armature", amount=1}},
-        enabled = false
-      }
-    })
-  end
-
-  if mods["LunarLandings"] and mods["IfNickel-Updated"] then
-    data:extend({
-      {
-        type = "recipe",
-        name = "hardened-hull-alumina",
-        icons = {
-          {
-            icon = parts.qualityIconPath("brasstacks", "icons/hardened-hull.png"),
-            icon_size = 64
-          },
-          {
-            icon = "__LunarLandings__/graphics/icons/alumina.png",
-            icon_size = 64,
-            scale = 0.25,
-            shift = {-8, -8}
-          },
-         },
-        category = "crafting",
-        energy_required = 2,
-        ingredients = {{type="item", name="galvanized-steel-plate", amount=1}, {type="item", name="ll-alumina", amount=1}, parts.preferred({"bronze-plate", "brass-plate"}, {2, 2})},
-        results = {{type="item", name="hardened-hull", amount=1}},
-        enabled = false,
-        lasermill = {helium=5, productivity=true, convert=true}
-      }
-    })
-  end
-end
-
-if parts.drill then
-  data:extend({
-    {
-      type = "recipe",
-      name = "industrial-drill-head",
-      category = "advanced-crafting",
-      energy_required = 5,
-      ingredients = {{type="item", name="complex-joint", amount=1}, {type="item", name="electric-engine-unit", amount=1}, {type="item", name="tungsten-carbide", amount=2}, {type="item", name="diamond", amount=2}},
-      results = {{type="item", name="industrial-drill-head", amount=1}},
-      enabled = false
     },
-  })
-end
+})
 
-if mods["Krastorio2"] then
-  local matterutil = require("__Krastorio2__/prototypes/libraries/matter")
-  data:extend(
-    {
-      {
-        type = "recipe",
-        name = "enriched-zinc",
-        category = "chemistry",
-        energy_required = 3,
-        ingredients = {{type="item", name="zinc-ore", amount=9}, {type="fluid", name="sulfuric-acid", amount=3}, {type="fluid", name="water", amount=25, ignored_by_stats = 25}},
-        results = {{type="item", name="enriched-zinc", amount=(mods["space-exploration"] and 9 or 6)}, {type="fluid", name="kr-dirty-water", amount=25, ignored_by_productivity=25, ignored_by_stats=25}},
-        main_product = "enriched-zinc",
-        enabled = false
-        --default white chemplant tint is fine for once!
-      },
-      {
-        type = "recipe",
-        name = "enriched-zinc-plate",
-        icons = {
-          { icon = parts.qualityIconPath("brasstacks", "icons/zinc-plate.png"), icon_size = 64 },
-          { icon = parts.qualityIconPath("brasstacks", "icons/enriched-zinc.png"), icon_size = 64, scale=0.25, shift= {-8, -8}},
-        },
-        category = "smelting",
-        energy_required = 16,
-        ingredients = {{type="item", name="enriched-zinc", amount=5}},
-        results = {{type="item", name="zinc-plate",amount=5}},
-        enabled = false
-      },
-      {
-    		type = "recipe",
-    		name = "dirty-water-filtration-zinc",
-        subgroup = "raw-material",
-    		order = "w013[dirty-water-filtration-zinc]",
-    		category = "kr-fluid-filtration",
-    		icons =
-    		{
-    			{
-    				icon = data.raw.fluid["kr-dirty-water"].icon,
-    				icon_size = data.raw.fluid["kr-dirty-water"].icon_size
-    			},
-    			{
-    				icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",
-    				icon_size =	64,
-    				scale = 0.2,
-    				shift = {0, 4}
-    			}
-    		},
-    		energy_required = 2,
-    		ingredients = { {type = "fluid", name = "kr-dirty-water", amount = 100, ignored_by_stats = 100} },
-    		results =	{ {type = "fluid", name = "water", amount = 90, ignored_by_productivity=90, ignored_by_stats = 90}, {type = "item",  name = "stone", probability = 0.3, amount = 1}, {type = "item",  name = "zinc-ore", probability = 0.1, amount = 1},
-    		},
-    		crafting_machine_tint =
-    		{
-    			primary = {r = 0.75, g = 0.75, b = 1, a = 0.6},
-    			secondary = {r = 1.0, g = 1.0, b = 1.0, a = 0.9}
-    		},
-        enabled = false
-    	},
-      {
-        type = "technology",
-        name = "kr-matter-zinc-processing",
-        icons = {
-          {
-            icon = "__Krastorio2Assets__/technologies/matter-iron.png",
-            icon_size = 256,
-            icon_mipmaps = 4,
-          },
-          {
-            icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",
-            icon_size = 64,
-            icon_mipmaps = 4,
-            scale = 2
-          }
-        },
-        effects = {},
-        prerequisites = { "kr-matter-processing" },
-        order = "g-e-e",
-        unit = {
-          count = 350,
-          ingredients = {
-            { "production-science-pack", 1 },
-            { "utility-science-pack", 1 },
-            { "kr-matter-tech-card", 1 },
-          },
-          time = 45
-        }
-      }
+if tune_up_data then
+  if not mods["space-age"] then
+    tune_up_data.recipes["zinc-ore"] = {
+        category = "purification",
+        count = 5,
+        energy_required = 1,
+        ingredients = {{{"zinc-ore", 5}, {"stone", 1}, {"sulfuric-acid", 25}}}
     }
-  )
-  matterutil.make_recipes({
-    material = {type = "item", name = "zinc-ore", amount=10},
-    matter_count = 8,
-    energy_required = 1,
-    need_stabilizer = false,
-    unlocked_by_technology = "kr-matter-zinc-processing"
-  })
-  matterutil.make_deconversion_recipe({
-    material = {type="item", name="zinc-plate", amount=10},
-    matter_count = mods["space-exploration"] and 7.5 or 10,
+  end
+
+  tune_up_data.recipes["zinc-bacteria"] = {
+    category = "purification",
+    count = 4,
+    energy_required = 2,
+    result_is_always_fresh = true,
+    ingredients = {{{"zinc-bacteria", 1}, {"philosophers-hormone", 1}, {"growth-serum", 5}}, {{"zinc-bacteria", 1}, {"nutrients", 8}}}
+  }
+
+  tune_up_data.recipes["sphalerite"] = {
+      category = "purification",
+      count = 5,
+      energy_required = 1,
+      ingredients = {{{"sphalerite", 5}, {"sulfur", 1}, {"sulfuric-acid", 25}}}
+  }
+
+  tune_up_data.recipes["zinc-plate"] = {
+    category = "purification",
+    count = 10,
+    energy_required = 10,
+    ingredients = {{{"zinc-plate", 5}, {"sulfuric-acid", 50}, {"calcite", 1}}, {{"stone", 1}, {"zinc-ore", 5}}}
+  }
+
+  tune_up_data.recipes["brass-plate"] = {
+    category = "purification",
+    count = 10,
+    energy_required = 10,
+    ingredients = {{{"brass-plate", 5}, {"sulfuric-acid", 50}, {"calcite", 1}}, {{"stone", 1}, {"zinc-ore", 2}, {"copper-ore", 2}}}
+  }
+
+  tune_up_data.recipes["galvanized-steel-plate"] = {
+    category = "purification",
+    count = 1,
+    energy_required = 4,
+    ingredients = {{{"zinc-plate", 2}}}
+  }
+
+  tune_up_data.recipes["galvanized-rod"] = {
+    category = "purification",
+    count = 10,
+    energy_required = 4,
+    ingredients = {{{"zinc-plate", 2}}}
+  }
+
+  tune_up_data.recipes["galvanized-panel"] = {
+    category = "purification",
+    count = 5,
+    energy_required = 4,
+    ingredients = {{{"zinc-plate", 2}}}
+  }
+
+  tune_up_data.recipes["galvanized-tubing"] = {
+    category = "purification",
+    count = 5,
+    energy_required = 4,
+    ingredients = {{{"zinc-plate", 2}}}
+  }
+
+  tune_up_data.recipes["bearing"] = {
+    category = "tuning-up",
+    count = 3,
+    energy_required = 10,
+    ingredients = {{{"steel-plate", 1}, {"brass-balls", 10}}}
+  }
+
+  tune_up_data.recipes["brass-balls"] = {
+    category = "tuning-up",
+    count = 6,
     energy_required = 3,
-    only_deconversion = true,
-    need_stabilizer = true,
-    unlocked_by_technology = "kr-matter-zinc-processing"
-  })
+    ingredients = {{{"brass-balls", 3}, {"lubricant", 10}}}
+  }
+
+  tune_up_data.recipes["pipe-flange"] = {
+    category = "tuning-up",
+    count = 1,
+    energy_required = 2,
+    ingredients = {{{"galvanized-panel", 1}, {"water", 10}}}
+  }
+
+  tune_up_data.recipes["linkages"] = {
+    category = "tuning-up",
+    count = 3,
+    energy_required = 2,
+    ingredients = {{{"spring", 2}}, {{"brass-plate", 2}}}
+  }
+
+  tune_up_data.recipes["flywheel"] = {
+    category = "tuning-up",
+    count = 50,
+    energy_required = 100,
+    ingredients = {{{"zinc-plate", 75}}, {{"uranium-238", 1}}}
+  }
+
+  tune_up_data.recipes["hardened-hull"] = {
+    category = "tuning-up",
+    count = mods["space-age"] and 5 or 1,
+    energy_required = mods["space-age"] and 10 or 2,
+    ingredients = {{{"invar-plate", 5}, {"tungsten-plate", 1}}, {{"galvanized-panel", 15}, {"tungsten-plate", 1}}, {{"galvanized-panel", 5}}}
+  }
+
+  tune_up_data.recipes["fast-gearbox"] = {
+    category = "tuning-up",
+    count = 1,
+    energy_required = 5,
+    ingredients = {{{"bearing", 2}, {"lubricant", 10}}}
+  }
+
+  tune_up_data.recipes["express-gearbox"] = {
+    category = "tuning-up",
+    count = 1,
+    energy_required = 5,
+    ingredients = {{{"fast-gearbox", 1}, {"electric-motor", 2}, {"lubricant", 10}}, {{"fast-gearbox", 1}, {"electronic-circuit", 2}, {"lubricant", 10}}}
+  }
+
+  tune_up_data.recipes["gyro"] = {
+    category = "tuning-up",
+    count = 2,
+    energy_required = 10,
+    ingredients = {{{"laser", 1}}, {{"advanced-circuit", 3}}}
+  }
+
+  tune_up_data.recipes["complex-joint"] = {
+    category = "tuning-up",
+    count = 3,
+    energy_required = 10,
+    ingredients = {{{"differential-girdlespring", 1}}, {{"motorized-arm", 1}, {"linkages", 2}}}
+  }
+
+  tune_up_data.recipes["electroplating-machine"] = {
+    category = "tuning-up",
+    count = 1,
+    energy_required = 3,
+    ingredients = {{{"advanced-circuit", 2}, {"tinned-cable", 30}}, {{"advanced-circuit", 5}}}
+  }
+
+  tune_up_data.recipes["advanced-electroplating-machine"] = {
+    category = "tuning-up",
+    count = 1,
+    energy_required = 3,
+    ingredients = {{{"electroplating-machine", 1}, {"holmium-plate", 15}}, {{"electroplating-machine", 1}, {"processing-unit", 1}}}
+  }
+
+  tune_up_data.recipes["loadbearing-lattice"] = {
+    category = "tuning-up",
+    count = 10,
+    energy_required = 30,
+    ingredients = {{{"low-density-structure", 1}}}
+  }
+
+  tune_up_data.recipes["malleable-logarithmic-casing"] = {
+    category = "tuning-up",
+    count = 1,
+    energy_required = 1,
+    ingredients = {{{"plastic-bar", 1}}}
+  }
+
+  tune_up_data.recipes["spurving-bearing"] = {
+    category = "tuning-up",
+    count = 1,
+    energy_required = 5,
+    ingredients = {{{"tungsten-plate", 2}, {"brass-plate", 3}}}
+  }
 end
 
-if mods["space-exploration"] then
-  se_delivery_cannon_recipes["zinc-ore"] = {name= "zinc-ore"}
-  se_delivery_cannon_recipes["zinc-plate"] = {name= "zinc-plate"}
-  se_delivery_cannon_recipes["zinc-ingot"] = {name= "zinc-ingot"}
-  se_delivery_cannon_recipes["brass-plate"] = {name= "brass-plate"}
-  se_delivery_cannon_recipes["brass-ingot"] = {name= "brass-ingot"}
-  if parts.experimental then
-    se_delivery_cannon_recipes["hardened-hull"] = {name= "hardened-hull"}
-  end
-  if mods["Krastorio2"] then
-    se_delivery_cannon_recipes["enriched-zinc"] = {name= "enriched-zinc"}
-  end
+--assemblers are abstract, but you can't electroplate with a laser.
+if misc.difficulty ~= 3 then
+    misc.AddLaserMillData("galvanized-steel-plate", {helium=-1}, {helium=-1})
+end
 
-  data:extend(
-    {
-      {
-        type = "recipe",
-        icon = parts.qualityIconPath("brasstacks", "icons/molten-zinc.png"),
-        icon_size = 64,
-        subgroup = "zinc",
-        name = "molten-zinc",
-        category = "smelting",
-        energy_required = 60,
-        ingredients = {{type="item", name=(mods["Krastorio2"] and "enriched-zinc" or "zinc-ore"), amount=24}, {type="fluid", name="se-pyroflux", amount=10}},
-        results = {{type="fluid", name="molten-zinc", amount= mods["Krastorio2"] and 750 or 900}},
-        enabled = false
-      },
-      {
-        type = "recipe",
-        name = "zinc-ingot",
-        category = "casting",
-        energy_required = 25,
-        ingredients = {{type="fluid", name="molten-zinc", amount=250}},
-        results = {{type="item", name="zinc-ingot",amount=1}},
-        enabled = false
-      },
-      {
-        type = "recipe",
-        name = "zinc-ingot-to-plate",
-        icons = {
-          { icon = parts.qualityIconPath("brasstacks", "icons/zinc-plate.png"), icon_size = 64 },
-          { icon = parts.qualityIconPath("brasstacks", "icons/zinc-ingot.png"), icon_size = 64, scale=0.25, shift= {-8, -8}},
-        },
-        category = "crafting",
-        energy_required = 5,
-        ingredients = {{type="item", name="zinc-ingot", amount=1}},
-        results = {{type="item", name="zinc-plate",amount=10}},
-        allow_decomposition = false,
-        enabled = false
-      },
-      {
-        type = "recipe",
-        name = "brass-ingot",
-        category = "casting",
-        energy_required = 25,
-        ingredients = {{type="fluid", name="se-molten-copper", amount=250}, {type="item", name="zinc-ingot", amount=1}},
-        results = {{type="item", name="brass-ingot",amount=2}},
-        enabled = false
-      },
-      {
-        type = "recipe",
-        name = "brass-ingot-to-plate",
-        icons = {
-          { icon = parts.qualityIconPath("brasstacks", "icons/brass-plate.png"), icon_size = 64 },
-          { icon = parts.qualityIconPath("brasstacks", "icons/brass-ingot.png"), icon_size = 64, scale=0.25, shift= {-8, -8}},
-        },
-        category = "crafting",
-        energy_required = 5,
-        ingredients = {{type="item", name="brass-ingot", amount=1}},
-        results = {{type="item", name="brass-plate",amount=10}},
-        allow_decomposition = false,
-        enabled = false
-      }
-    }
-  )
+if mods["quality"] then
+    if misc.difficulty == 3 then
+        data.raw.recipe["galvanized-steel-plate"].localised_description = {"recipe-description.hint-prodmod-only-salt"}
 
-  if false then
-    --I'm not going to add this for now. It's currently not possible to add recipes to the main matter liberation tech without doing stupid things.
-    --Matter liberation is supposed to be a mediocre stepping stone to K2 matter. I don't particularly want to make resource specific technologies for such a thing.
-    --I'll add this if there is ever a painless interface for adding matter stuff like there is for delivery cannons.
-    -- ~~or if the tech is moved to be created earlier than final fixes which non dynamically generated prototypes are SUPPOSED TO BE ANYWAY~~
+        --rm.AddProduct("galvanized-steel-plate", {type="item", name="galvanized-steel-plate", amount=0, ignored_by_productivity=1})
+    else
+        data.raw.recipe["galvanized-steel-plate"].allow_productivity = false
+    end
+    
+    data.raw.item["galvanized-steel-plate"].localised_description = {"recipe-description.hint-nonstandard-recycling"}
+
+
     data:extend({
-      {
-        type = "recipe",
-        name = "se-kr-zinc-to-particle-stream",
-        localised_name = {"recipe-name.se-kr-matter-liberation", {"item-name.zinc-ore"}},
-        icons = {
-          {icon = "__space-exploration-graphics__/graphics/blank.png", icon_size = 64, scale = 0.5},
-          {icon = "__space-exploration-graphics__/graphics/icons/fluid/particle-stream.png", icon_size = 64,  scale = 0.33, shift = {-8,8}},
-          {icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png", icon_size = 64, scale = 0.33, shift={8, -8}},
-          {icon = "__space-exploration-graphics__/graphics/icons/transition-arrow.png", icon_size = 64, scale = 0.5},
-        },
-        category = "space-materialisation",
-        subgroup = "advanced-particle-stream",
-        energy_required = 30,
-        ingredients = {{type="item", name="zinc-ore", amount=10}, {type="item", name="se-kr-matter-liberation-data", amount=1}, {type="fluid", name="se-particle-stream", amount = 50}},
-        results = {{type="item", name="se-kr-matter-liberation-data", amount=1, probability=0.99}, {type="item", name="se-broken-data", amount=1, probability=0.01}, {type="fluid", name="se-particle-stream", amount = 60}},
-        allow_decomposition = false,
-        enabled = false
-      }
+        {
+            type = "recipe",
+            name = "custom-galvanized-steel-plate-recycling",
+            localised_name = {"recipe-name.recycling", {"item-name.galvanized-steel-plate"}},
+            icons = {
+                      {
+                        icon = "__quality__/graphics/icons/recycling.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__BrassTacks__/graphics/classic/icons/galvanized-steel-plate.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__quality__/graphics/icons/recycling-top.png",
+                        icon_size = 64
+                      }
+            },
+            category = "recycling",
+            ingredients = {
+                {type="item", name="galvanized-steel-plate", amount=1}
+            },
+            results = {
+                {type="item", name="steel-plate", amount=1, probability = 0.75},
+                {type="item", name="zinc-ore", amount=1, probability = 0.1}
+            },
+            bespoke = "galvanized-steel-plate",
+            energy_required = 1/16,
+            allow_productivity = false,
+            allow_quality = false, -- not lossy enough to be balanced against other recycling recipes
+            enabled = true,
+            hidden = true,
+            allow_decomposition = false,
+            unlock_results = false
+        }
     })
-  end
+else
 end
 
-if mods["FreightForwarding"] then
-  data:extend({
-    {
-      type = "recipe",
-      name = "brazen-nodule-dredging",
-      category = "ff-dredging",
-      energy_required = 50,
-      ingredients = {},
-      results = {{type="item", name="brazen-nodule", amount_min=100, amount_max=200}},
-      show_amount_in_title = false,
-      always_show_products = true,
-      enabled = false
-    },
-    {
-      type = "recipe",
-      name = "brazen-nodule-washing",
-      category = "chemistry",
-      energy_required = 15,
-      allow_decomposition = false,
-      ingredients = {{type="item", name="brazen-nodule", amount=18}, {type="fluid", name="sulfuric-acid", amount=15}},
-      results = {{type="item", name="zinc-ore", amount_min=40, amount_max=50}, {type="item", name="copper-ore", amount_min=0, amount_max=8}, {type="item", name="stone", amount_min=0, amount_max=4}, {type="item", name="brazen-nodule", amount_min=0, amount_max=6}},
-      main_product = "zinc-ore",
-      enabled = false
-      --default white chemplant tint is fine for once!
-    }
-  })
+if mods["space-age"] then
+    data.raw.item["brass-plate"].localised_description = {"recipe-description.hint-nonstandard-recycling"}
+    data.raw.item["zinc-plate"].localised_description = {"recipe-description.hint-nonstandard-recycling"}
+
+    data:extend({
+        {
+            type = "recipe",
+            name = "custom-brass-plate-recycling",
+            localised_name = {"recipe-name.recycling", {"item-name.brass-plate"}},
+            icons = {
+                      {
+                        icon = "__quality__/graphics/icons/recycling.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__BrassTacks__/graphics/classic/icons/brass-plate.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__quality__/graphics/icons/recycling-top.png",
+                        icon_size = 64
+                      }
+            },
+            category = "recycling",
+            ingredients = {
+                {type="item", name="brass-plate", amount=1}
+            },
+            results = {
+                {type="item", name="copper-ore", amount=1, probability = 0.03},
+                {type="item", name="zinc-ore", amount=1, probability = 0.03}
+            },
+            bespoke = "brass-plate",
+            energy_required = 3.2/16,
+            allow_productivity = false,
+            enabled = true,
+            hidden = true,
+            allow_decomposition = false,
+            unlock_results = false
+        },
+        {
+            type = "recipe",
+            name = "custom-zinc-plate-recycling",
+            localised_name = {"recipe-name.recycling", {"item-name.zinc-plate"}},
+            icons = {
+                      {
+                        icon = "__quality__/graphics/icons/recycling.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__BrassTacks__/graphics/classic/icons/zinc-plate.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__quality__/graphics/icons/recycling-top.png",
+                        icon_size = 64
+                      }
+            },
+            category = "recycling",
+            ingredients = {
+                {type="item", name="zinc-plate", amount=1}
+            },
+            results = {
+                {type="item", name="zinc-ore", amount=1, probability = 0.06}
+            },
+            bespoke = "zinc-plate",
+            energy_required = 3.2/16,
+            allow_productivity = false,
+            enabled = true,
+            hidden = true,
+            allow_decomposition = false,
+            unlock_results = false
+        },
+        {
+            type = "recipe",
+            name = "brassteroid-crushing",
+            icon = "__pf-sa-compat__/graphics/icons/brassteroid-crushing.png",
+            icon_size = 64,
+            subgroup = "space-crushing",
+            order = "b-a-d",
+            category = "crushing",
+            ingredients = {
+                {type="item", name="brass-asteroid-chunk", amount=1},
+            },
+            results = {
+                {type="item", name="brass-precursor", amount=10},
+                {type="item", name="brass-asteroid-chunk", amount=1, probability=0.2}
+            },
+            energy_required = 2,
+            allow_productivity = true,
+            allow_decomposition = false,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "advanced-brassteroid-crushing",
+            icon = "__pf-sa-compat__/graphics/icons/advanced-brassteroid-crushing.png",
+            icon_size = 64,
+            subgroup = "space-crushing",
+            order = "fa",
+            category = "crushing",
+            ingredients = {
+                {type="item", name="brass-asteroid-chunk", amount=1},
+            },
+            results = (mods["IfNickel"] and misc.difficulty == 3) and {
+                {type="item", name="malachite", amount=5},
+                {type="item", name="sphalerite", amount=2},
+                {type="item", name="brass-asteroid-chunk", amount=1, probability=0.05}
+            } or {
+                {type="item", name="copper-ore", amount=3},
+                {type="item", name="zinc-ore", amount=2},
+                {type="item", name="brass-asteroid-chunk", amount=1, probability=0.05}
+            },
+            energy_required = 5,
+            allow_productivity = true,
+            allow_decomposition = false,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "brassteroid-reprocessing",
+            icon = "__pf-sa-compat__/graphics/icons/brassteroid-reprocessing.png",
+            icon_size = 64,
+            subgroup = "space-crushing",
+            order = "b-b-d",
+            category = "crushing",
+            ingredients = {
+                {type="item", name="brass-asteroid-chunk", amount=1},
+            },
+            results = {
+                --to be computed in pf-sa-compat
+            },
+            energy_required = 2,
+            allow_productivity = true,
+            allow_decomposition = false,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "molten-zinc-from-sphalerite",
+            icon = "__pf-sa-compat__/graphics/icons/molten-zinc-from-sphalerite.png",
+            icon_size = 64,
+            subgroup = "vulcanus-processes",
+            order = "a[melting]-aa",
+            category = "metallurgy",
+            ingredients = {
+                {type="item", name="sphalerite", amount=50},
+                {type="item", name="calcite", amount=1}
+            },
+            results = {
+                {type="fluid", name="molten-zinc", amount=450, fluidbox_multiplier=10},
+                {type="fluid", name="molten-iron", amount=50, fluidbox_multiplier=10},
+                {type="item", name="sulfur", amount=10}
+            },
+            energy_required = 32,
+            allow_productivity = true,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "molten-zinc",
+            icon = "__pf-sa-compat__/graphics/icons/zinc-ore-melting.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            subgroup = "vulcanus-processes",
+            order = "a[melting]-d",
+            category = "metallurgy",
+            ingredients = {
+                {type="item", name="zinc-ore", amount=50},
+                {type="item", name="calcite", amount=1}
+            },
+            results = {
+                {type="fluid", name="molten-zinc", amount=500, fluidbox_multiplier=10}
+            },
+            energy_required = 16,
+            allow_productivity = true,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "molten-zinc-from-lava",
+            icon = "__pf-sa-compat__/graphics/icons/molten-zinc-from-lava.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            subgroup = "vulcanus-processes",
+            order = "a[melting]-a[lava-c]",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="lava", amount=500, fluidbox_multiplier=10},
+                {type="item", name="calcite", amount=1}
+            },
+            results = {
+                {type="fluid", name="molten-zinc", amount=250, fluidbox_multiplier=10},
+                {type="item", name="stone", amount=15},
+            },
+            energy_required = 16,
+            allow_productivity = true,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "casting-zinc",
+            icon = "__pf-sa-compat__/graphics/icons/casting-zinc.png",
+            icon_size = 64,
+            subgroup = "vulcanus-processes",
+            order = "b[casting]-ba",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="molten-zinc", amount=20, fluidbox_multiplier=10},
+            },
+            results = {
+                {type="item", name="zinc-plate", amount=2}
+            },
+            energy_required = 3.2,
+            allow_productivity = true,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "casting-brass",
+            icon = "__pf-sa-compat__/graphics/icons/casting-brass.png",
+            icon_size = 64,
+            subgroup = "vulcanus-processes",
+            order = "b[casting]-bb",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="molten-zinc", amount=6, fluidbox_multiplier=10},
+                {type="fluid", name="molten-copper", amount=6, fluidbox_multiplier=10},
+            },
+            results = {
+                {type="item", name="brass-plate", amount=2}
+            },
+            energy_required = 3.2,
+            allow_productivity = true,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "hot-dip-galvanized-steel",
+            icon = "__pf-sa-compat__/graphics/icons/hot-dip-galvanized-steel.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            subgroup = "vulcanus-processes",
+            order = "b[casting]-ca",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="molten-zinc", amount=10, fluidbox_multiplier=10},
+                {type="item", name="steel-plate", amount=1},
+            },
+            results = {
+                {type="item", name="galvanized-steel-plate", amount=1}
+            },
+            localised_description = {"recipe-description.hint-no-foundry-productivity"},
+            maximum_productivity = 0,
+            energy_required = 2,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "zinc-bacteria",
+            icon = "__pf-sa-compat__/graphics/icons/zinc-bacteria.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            subgroup = "agriculture-processes",
+            order = "e[bacteria]-a[bacteria]-c",
+            category = "organic",
+            ingredients = {
+                {type="item", name="copper-bacteria", amount=3},
+                {type="item", name="philosophers-hormone", amount=1},
+            },
+            results = {
+                {type="item", name="zinc-bacteria", amount=3}
+            },
+            energy_required = 2,
+            allow_productivity = true,
+            result_is_always_fresh = true,
+            enabled = false,
+            crafting_machine_tint =
+            {
+              primary = {1, 1, 1, 1},
+              secondary = {0.8, 0.8, 0.8, 1},
+            }
+
+        }
+    })
+
+    if mods["Age-of-Production"] then
+        data:extend({
+            {
+                type = "recipe",
+                name = "ammoniacal-zinc-synthesis",
+                icons = {
+                    {
+                        icon = "__space-age__/graphics/icons/fluid/ammoniacal-solution.png",
+                        icon_size = 64
+                    },
+                    {
+                        icon = "__BrassTacks__/graphics/icons/zinc-ore.png",
+                        icon_size = 64,
+                        scale = 0.25,
+                        shift = {0, 8}
+                    }
+                },
+                subgroup = "raw-material",
+                order = "n",
+                category = "synthesis",
+                ingredients = {
+                    {type="item", name="carbon", amount=5},
+                    {type="fluid", name="ammoniacal-solution", amount=100},
+                    {type="fluid", name="petroleum-gas", amount=25},
+                },
+                results = {
+                    {type="item", name="zinc-ore", amount=5}
+                },
+                energy_required = 15,
+                enabled = false
+            }
+        })
+    end
 end
 
-if mods["248k"] then
-  data:extend({
-    {
-      type = "recipe",
-      name = "248k-zinc-atom-hot",
-      category = "fu_star_engine_core_crafting_category",
-      energy_required = 1,
-      ingredients = {{type="fluid", name="fu_protium_heated", amount=30000}},
-      results = {{type="fluid", name="248k-zinc-atom-hot", amount=1000}},
-      subgroup = "fu_star_engine_subgroup_b",
-      enabled=false
-    },
-    {
-      type = "recipe",
-      name = "248k-zinc-atom",
-      category = "fu_star_engine_cooler_crafting_category",
-      energy_required = 1,
-      ingredients = {{type="fluid", name="248k-zinc-atom-hot", amount=500}},
-      results = {{type="fluid", name="248k-zinc-atom", amount=500}},
-      subgroup = "fu_star_engine_subgroup_c",
-      enabled=false
-    },
-    {
-      type = "recipe",
-      name = "zinc-from-atoms",
-      category = "crafting-with-fluid",
-      energy_required = 6,
-      ingredients = {{type="fluid", name="248k-zinc-atom", amount=500}},
-      results = {{type="item", name="zinc-plate",amount=500}},
-      subgroup = "fu_star_engine_subgroup_d",
-      enabled=false
-    },
-    {
-      type = "recipe",
-      name = "brass-from-atoms",
-      category = "chemistry",
-      energy_required = 6,
-      ingredients = {{type="fluid", name="248k-zinc-atom", amount=250}, {type="fluid", name="fu_copper", amount=250}},
-      results = {{type="item", name="brass-plate",amount=500}},
-      subgroup = "fu_star_engine_subgroup_d",
-      enabled=false
-    }
-  })
+if misc.difficulty == 1 then
+    return
 end
 
-if mods["LunarLandings"] then
-  data:extend({
+data:extend({
     {
-      type = "recipe",
-      name = "cheese-ore-processing",
-      category = "ll-electric-smelting",
-      subgroup = "ll-raw-material-moon",
-      order = "a[moon-rock]-c",
-      icon = "__BrassTacks-Updated__/graphics/icons/cheese-ore.png",
-      icon_size = 64,
-      energy_required = 10,
-      ingredients = { {type="item", name="cheese-ore", amount=20} },
-      results = {{type="item", name="zinc-ore", amount=10}, {type="item", name="ll-moon-rock", amount=3}, {type="fluid", name="light-oil", amount=10, fluidbox_index = 1}},
-      always_show_products = true,
-      enabled = false
+        type = "recipe",
+        name = "pipe-flange",
+        category = mods["maraxsis"] and "maraxsis-hydro-plant-or-assembling" or "crafting",
+        ingredients = {
+            {type="item", name="brass-plate", amount=2}
+        },
+        results = {
+            {type="item", name="pipe-flange", amount=1}
+        },
+        energy_required = 2,
+        lasermill_vanilla = {helium = -1},
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "flywheel",
+        category = "crafting",
+        ingredients = {
+            {type="item", name="iron-gear-wheel", amount=1},
+            {type="item", name="zinc-plate", amount=3}
+        },
+        results = {
+            {type="item", name="flywheel", amount=1}
+        },
+        energy_required = 1,
+        lasermill_vanilla = {helium = -1},
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "hardened-hull",
+        category = mods["space-age"] and "pressing" or "crafting",
+        ingredients = {
+            {type="item", name="galvanized-steel-plate", amount=1},
+            {type="item", name="brass-plate", amount=3},
+            {type="item", name="iron-plate", amount=1},
+        },
+        results = {
+            {type="item", name="hardened-hull", amount=1}
+        },
+        lasermill_vanilla = {helium = -1},
+        lasermill_dlc = {helium = -1},
+        energy_required = 2,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "linkages",
+        category = "crafting",
+        ingredients = {
+            {type="item", name="brass-plate", amount=2},
+            {type="item", name="iron-stick", amount=3},
+        },
+        results = {
+            {type="item", name="linkages", amount=2}
+        },
+        energy_required = 1,
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
+        enabled = true
+    },
+    {
+        type = "recipe",
+        name = "fast-gearbox",
+        category = "crafting",
+        ingredients = gearbox_ingredients,
+        results = {
+            {type="item", name="fast-gearbox", amount=misc.difficulty==2 and 2 or 1}
+        },
+        energy_required = misc.difficulty==2 and 3 or 1.5,
+        lasermill_dlc = {helium = -1},
+        allow_productivity = false,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "express-gearbox",
+        category = "crafting-with-fluid",
+        ingredients = {
+            {type="fluid", name="lubricant", amount=15},
+            {type="item", name="fast-gearbox", amount=1},
+            {type="item", name="iron-gear-wheel", amount=5},
+            {type="item", name="bearing", amount=2},
+            {type="item", name="flywheel", amount=1}
+        },
+        results = {
+            {type="item", name="express-gearbox", amount=1}
+        },
+        energy_required = 3,
+        lasermill_dlc = {helium = -1},
+        allow_productivity = false,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "complex-joint",
+        category = "crafting-with-fluid",
+        ingredients = {
+            {type="fluid", name="lubricant", amount=5},
+            {type="item", name="linkages", amount=8},
+            {type="item", name="bearing", amount=1},
+            {type="item", name="plastic-bar", amount=4}
+        },
+        results = {
+            {type="item", name="complex-joint", amount=1}
+        },
+        energy_required = 4,
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "gyro",
+        category = "crafting",
+        ingredients = {
+            {type="item", name="flywheel", amount=1},
+            {type="item", name="bearing", amount=2},
+            {type="item", name="iron-gear-wheel", amount=2},
+            {type="item", name="electronic-circuit", amount=2}
+        },
+        results = {
+            {type="item", name="gyro", amount=1}
+        },
+        energy_required = 4,
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
+        enabled = false
     }
-  })
+})
+
+if mods["space-age"] then
+    data:extend({
+        {
+            type = "recipe",
+            name = "casting-flywheel",
+            icon = "__pf-sa-compat__/graphics/icons/casting-flywheel.png",
+            icon_size = 64,
+            subgroup = "vulcanus-processes",
+            order = "b[casting]-da",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="molten-zinc", amount=20},
+                {type="item", name="iron-gear-wheel", amount=1},
+            },
+            results = {
+                {type="item", name="flywheel", amount=1}
+            },
+            energy_required = 1,
+            allow_productivity = true,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "casting-pipe-flange",
+            icon = "__pf-sa-compat__/graphics/icons/casting-pipe-flange.png",
+            icon_size = 64,
+            subgroup = "vulcanus-processes",
+            order = "b[casting]-ha",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="molten-zinc", amount=5},
+                {type="fluid", name="molten-copper", amount=5},
+            },
+            results = {
+                {type="item", name="pipe-flange", amount=1}
+            },
+            energy_required = 2,
+            allow_productivity = true,
+            enabled = false
+        }
+    })
+end
+
+if misc.difficulty == 2 then
+    return
+end
+
+data:extend({
+    {
+        type = "recipe",
+        name = "electroplating-machine",
+        category = mods["space-age"] and "electronics" or "crafting",
+        ingredients = {
+            {type="item", name="pipe", amount=10},
+            {type="item", name="steel-plate", amount=5},
+            {type="item", name="electronic-circuit", amount=5},
+            {type="item", name="copper-plate", amount=20},
+        },
+        results = {
+            {type="item", name="electroplating-machine", amount=1}
+        },
+        energy_required = 1,
+        allow_productivity = false,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "advanced-electroplating-machine",
+        category = mods["space-age"] and "electromagnetics" or "crafting",
+        ingredients = mods["space-age"] and {
+            {type="item", name="electroplating-machine", amount=1},
+            {type="fluid", name="electrolyte", amount=50},
+            {type="item", name="pump", amount=5},
+            {type="item", name="supercapacitor", amount=10},
+            {type="item", name="processing-unit", amount=5}
+        } or {
+            {type="item", name="electroplating-machine", amount=1},
+            {type="item", name="pump", amount=5},
+            {type="item", name="hardened-hull", amount=5},
+            {type="item", name="advanced-circuit", amount=20}
+        },
+        results = {
+            {type="item", name="advanced-electroplating-machine", amount=1}
+        },
+        energy_required = 1,
+        allow_productivity = false,
+        enabled = false,
+        surface_conditions = mods["space-age"] and {
+            {
+                property = "magnetic-field",
+                min = 99,
+                max = 99
+            }
+        } or nil,
+    },
+    {
+        type = "recipe",
+        name = "depleted-zinc-salt-reprocessing",
+        category = "electroplating",
+        icon = "__BrassTacks__/graphics/classic/icons/depleted-zinc-salts.png",
+        icon_size = 64,
+        subgroup = "electroplating",
+        order = "z",
+        ingredients = {
+            {type="fluid", name="depleted-zinc-salts", amount=300},
+        },
+        results = {
+            {type="item", name="zinc-ore", amount=1}
+        },
+        energy_required = 8,
+        allow_productivity = (not mods["space-age"]) and true or false,
+        --effectively costless compared to prodmods in the machines doing the galvanizing.
+        --also devalues the already-minor upgrade that is the advanced machine
+        --too good in space age bc foundries are op
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "galvanized-panel",
+        category = "electroplating",
+        ingredients = {
+            {type="item", name="iron-plate", amount=5},
+            {type="item", name="zinc-plate", amount=1},
+            {type="fluid", name="water", amount=50},
+        },
+        results = {
+            {type="fluid", name="depleted-zinc-salts", amount=10},
+            {type="item", name="galvanized-panel", amount=5, ignored_by_productivity=mods["quality"] and 5 or 0},
+        },
+        main_product = "galvanized-panel",
+        energy_required = 2,
+        auto_recycle = false,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "galvanized-rod",
+        category = "electroplating",
+        ingredients = {
+            {type="item", name="iron-stick", amount=5},
+            {type="item", name="zinc-plate", amount=1},
+            {type="fluid", name="water", amount=50},
+        },
+        results = {
+            {type="fluid", name="depleted-zinc-salts", amount=10},
+            {type="item", name="galvanized-rod", amount=5, ignored_by_productivity=mods["quality"] and 5 or 0}
+        },
+        main_product = "galvanized-rod",
+        energy_required = 2,
+        auto_recycle = false,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "galvanized-tubing",
+        category = "electroplating",
+        ingredients = {
+            {type="item", name="pipe", amount=5},
+            {type="item", name="zinc-plate", amount=1},
+            {type="fluid", name="water", amount=50},
+        },
+        results = {
+            {type="fluid", name="depleted-zinc-salts", amount=10},
+            {type="item", name="galvanized-tubing", amount=5, ignored_by_productivity=mods["quality"] and 5 or 0}
+        },
+        main_product = "galvanized-tubing",
+        energy_required = 4,
+        auto_recycle = false,
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "malleable-logarithmic-casing",
+        category = "crafting",
+        ingredients = {
+            {type="item", name="galvanized-panel", amount=2},
+            {type="item", name="galvanized-rod", amount=2},
+        },
+        results = {
+            {type="item", name="malleable-logarithmic-casing", amount=1}
+        },
+        energy_required = 1,
+        lasermill_vanilla = {helium = -1},
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
+        enabled = false
+    },
+    {
+        type = "recipe",
+        name = "loadbearing-lattice",
+        category = "crafting",
+        ingredients = {
+            {type="item", name="galvanized-steel-plate", amount=1},
+            {type="item", name="galvanized-panel", amount=1},
+            {type="item", name="galvanized-rod", amount=4},
+        },
+        results = {
+            {type="item", name="loadbearing-lattice", amount=1}
+        },
+        energy_required = 2,
+        lasermill_vanilla = {helium = -1},
+        lasermill_dlc = {helium = -1},
+        allow_productivity = true,
+        enabled = false
+    }
+})
+
+rm.AddIngredient("complex-joint", "galvanized-rod", 8)
+
+if mods["space-age"] then
+    data.raw.recipe["hot-dip-galvanized-steel"].subgroup = "electroplating"
+    data.raw.recipe["hot-dip-galvanized-steel"].order = d2
+
+    data:extend({
+        {
+            type = "recipe",
+            name = "spurving-bearing",
+            category = "metallurgy",
+            surface_conditions =
+            {
+              {
+                property = "pressure",
+                min = 4000,
+                max = 4000
+              }
+            },
+            ingredients = {
+                {type="item", name="tungsten-plate", amount=5},
+                {type="item", name="bearing", amount=1},
+                {type="item", name="brass-balls", amount=12},
+            },
+            results = {
+                {type="item", name="spurving-bearing", amount=1}
+            },
+            energy_required = 6,
+            allow_productivity = true,
+            force_auto_recycle = true,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "hot-dip-galvanized-panel",
+            icon = "__pf-sa-compat__/graphics/icons/hot-dip-galvanized-panel.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            subgroup = "electroplating",
+            order = "a2",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="molten-zinc", amount=10, fluidbox_multiplier=10},
+                {type="item", name="iron-plate", amount=5},
+            },
+            results = {
+                {type="item", name="galvanized-panel", amount=5}
+            },
+            localised_description = {"recipe-description.hint-no-foundry-productivity"},
+            maximum_productivity = 0,
+            energy_required = 2,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "hot-dip-galvanized-rod",
+            icon = "__pf-sa-compat__/graphics/icons/hot-dip-galvanized-rod.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            subgroup = "electroplating",
+            order = "b2",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="molten-zinc", amount=10, fluidbox_multiplier=10},
+                {type="item", name="iron-stick", amount=5},
+            },
+            results = {
+                {type="item", name="galvanized-rod", amount=5}
+            },
+            localised_description = {"recipe-description.hint-no-foundry-productivity"},
+            maximum_productivity = 0,
+            energy_required = 2,
+            enabled = false
+        },
+        {
+            type = "recipe",
+            name = "hot-dip-galvanized-tubing",
+            icon = "__pf-sa-compat__/graphics/icons/hot-dip-galvanized-tubing.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            subgroup = "electroplating",
+            order = "c2",
+            category = "metallurgy",
+            ingredients = {
+                {type="fluid", name="molten-zinc", amount=10, fluidbox_multiplier=10},
+                {type="item", name="pipe", amount=5},
+            },
+            results = {
+                {type="item", name="galvanized-tubing", amount=5}
+            },
+            localised_description = {"recipe-description.hint-no-foundry-productivity"},
+            maximum_productivity = 0,
+            energy_required = 2,
+            enabled = false
+        },
+    })
+end
+
+if mods["bztin"] and data.raw.item["tinned-cable"] then
+    data.raw.recipe["tinned-cable"].category = "electroplating"
+    data.raw.recipe["tinned-cable"].allow_productivity = true
+    data.raw.recipe["tinned-cable"].auto_recycle = false
+    data.raw.item["tinned-cable"].auto_recycle = false
+end
+
+if mods["quality"] then
+    data.raw.recipe["galvanized-panel"].localised_description = {"recipe-description.hint-prodmod-only-salt"}
+    data.raw.recipe["galvanized-rod"].localised_description = {"recipe-description.hint-prodmod-only-salt"}
+    data.raw.recipe["galvanized-tubing"].localised_description = {"recipe-description.hint-prodmod-only-salt"}
+
+    data.raw.item["galvanized-panel"].localised_description = {"recipe-description.hint-nonstandard-recycling"}
+    data.raw.item["galvanized-rod"].localised_description = {"recipe-description.hint-nonstandard-recycling"}
+    data.raw.item["galvanized-tubing"].localised_description = {"recipe-description.hint-nonstandard-recycling"}
+
+    --rm.AddProduct("galvanized-panel", {type="item", name="galvanized-panel", amount=0, ignored_by_productivity=1})
+    --rm.AddProduct("galvanized-rod", {type="item", name="galvanized-rod", amount=0, ignored_by_productivity=1})
+    --rm.AddProduct("galvanized-tubing", {type="item", name="galvanized-tubing", amount=0, ignored_by_productivity=1})
+
+    data:extend({
+        {
+            type = "recipe",
+            name = "custom-galvanized-panel-recycling",
+            localised_name = {"recipe-name.recycling", {"item-name.galvanized-panel"}},
+            icons = {
+                    {
+                        icon = "__quality__/graphics/icons/recycling.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__BrassTacks__/graphics/classic/icons/galvanized-panel.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__quality__/graphics/icons/recycling-top.png",
+                        icon_size = 64
+                      }
+            },
+            category = "recycling",
+            ingredients = {
+                {type="item", name="galvanized-panel", amount=1}
+            },
+            results = {
+                {type="item", name="iron-plate", amount=1, probability = 0.75},
+                {type="item", name="zinc-ore", amount=1, probability = 0.02}
+            },
+            bespoke = "galvanized-panel",
+            energy_required = 1/16,
+            allow_productivity = false,
+            allow_quality = false, -- not lossy enough to be balanced against other recycling recipes
+            hidden = true,
+            allow_decomposition = false,
+            unlock_results = false
+        },
+        {
+            type = "recipe",
+            name = "custom-galvanized-rod-recycling",
+            localised_name = {"recipe-name.recycling", {"item-name.galvanized-rod"}},
+            icons = {
+                    {
+                        icon = "__quality__/graphics/icons/recycling.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__BrassTacks__/graphics/classic/icons/galvanized-rod.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__quality__/graphics/icons/recycling-top.png",
+                        icon_size = 64
+                      }
+            },
+            category = "recycling",
+            ingredients = {
+                {type="item", name="galvanized-rod", amount=1}
+            },
+            results = {
+                {type="item", name="iron-stick", amount=1, probability = 0.75},
+                {type="item", name="zinc-ore", amount=1, probability = 0.02}
+            },
+            bespoke = "galvanized-rod",
+            energy_required = 1/16,
+            allow_productivity = false,
+            allow_quality = false, -- not lossy enough to be balanced against other recycling recipes
+            hidden = true,
+            allow_decomposition = false,
+            unlock_results = false
+        },
+        {
+            type = "recipe",
+            name = "custom-galvanized-tubing-recycling",
+            localised_name = {"recipe-name.recycling", {"item-name.galvanized-tubing"}},
+            icons = {
+                    {
+                        icon = "__quality__/graphics/icons/recycling.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__BrassTacks__/graphics/classic/icons/galvanized-tubing.png",
+                        icon_size = 64
+                      },
+                      {
+                        icon = "__quality__/graphics/icons/recycling-top.png",
+                        icon_size = 64
+                      }
+            },
+            category = "recycling",
+            ingredients = {
+                {type="item", name="galvanized-tubing", amount=1}
+            },
+            results = {
+                {type="item", name="pipe", amount=1, probability = 0.75},
+                {type="item", name="zinc-ore", amount=1, probability = 0.02}
+            },
+            bespoke = "galvanized-tubing",
+            energy_required = 1/16,
+            allow_productivity = false,
+            allow_quality = false, -- not lossy enough to be balanced against other recycling recipes
+            hidden = true,
+            allow_decomposition = false,
+            unlock_results = false
+        }
+    })
+
+    if mods["bztin"] and data.raw.item["tinned-cable"] then
+        data.raw.recipe["tinned-cable"].localised_description = {"recipe-description.hint-prodmod-only-organotins"}
+    
+        data.raw.item["tinned-cable"].localised_description = {"recipe-description.hint-nonstandard-recycling"}
+        data:extend({
+            {
+                type = "recipe",
+                name = "custom-tinned-cable-recycling",
+                localised_name = {"recipe-name.recycling", {"item-name.tinned-cable"}},
+                icons = {
+                        {
+                            icon = "__quality__/graphics/icons/recycling.png",
+                            icon_size = 64
+                          },
+                          {
+                            icon = "__bztin__/graphics/icons/tinned-cable.png",
+                            icon_size = 64,
+                            icon_mipmaps = 4
+                          },
+                          {
+                            icon = "__quality__/graphics/icons/recycling-top.png",
+                            icon_size = 64
+                          }
+                },
+                category = "recycling",
+                ingredients = {
+                    {type="item", name="tinned-cable", amount=1}
+                },
+                results = {
+                    {type="item", name="copper-cable", amount=1, probability=0.7},
+                    {type="item", name="tin-ore", amount=1, probability = 0.005}
+                },
+                bespoke = "tinned-cable",
+                energy_required = 1/32,
+                allow_productivity = false,
+                allow_quality = false, -- not lossy enough to be balanced against other recycling recipes
+                hidden = true,
+                allow_decomposition = false,
+                unlock_results = false
+            }
+        })
+        rm.AddProduct("tinned-cable", {type="item", name="tinned-cable", amount=0, ignored_by_productivity=8})
+    end
+else
 end

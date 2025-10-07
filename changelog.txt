@@ -1,66 +1,23 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.4.9
-Date: ????
+Version: 2.0.0
+  Compatibility:
+    - Updated for compatibility with Factorio 2.0 and Space Age.
+  Features:
+    - [space-age] Added sphalerite processing to obtain zinc on Vulcanus.
+    - [space-age] Added zinc bacteria to obtain zinc on Gleba.
+    - [space-age] Added brassteroids which can be processed to yield brass. Advanced brassteroid processing yields copper and zinc separately.
+    - Added electroplating machine and several new galvanized parts (Maximal difficulty only)
+    - New intermediates added to Maximal difficulty: Loadbearing lattice, malleable logarithmic casing, and [space-age] spurving bearing
   Changes:
----------------------------------------------------------------------------------------------------
-Version: 2.4.8
-Date: 2025-10-07
-  Changes:
-    - Fix for improper recipe being used for foundry tech 
-    - Fix to catalyst recipes still using old definition
----------------------------------------------------------------------------------------------------
-Version: 2.4.7
-Date: 2025-09-30
-  Changes:
-    - Fixed graphite not being defined when Brimstuff was enabled, a mod modified the number of resources in a recipe before this mod's data-update, and BZCarbon was disabled. 
----------------------------------------------------------------------------------------------------
-Version: 2.4.6
-Date: 2025-09-30
-  Changes:
-    - Removed RCU references. Will need to replace these with something
-  Bugfixes:
-    - Fixed Fluids Must Flow & Flow Control incompatibility
-    - Fixed softlock with Iron Sticks not being unlocked. How did this even work in the 1.1 mod??
----------------------------------------------------------------------------------------------------
-Version: 2.4.5
-Date: 2025-09-29
-  Bugfixes:
-    - Fixed circular dependency with IfNickel-Updated
----------------------------------------------------------------------------------------------------
-Version: 2.4.4
-Date: 2025-09-29
-  Changes:
-    - Changed mod version to major 2.X
-  Bugfixes:
-    - Fixed IfNickel-Updated compatibility
-    - Fixed naming for other planetfall-Updated mods to be released
-    - Fixes to technologies being used
-    - Fixed AAI compatibility
-    - Fixed issue with main_products not being defined when modifying recipes
----------------------------------------------------------------------------------------------------
-Version: 1.4.3
-Date: 2025-09-28
-  Bugfixes:
-    - Fixed incorrect technology being used for unlocking flanges
----------------------------------------------------------------------------------------------------
-Version: 1.4.2
-Date: 2025-09-27
-  Bugfixes:
-    - Fixed crashes when Krastorio 2 was enabled with the hardmode option enabled
-    - Fixed crash with If I Had A Nickel was enabled
-    - Fixed crash when technologies had pre-reqs removed
-    - Migrated Factorio 1.1 technology names to Factorio 2.0 technology names
-    - Fixed an issue with the gyroscope setting when If I Had A Nickel was enabled
----------------------------------------------------------------------------------------------------
-Version: 1.4.1
-Date: 2025-09-27
-  Bugfixes:
-    - Fixed crash on startup when a recipe ingredient or prereq was being removed
----------------------------------------------------------------------------------------------------
-Version: 1.4.0
-Date: 2025-09-27
-  Changes:
-    - Updated to 2.0 and fixed k2 compat and name definitions.
+    - Broke out prototype-manipulation functions into a separate mod, so I don't need to update every single mod whenever there is inevitably a small bug.
+    - Difficulty selection is now handled by a single option in pf-functions. The options are now Minimal (comparable to old easy mode), Moderate (comparable to old hard mode, some things are softened when used with Space Age to expedite getting off Nauvis), and Maximal (lots of extra middle fingers to you and your plans.)
+    - Renamed several items. Bolted flange -> pipe flange. Articulated mechanism -> linkages. Gearbox -> fast gearbox. Advanced gearbox -> express gearbox.
+    - Merged electric engine unit, mechanical engineering 2, and gyroscope into a single technology.
+    - Gyroscopes' internal name is now always gyro, and they also always replace BZ gyroscopes. This is rude, but makes maintaining all possible combinations of mods easier.
+  Balancing:
+    - Galvanized steel was moved from Moderate to Minimal difficulty.
+    - Pipe flanges were moved from Minimal to Moderate difficulty.
+    - Lots of minor recipe tweaks across the board.
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.8
@@ -175,7 +132,7 @@ Version: 1.2.4
     - Changed changelog headings for mod compatibility from "modding" to "compatibility"
   Compatibility:
     - (exp) Added intermediates to recipes from SE Space Trains
-    - (bzsilicon) No longer overrides the technology name and description or item name for the bzsilicon gyroscope if the Brass Tacks gyroscope is disabled.
+    - (bzsilicon) No longer overrides the technology name and description or item name for the bzsilicon gyro if the Brass Tacks gyro is disabled.
     - Added airtight seals to valves from Flow Control
     - Basic integration with 248k mod. There is allegedly a startup error with Brass Tacks + 248k but I cannot replicate it. Any more details are appreciated.
   Graphics:
@@ -296,7 +253,7 @@ Version: 1.1.4
     - (exp) Added marathon recipes for flywheels and articulated mechanisms.
   Features:
     - (SE, exp) Added new SE-only (really AAI signal transmission only) experimental intermediate, skyseeker armature. Required for stuff that has to point at the sky with precision (delivery cannons, telescopes, artillery, etc). Sprite still needs some work.
-    - (exp) Added new experimental intermediate, gyroscope. Primarily needed for bot frames and rocket control units. The BZ silicon gyroscope takes precedence by default but there is a startup setting to override it with the Brass Tacks gyroscope icon and recipe (which is more expensive).
+    - (exp) Added new experimental intermediate, gyro. Primarily needed for bot frames and rocket control units. The BZ silicon gyro takes precedence by default but there is a startup setting to override it with the Brass Tacks gyro icon and recipe (which is more expensive).
   Locale:
     - Change display name of gear wheels to brass gear wheels if all iron is removed from their recipe (internal id unaffected)
   Graphics:
