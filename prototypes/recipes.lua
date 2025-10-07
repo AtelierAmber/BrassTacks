@@ -466,8 +466,8 @@ if mods["Krastorio2"] then
         name = "enriched-zinc",
         category = "chemistry",
         energy_required = 3,
-        ingredients = {{type="item", name="zinc-ore", amount=9}, {type="fluid", name="sulfuric-acid", amount=3}, {type="fluid", name="water", amount=25, catalyst_amount = 25}},
-        results = {{type="item", name="enriched-zinc", amount=(mods["space-exploration"] and 9 or 6)}, {type="fluid", name="kr-dirty-water", amount=25, catalyst_amount=25}},
+        ingredients = {{type="item", name="zinc-ore", amount=9}, {type="fluid", name="sulfuric-acid", amount=3}, {type="fluid", name="water", amount=25, ignored_by_stats = 25}},
+        results = {{type="item", name="enriched-zinc", amount=(mods["space-exploration"] and 9 or 6)}, {type="fluid", name="kr-dirty-water", amount=25, ignored_by_productivity=25, ignored_by_stats=25}},
         main_product = "enriched-zinc",
         enabled = false
         --default white chemplant tint is fine for once!
@@ -505,8 +505,8 @@ if mods["Krastorio2"] then
     			}
     		},
     		energy_required = 2,
-    		ingredients = { {type = "fluid", name = "kr-dirty-water", amount = 100, catalyst_amount = 100} },
-    		results =	{ {type = "fluid", name = "water", amount = 90, catalyst_amount = 90}, {type = "item",  name = "stone", probability = 0.3, amount = 1}, {type = "item",  name = "zinc-ore", probability = 0.1, amount = 1},
+    		ingredients = { {type = "fluid", name = "kr-dirty-water", amount = 100, ignored_by_stats = 100} },
+    		results =	{ {type = "fluid", name = "water", amount = 90, ignored_by_productivity=90, ignored_by_stats = 90}, {type = "item",  name = "stone", probability = 0.3, amount = 1}, {type = "item",  name = "zinc-ore", probability = 0.1, amount = 1},
     		},
     		crafting_machine_tint =
     		{
