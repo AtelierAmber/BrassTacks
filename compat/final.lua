@@ -21,8 +21,8 @@ if mods["Krastorio2"] then
   end
 
   if mods["bzlead"] and parts.experimental then
-    rm.RemoveIngredient("kr-fluid-storage-1", "lead-plate", 10)
-    rm.RemoveIngredient("kr-fluid-storage-2", "lead-plate", 30)
+    rm.RemoveIngredient("kr-big-storage-tank", "lead-plate", 10)
+    rm.RemoveIngredient("kr-huge-storage-tank", "lead-plate", 30)
     rm.RemoveIngredient("kr-advanced-furnace", "lead-plate", 20)
   end
 
@@ -137,7 +137,7 @@ end
 
 if parts.experimental or mods["Krastorio2"] then
   cu.moveItem("iron-stick", "frame-components", "a")
-  cu.moveItem("iron-beam", "frame-components", "b")
+  cu.moveItem("kr-iron-beam", "frame-components", "b")
   cu.moveItem("kr-steel-beam", "frame-components", "c")
   if mods["Krastorio2"] then
     cu.moveItem("galvanized-steel-plate", "frame-components", "ca")

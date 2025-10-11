@@ -119,7 +119,7 @@ end
 
 if mods["space-exploration"] then
 
-  rm.AddProductRaw("se-scrap-recycling", {type="item", name="zinc-ore", amount=1, probability=0.05})
+  rm.AddProductRaw("se-scrap-hard-recycling", {type="item", name="zinc-ore", amount=1, probability=0.05})
 
   if parts.experimental then
     tf.addPrereq("se-meteor-defence", "skyseeker-armature")
@@ -158,8 +158,8 @@ if mods["space-exploration"] then
 
     rm.AddIngredient("se-heavy-assembly", "complex-joint", 4)
 
-    rm.ReplaceIngredient("se-core-miner", "steel-plate", "galvanized-steel-plate", 50)
-    rm.ReplaceIngredient("se-core-miner", "steel-plate", "hardened-hull", 50)
+    rm.ReplaceIngredient("se-core-miner-drill", "steel-plate", "galvanized-steel-plate", 50)
+    rm.ReplaceIngredient("se-core-miner-drill", "steel-plate", "hardened-hull", 50)
 
     rm.AddIngredient("se-spaceship-clamp", "complex-joint", 5)
     rm.AddIngredient("se-spaceship-gate", "complex-joint", 6)

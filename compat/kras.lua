@@ -97,7 +97,7 @@ if mods["Krastorio2"] then
       rm.AddIngredient("kr-se-deep-space-loader-black", "elite-gearbox", 2)
 
       if mods["space-exploration"] then
-        rm.ReplaceIngredient("se-deep-space-transport-belt", "se-heavy-bearing", "elite-gearbox", 1)
+        rm.ReplaceIngredient("se-deep-space-transport-belt-black", "se-heavy-bearing", "elite-gearbox", 1)
         rm.ReplaceProportional("se-heavy-assembly", "kr-imersium-beam", "elite-gearbox", 0.5)
       end
 
@@ -142,24 +142,22 @@ if mods["Krastorio2"] then
         rm.AddIngredient("kr-quarry-drill", "bearing", 10)
       end
 
-      rm.AddIngredient("kr-medium-container", "articulated-mechanism", 5)
-      rm.ReplaceIngredient("kr-medium-container", "kr-steel-beam", "galvanized-steel-plate", 5)
-      rm.AddIngredient("kr-big-container", "articulated-mechanism", 20)
-      rm.ReplaceIngredient("kr-big-container", "kr-steel-beam", "galvanized-steel-plate", 50)
+      rm.AddIngredient("kr-strongbox", "articulated-mechanism", 5)
+      rm.ReplaceIngredient("kr-strongbox", "kr-steel-beam", "galvanized-steel-plate", 5)
+      rm.AddIngredient("kr-warehouse", "articulated-mechanism", 20)
+      rm.ReplaceIngredient("kr-warehouse", "kr-steel-beam", "galvanized-steel-plate", 50)
 
-      rm.AddIngredient("kr-big-passive-provider-container", "complex-joint", 5)
-      rm.AddIngredient("kr-big-active-provider-container", "complex-joint", 5)
-      rm.AddIngredient("kr-big-requester-container", "complex-joint", 5)
-      rm.AddIngredient("kr-big-buffer-container", "complex-joint", 5)
-      rm.AddIngredient("kr-big-storage-container", "complex-joint", 5)
+      rm.AddIngredient("kr-passive-provider-warehouse", "complex-joint", 5)
+      rm.AddIngredient("kr-active-provider-warehouse", "complex-joint", 5)
+      rm.AddIngredient("kr-requester-warehouse", "complex-joint", 5)
+      rm.AddIngredient("kr-buffer-warehouse", "complex-joint", 5)
+      rm.AddIngredient("kr-storage-warehouse", "complex-joint", 5)
 
       rm.AddIngredient("kr-superior-inserter", "complex-joint", 1)
       rm.AddIngredient("kr-superior-long-inserter", "complex-joint", 2)
-      rm.AddIngredient("kr-superior-filter-inserter", "complex-joint", 1)
-      rm.AddIngredient("kr-superior-long-filter-inserter", "complex-joint", 2)
 
-      rm.ReplaceIngredient("kr-fluid-storage-1", "kr-steel-beam", "hardened-hull", 10)
-      rm.ReplaceIngredient("kr-fluid-storage-2", "kr-steel-beam", "hardened-hull", 20)
+      rm.ReplaceIngredient("kr-big-storage-tank", "kr-steel-beam", "hardened-hull", 10)
+      rm.ReplaceIngredient("kr-huge-storage-tank", "kr-steel-beam", "hardened-hull", 20)
       rm.ReplaceIngredient("kr-steel-pump", "kr-steel-beam", "galvanized-steel-plate")
 
       rm.RemoveIngredient("kr-nuclear-locomotive", "kr-steel-gear-wheel", 20)
@@ -188,8 +186,8 @@ if mods["Krastorio2"] then
         rm.RemoveIngredient("kr-advanced-tank", parts.gyroscope, 99)
         rm.AddIngredient("kr-advanced-tank", parts.gyroscope, 10)
 
-        rm.RemoveIngredient("advanced-exoskeleton-equipment", parts.gyroscope, 99)
-        rm.AddIngredient("advanced-exoskeleton-equipment", parts.gyroscope, 8)
+        rm.RemoveIngredient("kr-advanced-exoskeleton-equipment", parts.gyroscope, 99)
+        rm.AddIngredient("kr-advanced-exoskeleton-equipment", parts.gyroscope, 8)
 
         rm.RemoveIngredient("kr-laser-artillery-turret", parts.gyroscope, 99)
         rm.AddIngredient("kr-laser-artillery-turret", parts.gyroscope, 10)
@@ -213,23 +211,21 @@ if mods["Krastorio2"] then
         rm.AddIngredient("kr-superior-splitter", "bearing", 10)
       end
 
-      rm.AddIngredient("kr-big-passive-provider-container", "iron-gear-wheel", 10)
-      rm.AddIngredient("kr-big-active-provider-container", "iron-gear-wheel", 10)
-      rm.AddIngredient("kr-big-requester-container", "iron-gear-wheel", 10)
-      rm.AddIngredient("kr-big-buffer-container", "iron-gear-wheel", 10)
-      rm.AddIngredient("kr-big-storage-container", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-passive-provider-warehouse", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-active-provider-warehouse", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-requester-warehouse", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-buffer-warehouse", "iron-gear-wheel", 10)
+      rm.AddIngredient("kr-storage-warehouse", "iron-gear-wheel", 10)
 
       if not mods["space-exploration"] then
         rm.AddIngredient("kr-superior-inserter", "bearing", 2)
         rm.AddIngredient("kr-superior-long-inserter", "bearing", 2)
-        rm.AddIngredient("kr-superior-filter-inserter", "bearing", 2)
-        rm.AddIngredient("kr-superior-long-filter-inserter", "bearing", 2)
       end
       rm.AddIngredient("kr-quarry-drill", "bearing", 10)
     end
 
-    rm.AddIngredient("kr-fluid-storage-1", "bolted-flange", 4)
-    rm.AddIngredient("kr-fluid-storage-2", "bolted-flange", 12)
+    rm.AddIngredient("kr-big-storage-tank", "bolted-flange", 4)
+    rm.AddIngredient("kr-huge-storage-tank", "bolted-flange", 12)
 
     tf.addRecipeUnlock(mods["aai-industry"] and "basic-fluid-handling" or "fluid-handling", "bolted-flange")
 
@@ -250,21 +246,21 @@ if mods["Krastorio2"] then
     end
 
     rm.AddIngredient("kr-steel-pump", advfitting, 2)
-    rm.AddIngredient("rocket-fuel-with-ammonia", advfitting, 1)
-    rm.AddIngredient("rocket-fuel-with-hydrogen-chloride", advfitting, 1)
+    rm.AddIngredient("kr-rocket-fuel-with-ammonia", advfitting, 1)
+    rm.AddIngredient("kr-rocket-fuel-with-hydrogen-chloride", advfitting, 1)
 
-    rm.AddIngredient("kr-medium-passive-provider-container", "iron-gear-wheel", 2)
-    rm.AddIngredient("kr-medium-active-provider-container", "iron-gear-wheel", 2)
-    rm.AddIngredient("kr-medium-requester-container", "iron-gear-wheel", 2)
-    rm.AddIngredient("kr-medium-buffer-container", "iron-gear-wheel", 2)
-    rm.AddIngredient("kr-medium-storage-container", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-passive-provider-strongbox", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-active-provider-strongbox", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-requester-strongbox", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-buffer-strongbox", "iron-gear-wheel", 2)
+    rm.AddIngredient("kr-storage-strongbox", "iron-gear-wheel", 2)
 
     if not mods["aai-industry"] then
       rm.AddIngredient("kr-electric-mining-drill-mk3", "bearing", 20)
     end
 
-    rm.AddIngredient("rifle-magazine", "brass-plate", 1)
-    rm.AddIngredient("anti-material-rifle-magazine", "brass-plate", 1)
+    rm.AddIngredient("kr-rifle-magazine", "brass-plate", 1)
+    rm.AddIngredient("kr-anti-materiel-rifle-magazine", "brass-plate", 1)
 
     rm.multiply("kr-steel-pipe", 5, true, true, true)
     rm.AddIngredient("kr-steel-pipe", "bolted-flange", 1)

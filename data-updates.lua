@@ -113,7 +113,7 @@ if parts.experimental then
     rm.AddIngredient("iron-chest", "articulated-mechanism", 1)
   end
   rm.AddIngredient("steel-chest", "articulated-mechanism", 1)
-  rm.RemoveIngredient("refined-concrete", "iron-beam", 10)
+  rm.RemoveIngredient("refined-concrete", "kr-iron-beam", 10)
 
   rm.ReplaceIngredient("assembling-machine-1", "iron-gear-wheel", "articulated-mechanism", 5)
 
@@ -265,7 +265,7 @@ if parts.experimental then
   rm.AddIngredient("express-splitter", "advanced-gearbox", 2)
   rm.AddIngredient("express-splitter", "complex-joint", 2)
 
-  rm.AddIngredient("fusion-reactor-equipment", "hardened-hull", 50)
+  rm.AddIngredient("kr-fusion-reactor-equipment", "hardened-hull", 50)
 
   rm.RemoveIngredient("fast-transport-belt-beltbox", "iron-gear-wheel", 20)
   rm.AddIngredient("fast-transport-belt-beltbox", "gearbox", 4)
@@ -383,10 +383,6 @@ if not mods["galdocs-manufacturing"] then
 
   rm.ReplaceIngredient("fast-inserter", "iron-plate", "iron-gear-wheel", 2)
   rm.RemoveIngredient("fast-inserter", "aluminum-plate", 2)
-  if mods["Krastorio2"] and not mods["aai-industry"] then
-    rm.ReplaceIngredient("filter-inserter", "iron-plate", "iron-gear-wheel", 2)
-    rm.RemoveIngredient("filter-inserter", "aluminum-plate", 2)
-  end
 end
 
 rm.AddIngredient("storage-tank", "bolted-flange", 4)
@@ -405,12 +401,12 @@ end
 rm.AddIngredient("logistic-robot", "bearing", 2)
 
 if not mods["galdocs-manufacturing"] then
-  rm.AddIngredient("logistic-chest-passive-provider", "iron-gear-wheel", 1)
+  rm.AddIngredient("passive-provider-chest", "iron-gear-wheel", 1)
   if not mods["aai-containers"] then
-    rm.AddIngredient("logistic-chest-active-provider", "iron-gear-wheel", 1)
-    rm.AddIngredient("logistic-chest-storage", "iron-gear-wheel", 1)
-    rm.AddIngredient("logistic-chest-requester", "iron-gear-wheel", 1)
-    rm.AddIngredient("logistic-chest-buffer", "iron-gear-wheel", 1)
+    rm.AddIngredient("active-provider-chest", "iron-gear-wheel", 1)
+    rm.AddIngredient("storage-chest", "iron-gear-wheel", 1)
+    rm.AddIngredient("requester-chest", "iron-gear-wheel", 1)
+    rm.AddIngredient("buffer-chest", "iron-gear-wheel", 1)
   end
 end
 
