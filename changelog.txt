@@ -1,7 +1,14 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.9
-Date: ????
+Date: 2025-10-11
   Changes:
+    - Corrected dependecies list
+    - Added logging for missing recipes.
+    - Changed name to Brass Tacks Legacy
+  Bugfixes:
+    - Lots of Krastorio 2 fixes
+    - Space Ex migration fixes
+    - Fixed productivity not being usable for recipes
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.8
 Date: 2025-10-07
