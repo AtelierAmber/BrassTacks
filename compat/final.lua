@@ -65,7 +65,7 @@ end
 
 if mods["Krastorio2"] or parts.nickelExperiment or parts.drill or data.raw.item["skyseeker-armature"] then
   cu.moveItem("articulated-mechanism", "articulated-components", "a")
-  cu.moveItem("inserter-parts", "articulated-components", "b")
+  cu.moveItem("kr-inserter-parts", "articulated-components", "b")
   cu.moveItem("automation-core", "articulated-components", "c")
   cu.moveItem("motorized-articulator", "articulated-components", "d")
   cu.moveItem("complex-joint", "articulated-components", "e")

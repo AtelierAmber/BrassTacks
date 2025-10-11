@@ -51,9 +51,9 @@ if mods["Krastorio2"] then
         tf.addRecipeUnlock("kr-imersium-processing", "elite-gearbox")
       end
 
-      rm.RemoveIngredient("inserter-parts", "iron-stick", 4)
-      rm.RemoveIngredient("inserter-parts", "aluminum-plate", 1)
-      rm.AddIngredient("inserter-parts", "articulated-mechanism", 2)
+      rm.RemoveIngredient("kr-inserter-parts", "iron-stick", 4)
+      rm.RemoveIngredient("kr-inserter-parts", "aluminum-plate", 1)
+      rm.AddIngredient("kr-inserter-parts", "articulated-mechanism", 2)
 
       --gearboxes
       rm.ReplaceProportional("advanced-gearbox", "iron-gear-wheel", "kr-steel-gear-wheel", 1)
