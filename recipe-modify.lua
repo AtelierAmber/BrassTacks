@@ -2,6 +2,10 @@ local recipemod = {}
 
 local function AddToIngList(ingredients, toadd, count)
   local done = false
+  if not data.raw.item[toadd] or not data.raw.fluid[toadd] then
+    log("BRASSTACKS LOG: " .. toadd .. " not found!")
+    if data.raw.item["kr-" .. toadd] or data.raw.fluid["kr-" .. toadd] then log("K2 Version found!") end
+  end
   for k, v in pairs(ingredients) do
     if v[1] == toadd then
       v[2] = v[2] + count
@@ -29,11 +33,18 @@ function recipemod.AddIngredient(recipename, ingredient, amt)
     if rec.ingredients and amt and amt > 0 then
       AddToIngList(rec.ingredients, ingredient, amt)
     end
+  else
+    log("BRASSTACKS LOG: " .. recipename .. " recipe not found!")
+    if data.raw.recipe["kr-" .. recipename] then log("K2 Version found!") end
   end
 end
 
 local function RemoveFromIngList(ingredients, toremove, count)
   local done = false
+  if not data.raw.item[toremove] or not data.raw.fluid[toremove] then
+    log("BRASSTACKS LOG: " .. toremove .. " not found!")
+    if data.raw.item["kr-" .. toremove] or data.raw.fluid["kr-" .. toremove] then log("K2 Version found!") end
+  end
   for k, v in pairs(ingredients) do
     if v[1] == toremove then
       if v[2] > count then
@@ -63,6 +74,9 @@ function recipemod.RemoveIngredient(recipename, ingredient, amt)
     if rec.ingredients and amt then
       removed = RemoveFromIngList(rec.ingredients, ingredient, amt) or removed
     end
+  else
+    log("BRASSTACKS LOG: " .. recipename .. " recipe not found!")
+    if data.raw.recipe["kr-" .. recipename] then log("K2 Version found!") end
   end
   return removed
 end
@@ -75,6 +89,9 @@ function recipemod.RemoveProduct(recipename, product, amt)
     if rec.results and amt then
       removed = RemoveFromIngList(rec.results, product, amt) or removed
     end
+  else
+    log("BRASSTACKS LOG: " .. recipename .. " recipe not found!")
+    if data.raw.recipe["kr-" .. recipename] then log("K2 Version found!") end
   end
   return removed
 end
@@ -90,6 +107,15 @@ function recipemod.AddProductRaw(recipename, product)
     else
       rec.results = {product}
     end
+  else
+    if not rec then
+      log("BRASSTACKS LOG: " .. recipename .. " recipe not found!")
+      if data.raw.recipe["kr-" .. recipename] then log("K2 Version found!") end
+    end
+    if not product then 
+      log("BRASSTACKS LOG: " .. product .. " item not found!")
+      if data.raw.item["kr-" .. product] or data.raw.fluid["kr-" .. product] then log("K2 Version found!") end
+    end
   end
 end
 
@@ -97,6 +123,14 @@ end
 local function ReplaceInIngList(ingredients, toadd, toremove, count)
   local done = false
   local delete_index = -1
+  if not data.raw.item[toadd] or not data.raw.fluid[toadd] then
+    log("BRASSTACKS LOG: " .. toadd .. " not found!")
+    if data.raw.item["kr-" .. toadd] or data.raw.fluid["kr-" .. toadd] then log("K2 Version found!") end
+  end
+  if not data.raw.item[toremove] or not data.raw.fluid[toremove] then
+    log("BRASSTACKS LOG: " .. toremove .. " not found!")
+    if data.raw.item["kr-" .. toremove] or data.raw.fluid["kr-" .. toremove] then log("K2 Version found!") end
+  end
   for k, v in pairs(ingredients) do
     if v[1] == toadd then
       v[2] = v[2] + count
@@ -139,12 +173,19 @@ function recipemod.ReplaceIngredient(recipename, toreplace, ingredient, amt)
     if rec.ingredients and amt and amt > 0 then
       ReplaceInIngList(rec.ingredients, ingredient, toreplace, amt)
     end
+  else
+    log("BRASSTACKS LOG: " .. recipename .. " recipe not found!")
+    if data.raw.recipe["kr-" .. recipename] then log("K2 Version found!") end
   end
 end
 
 function recipemod.CheckIngredient(recipename, ingredient) -- omit mode to search all
   local rec = data.raw.recipe[recipename]
-  if not rec then return false end
+  if not rec then
+    log("BRASSTACKS LOG: " .. recipename .. " recipe not found!")
+    if data.raw.recipe["kr-" .. recipename] then log("K2 Version found!") end
+    return false 
+  end
   if rec.ingredients then
     for k, v in pairs(rec.ingredients) do
       if v[1] == ingredient then return true end
@@ -156,7 +197,11 @@ end
 
 function recipemod.ReplaceProportional(recipename, ingredient, replacement, factor) -- omit mode to search all
   local rec = data.raw.recipe[recipename]
-  if not rec then return false end
+  if not rec then
+    log("BRASSTACKS LOG: " .. recipename .. " recipe not found!")
+    if data.raw.recipe["kr-" .. recipename] then log("K2 Version found!") end
+    return false 
+  end
   local amt = 0
   if rec.ingredients then
     for k, v in pairs(rec.ingredients) do
@@ -185,6 +230,9 @@ function recipemod.multiply(recipe, factor, cost, output, time)
   if type(recipe) == "string" then
     if data.raw.recipe[recipe] then
       recipemod.multiply(data.raw.recipe[recipe], factor, cost, output, time)
+    else
+      log("BRASSTACKS LOG: " .. recipe .. " recipe not found!")
+      if data.raw.recipe["kr-" .. recipe] then log("K2 Version found!") end
     end
     return
   end
