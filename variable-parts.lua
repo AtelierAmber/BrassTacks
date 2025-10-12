@@ -59,7 +59,7 @@ if parts.experimental then
   end
 end
 
-if parts.experimental and data.raw.item["diamond"] and data.raw.item["tungsten-carbide"] and (mods["aai-industry"] or mods["big-mining-drill"] or mods["Krastorio2"] or mods["vtk-deep-core-mining"] or mods["248k"]) then
+if parts.experimental and data.raw.item["diamond"] and data.raw.item["tungsten-carbide"] and (mods["aai-industry"] or mods["big-mining-drill"] or mods["Krastorio2"] or mods["vtk-deep-core-mining"] or mods["248k-Redux"]) then
   parts.drill = true
 else
   parts.drill = false

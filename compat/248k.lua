@@ -8,7 +8,7 @@ if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
   advfitting = "airtight-seal"
 end
 
-if mods["248k"] then
+if mods["248k-Redux"] then
   -- electric era
   if parts.experimental then
     rm.ReplaceIngredient("gearbox", "galvanized-steel-plate", "el_materials_ALK", mods["Krastorio2"] and 4 or 2)
@@ -57,7 +57,8 @@ if mods["248k"] then
     rm.ReplaceProportional("fi_crusher_recipe", "engine-unit", "electric-engine-unit", 0.67)
     rm.ReplaceProportional("fi_fiberer_recipe", "engine-unit", "electric-engine-unit", 0.67)
     rm.ReplaceProportional("fi_compound_machine_recipe", "engine-unit", "electric-engine-unit", 0.67)
-    tf.addPrereq("fi_crusher_tech", "electric-engine-unit")
+    tf.removePrereq("electric-engine", "fi_caster_tech")
+    tf.addPrereq("fi_crusher_tech", "electric-engine")
   else
     tf.addPrereq("fi_crusher_tech", "lubricant")
   end
