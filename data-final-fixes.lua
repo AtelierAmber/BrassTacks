@@ -15,7 +15,7 @@ local allowed_recipes = {
   "galvanized-steel-plate",
   "hardened-hull",
   "complex-joint",
-  "gyroscope",
+  parts.gyroscope,
 
   "enriched-zinc",
   "enriched-zinc-plate",
