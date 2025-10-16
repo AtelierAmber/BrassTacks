@@ -1,7 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.12
-Date: ????
-  Changes:
+Date: 2025-10-16
+  Bugfixes:
+    - Fixed productivity with gyroscope when renamed (Cackling Fiend)
+    - Fixed 248k crusher tech not being modified
+    - Fixed space locomotive recipe
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.11
 Date: 2025-10-14
