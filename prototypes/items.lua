@@ -54,10 +54,10 @@ if not mods["galdocs-manufacturing"] then
         icon_size = 64, icon_mipmaps = 4,
         pictures =
             {
-              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",   scale = 0.25, mipmap_count = 4 },
-              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-1.png", scale = 0.25, mipmap_count = 4 },
-              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-2.png", scale = 0.25, mipmap_count = 4 },
-              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-3.png", scale = 0.25, mipmap_count = 4 }
+              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",   scale = 0.5, mipmap_count = 4 },
+              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-1.png", scale = 0.5, mipmap_count = 4 },
+              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-2.png", scale = 0.5, mipmap_count = 4 },
+              { size = 64, filename = "__BrassTacks-Updated__/graphics/icons/zinc-ore-3.png", scale = 0.5, mipmap_count = 4 }
             },
         subgroup = "raw-resource",
         --copper = e
