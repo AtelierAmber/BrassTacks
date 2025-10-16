@@ -327,12 +327,12 @@ end
 if mods["se-space-trains"] then
   if parts.experimental then
     if parts.gyroscope then
-        rm.RemoveIngredient("recipe-space-locomotive", parts.gyroscope, 99999)
-        rm.AddIngredient("recipe-space-locomotive", parts.gyroscope, 10)
-        rm.AddIngredient("recipe-space-cargo-wagon", parts.gyroscope, 1)
-        rm.AddIngredient("recipe-space-fluid-wagon", parts.gyroscope, 1)
+        rm.RemoveIngredient("space-locomotive", parts.gyroscope, 99999)
+        rm.AddIngredient("space-locomotive", parts.gyroscope, 10)
+        rm.AddIngredient("space-cargo-wagon", parts.gyroscope, 1)
+        rm.AddIngredient("space-fluid-wagon", parts.gyroscope, 1)
     end
-    rm.ReplaceProportional("recipe-space-locomotive", "kr-steel-gear-wheel", "advanced-gearbox", 0.1)
-    rm.ReplaceProportional("recipe-space-locomotive", "iron-gear-wheel", "advanced-gearbox", 0.1)
+    rm.ReplaceProportional("space-locomotive", "kr-steel-gear-wheel", "advanced-gearbox", 0.1)
+    rm.ReplaceProportional("space-locomotive", "iron-gear-wheel", "advanced-gearbox", 0.1)
   end
 end
