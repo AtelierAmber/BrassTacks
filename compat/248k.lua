@@ -40,7 +40,7 @@ if mods["248k-Redux"] then
     rm.ReplaceIngredient("fi_crafter_recipe", "iron-gear-wheel", "complex-joint", 10)
     rm.AddIngredient("fi_castor_recipe", "hardened-hull", 20)
     rm.AddIngredient("fu_miner_recipe", "hardened-hull", 20)
-    rm.AddIngredient("fu_crusher_recipe", "hardened-hull", 10)
+    rm.AddIngredient("fi_crusher_recipe", "hardened-hull", 10)
 
     rm.ReplaceProportional("fi_solid_reactor_recipe", "steel-plate", "hardened-hull", 0.5)
   else
@@ -51,7 +51,7 @@ if mods["248k-Redux"] then
   rm.ReplaceIngredient("fi_fiberer_recipe", "iron-gear-wheel", "bearing", 10)
   rm.ReplaceIngredient("fi_compound_machine_recipe", "iron-gear-wheel", "bearing", 10)
 
-  rm.AddIngredient("fi_empty_solution", advfitting, 1)
+  rm.AddIngredient("fi_empty_solution_recipe", advfitting, 1)
 
   if mods["aai-industry"] or mods["ThemTharHills-Updated"] then
     rm.ReplaceProportional("fi_crusher_recipe", "engine-unit", "electric-engine-unit", 0.67)
