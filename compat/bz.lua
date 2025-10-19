@@ -2,7 +2,7 @@ local rm = require("recipe-modify")
 local tf = require("techfuncs")
 local parts = require("variable-parts")
 
-if mods["bztin"] and settings.startup["brasstacks-solder-absorption"].value then
+if parts.bz.tin and settings.startup["brasstacks-solder-absorption"].value then
   rm.AddIngredient("bolted-flange", "solder", 1)
   rm.RemoveIngredient("storage-tank", "solder", 4)
   rm.RemoveIngredient("kr-big-storage-tank", "solder", 4)
@@ -16,16 +16,16 @@ if mods["bztin"] and settings.startup["brasstacks-solder-absorption"].value then
   rm.RemoveIngredient("gas-boiler", "solder", 1)
 end
 
-if mods["bztin"] and data.raw.item["bronze-plate"] then
+if parts.bz.tin and data.raw.item["bronze-plate"] then
   rm.RemoveIngredient("electric-engine-unit", "bronze-plate", 1)
   rm.ReplaceIngredient("bearing", "brass-plate", "bronze-plate", 1)
 end
 
-if mods["bzfoundry"] and parts.experimental then
+if parts.bz.foundry and parts.experimental then
   rm.ReplaceIngredient("electric-foundry", "steel-plate", "hardened-hull", 10)
 end
 
-if mods["bzlead"] and parts.experimental then
+if parts.bz.lead and parts.experimental then
   if mods["FreightForwarding"] then
     rm.AddIngredient("hardened-hull", "lead-plate", 2)
   else
@@ -38,7 +38,7 @@ if mods["bzlead"] and parts.experimental then
   --why is it there anyway lol. lead has a low melting point
 end
 
-if mods["bzgold"] then
+if parts.bz.gold then
   if data.raw.item["silver-brazing-alloy"] then
     rm.multiply("airtight-seal", 2, true, true, true)
     rm.AddIngredient("airtight-seal", "silver-brazing-alloy", 2)
@@ -55,7 +55,7 @@ if mods["bzgold"] then
   end
 end
 
-if parts.experimental and mods["bztungsten"] and (not mods["IfNickel-Updated"]) and (not mods["Krastorio2"]) then
+if parts.experimental and parts.bz.tungsten and (not mods["IfNickel-Updated"]) and (not mods["Krastorio2"]) then
   if data.raw.item["cuw"] then
     rm.ReplaceIngredient("hardened-hull", "iron-plate", "cuw", 2)
   else

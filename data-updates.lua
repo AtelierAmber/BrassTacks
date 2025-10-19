@@ -3,7 +3,7 @@ local tf = require("techfuncs")
 local parts = require("variable-parts")
 
 local advfitting = "bolted-flange"
-if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
+if parts.bz.carbon or mods["BrimStuff-Updated"] then
   advfitting = "airtight-seal"
   rm.RemoveIngredient("pump", "graphite", 2)
   if parts.nickel then
@@ -13,7 +13,7 @@ if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
   end
 
   if mods["BrimStuff-Updated"] then
-    if mods["bzcarbon"] then
+    if parts.bz.carbon then
       rm.ReplaceIngredient("airtight-seal", "graphite", "rubber", 2)
       rm.ReplaceIngredient("airtight-seal-vitalic", "graphite", "rubber", 25)
     else
@@ -446,7 +446,7 @@ if not mods["galdocs-manufacturing"] then
   rm.AddIngredient("shotgun-shell", "brass-plate", 1)
   rm.AddIngredient("cannon-shell", "brass-plate", 2)
   rm.AddIngredient("explosive-cannon-shell", "brass-plate", 2)
-  if mods["bzlead"] and settings.startup["bzlead-more-ammo"].value == "yes" then
+  if parts.bz.lead and settings.startup["bzlead-more-ammo"].value == "yes" then
     --it produces 2 mags, so 2x the casings
     rm.AddIngredient("firearm-magazine-iron-lead", "brass-plate", 2)
     rm.AddIngredient("firearm-magazine-iron-only", "brass-plate", 1)

@@ -1,5 +1,18 @@
 local parts = {}
 
+parts.bz = {}
+parts.bz.carbon = mods["bzcarbon"] or mods["bzcarbon2"]
+parts.bz.lead = mods["bzlead"] or mods["bzlead2"]
+parts.bz.silicon = mods["bzsilicon"] or mods["bzsilicon2"]
+parts.bz.tin = mods["bztin"] or mods["bztin2"]
+parts.bz.titanium = mods["bztitanium"] or mods["bztitanium2"]
+parts.bz.zirconium = mods["bzzirocnium"] or mods["bzzirocnium2"]
+parts.bz.gold = mods["bzgold"] or mods["bzgold2"]
+parts.bz.aluminum = mods["bzaluminum"] or mods["bzaluminum2"]
+parts.bz.gas = mods["bzgas"] or mods["bzgas2"]
+parts.bz.chlorine = mods["bzchlorine"] or mods["bzchlorine2"]
+parts.bz.tungsten = mods["bztungsten"] or mods["bztungsten2"]
+
 parts.experimental = settings.startup["brasstacks-experimental-intermediates"].value
 parts.nickel = mods["IfNickel-Updated"] and true or false
 if parts.nickel then
@@ -43,7 +56,7 @@ function parts.optionalIngredient(item, amount)
   end
 end
 
-if mods["bzfoundry"] and not settings.startup["bzfoundry-minimal"].value then
+if (mods["bzfoundry"] or mods["bzfoundry2"]) and not settings.startup["bzfoundry-minimal"].value then
   parts.foundryEnabled = true
 else
   parts.foundryEnabled = false

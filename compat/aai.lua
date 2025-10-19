@@ -4,7 +4,7 @@ local parts = require("variable-parts")
 local cu = require("category-utils")
 
 local advfitting = "bolted-flange"
-if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
+if parts.bz.carbon or mods["BrimStuff-Updated"] then
   advfitting = "airtight-seal"
 end
 
@@ -273,7 +273,7 @@ if mods["space-exploration"] then
   rm.RemoveIngredient("se-canister", "graphite", 5)
   rm.AddIngredient("se-space-pipe", advfitting, 1)
   rm.AddIngredient("se-nutrient-vat", advfitting, 1)
-  if advfitting == "airtight-seal" and mods["bzgold"] then
+  if advfitting == "airtight-seal" and parts.bz.gold then
     rm.RemoveIngredient("se-space-pipe", "silver-brazing-alloy", 99999)
   end
 

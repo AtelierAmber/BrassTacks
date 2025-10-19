@@ -3,7 +3,7 @@ local tf = require("techfuncs")
 local parts = require("variable-parts")
 
 local advfitting = "bolted-flange"
-if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
+if parts.bz.carbon or mods["BrimStuff-Updated"] then
   advfitting = "airtight-seal"
 end
 

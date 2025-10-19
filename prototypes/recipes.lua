@@ -20,7 +20,7 @@ end
 
 if not mods["galdocs-manufacturing"] then
   if mods["Krastorio2"] then
-    if mods["bzaluminum"] then
+    if parts.bz.aluminum then
       data:extend({
         {
           type = "recipe",
@@ -77,7 +77,7 @@ if not mods["galdocs-manufacturing"] then
         results = {{type="item", name="brass-plate", amount=1}},
       }
     })
-    if mods["bzaluminum"] then
+    if parts.bz.aluminum then
       data:extend({
         {
           type = "recipe",
@@ -173,7 +173,7 @@ data:extend({
   }
 })
 
-if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
+if parts.bz.carbon or mods["BrimStuff-Updated"] then
   data:extend({
     {
       type = "recipe",
@@ -181,7 +181,7 @@ if mods["bzcarbon"] or mods["BrimStuff-Updated"] then
       category = "advanced-crafting",
       enabled = false,
       energy_required = 2.5,
-      ingredients = {{type="item", name="bolted-flange", amount=1}, {type="item", name=mods["bzcarbon"] and "graphite" or "rubber", amount=2}},
+      ingredients = {{type="item", name="bolted-flange", amount=1}, {type="item", name=parts.bz.carbon and "graphite" or "rubber", amount=2}},
       results = {{type="item", name="airtight-seal", amount=1}},
       lasermill = {helium=data.raw.item["silver-brazing-alloy"] and 4 or 2, productivity=true}
     }
