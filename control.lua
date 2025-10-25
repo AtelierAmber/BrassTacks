@@ -7,11 +7,7 @@ script.on_init(
       end
       remote.call("freeplay", "set_created_items", care_package)
     end
-  end
-)
 
-script.on_init(
-  function()
     local luna = game.surfaces["luna"]
     if script.active_mods["LunarLandings"] and luna then
       local cheese_settings = game.surfaces.nauvis.map_gen_settings.autoplace_controls["cheese-ore"]
