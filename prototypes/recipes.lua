@@ -520,15 +520,13 @@ if mods["Krastorio2"] then
         name = "kr-matter-zinc-processing",
         icons = {
           {
-            icon = "__Krastorio2Assets__/technologies/matter-iron.png",
+            icon = "__Krastorio2Assets__/technologies/backgrounds/matter.png",
             icon_size = 256,
-            icon_mipmaps = 4,
           },
           {
             icon = "__BrassTacks-Updated__/graphics/icons/zinc-ore.png",
             icon_size = 64,
-            icon_mipmaps = 4,
-            scale = 2
+            scale = 1
           }
         },
         effects = {},
@@ -550,16 +548,16 @@ if mods["Krastorio2"] then
     material = {type = "item", name = "zinc-ore", amount=10},
     matter_count = 8,
     energy_required = 1,
-    need_stabilizer = false,
-    unlocked_by_technology = "kr-matter-zinc-processing"
+    needs_stabilizer = false,
+    unlocked_by = "kr-matter-zinc-processing"
   })
   matterutil.make_deconversion_recipe({
     material = {type="item", name="zinc-plate", amount=10},
     matter_count = mods["space-exploration"] and 7.5 or 10,
     energy_required = 3,
     only_deconversion = true,
-    need_stabilizer = true,
-    unlocked_by_technology = "kr-matter-zinc-processing"
+    needs_stabilizer = true,
+    unlocked_by = "kr-matter-zinc-processing"
   })
 end
 
