@@ -227,7 +227,7 @@ if mods["Krastorio2"] then
     rm.AddIngredient("kr-big-storage-tank", "bolted-flange", 4)
     rm.AddIngredient("kr-huge-storage-tank", "bolted-flange", 12)
 
-    tf.addRecipeUnlock(mods["aai-industry"] and "basic-fluid-handling" or "fluid-handling", "bolted-flange")
+    tf.addRecipeUnlock(mods["aai-industry"] and "basic-fluid-handling" or "steam-power", "bolted-flange")
 
     if mods["space-exploration"] then
       --se heavy bearings in superior belts
