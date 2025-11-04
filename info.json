@@ -31,7 +31,7 @@
     "? deadlock-beltboxes-loaders",
     "? DeadlockCrating",
     "? vtk-deep-core-mining",
-    "? Krastorio2",
+    "? Krastorio2 >= 2.0.11",
     "? FluidMustFlow",
     "? Expensive_Fluid_Must_Flow_Recipes",
     "? cargo-ships",

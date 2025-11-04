@@ -17,7 +17,7 @@ if mods["Krastorio2"] then
   if not parts.nickel then
     local ing = {}
     ing = data.raw.recipe["pumpjack"].ingredients
-    data.raw.recipe["kr-mineral-water-pumpjack"].ingredients = ing
+    --data.raw.recipe["kr-mineral-water-pumpjack"].ingredients = ing
   end
 
   if parts.bz.lead and parts.experimental then
