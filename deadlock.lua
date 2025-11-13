@@ -1,6 +1,6 @@
 local parts = require("variable-parts")
 
-if deadlock then
+if deadlock and deadlock.add_stack then
   deadlock.add_stack("zinc-ore", "__BrassTacks-Updated__/graphics/icons/zinc-ore-stacked.png", "deadlock-stacking-1", 64)
   deadlock.add_stack("zinc-plate", parts.qualityIconPath("brasstacks", "icons/stacking/zinc-plate-stacked.png"), "deadlock-stacking-1", 64)
   deadlock.add_stack("brass-plate", parts.qualityIconPath("brasstacks", "icons/stacking/brass-plate-stacked.png"), "deadlock-stacking-1", 64)
@@ -13,7 +13,7 @@ if deadlock then
   deadlock.add_stack("bearing", parts.qualityIconPath("brasstacks", "icons/stacking/bearing-stacked.png"), "deadlock-stacking-3", 64)
 end
 
-if deadlock_crating then
+if deadlock and deadlock.add_crate then
   deadlock_crating.add_crate("zinc-ore", "deadlock-crating-1")
   deadlock_crating.add_crate("zinc-plate", "deadlock-crating-1")
   deadlock_crating.add_crate("brass-plate", "deadlock-crating-1")
