@@ -36,7 +36,7 @@ if mods["textplates"] and not mods["galdocs-manufacturing"] then
     rm.ReplaceIngredient("textplate-small-steel", "steel-plate", "galvanized-steel-plate", 1)
     rm.ReplaceIngredient("textplate-large-steel", "steel-plate", "galvanized-steel-plate", 4)
   end
-  if not (data.raw.item["gold-plate"] or data.raw.item["ei_gold-plate"] or data.raw.item["fi_materials_gold"]) then
+  if not (data.raw.item["gold-plate"] or data.raw.item["ei_gold-plate"] or data.raw.item["fi_gold"]) then
     if data.raw.recipe["textplate-small-gold"] then
       rm.ReplaceIngredient("textplate-small-gold", "sulfur", "brass-plate", 1)
       rm.ReplaceIngredient("textplate-large-gold", "sulfur", "brass-plate", 4)
