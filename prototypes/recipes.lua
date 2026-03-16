@@ -34,6 +34,7 @@ if not mods["galdocs-manufacturing"] then
         {
           type = "recipe",
           name = "brass-plate-foundry",
+          localised_name = { "item-name.brass-plate" },
           category = parts.foundryEnabled and "founding" or "smelting",
           enabled = false,
           energy_required = 1.6 * yield,
@@ -57,6 +58,7 @@ if not mods["galdocs-manufacturing"] then
           {
             type = "recipe",
             name = "brass-plate-foundry",
+            localised_name = { "item-name.brass-plate" },
             category = "founding",
             enabled = false,
             energy_required = 1.6,
@@ -118,6 +120,7 @@ if not mods["galdocs-manufacturing"] then
         {
           type = "recipe",
           name = "brass-plate-foundry",
+          localised_name = { "item-name.brass-plate" },
           category = "founding",
           energy_required = 3.2,
           ingredients = {{type="item", name="copper-plate", amount=1}, {type="item", name="zinc-plate", amount=1}},

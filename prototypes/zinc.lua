@@ -52,20 +52,12 @@ data:extend({
     {
       sheet =
       {
-        filename = "__BrassTacks-Updated__/graphics/ore/zinc-ore.png",
+        filename = "__BrassTacks-Updated__/graphics/ore/hr-zinc-ore.png",
         priority = "extra-high",
-        size = 64,
+        size = 128,
         frame_count = 8,
         variation_count = 8,
-        hr_version =
-        {
-          filename = "__BrassTacks-Updated__/graphics/ore/hr-zinc-ore.png",
-          priority = "extra-high",
-          size = 128,
-          frame_count = 8,
-          variation_count = 8,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     mining_visualisation_tint = {r=0.7, g=0.7, b=0.75}
@@ -108,20 +100,12 @@ if mods["LunarLandings"] then
       {
         sheet =
         {
-          filename = "__BrassTacks-Updated__/graphics/ore/cheese-ore.png",
+          filename = "__BrassTacks-Updated__/graphics/ore/hr-cheese-ore.png",
           priority = "extra-high",
-          size = 64,
+          size = 128,
           frame_count = 8,
           variation_count = 8,
-          hr_version =
-          {
-            filename = "__BrassTacks-Updated__/graphics/ore/hr-cheese-ore.png",
-            priority = "extra-high",
-            size = 128,
-            frame_count = 8,
-            variation_count = 8,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       },
       map_color = {1, 0.8, 0},
