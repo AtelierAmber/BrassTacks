@@ -87,11 +87,11 @@ if mods["248k-Redux"] then
 
   if mods["Krastorio2"] then
     rm.RemoveIngredient("gr_wheel", "fu_iron", 99999)
-    data.raw.recipe["gr_wheel"].category = "chemistry"
+    data.raw.recipe["gr_wheel"].categories = {"chemistry"}
     rm.AddIngredient("gr_wheel", "fu_copper", 250)
     rm.AddIngredient("gr_wheel", "248k-zinc-atom", 250)
   else
-    data.raw.recipe["gr_wheel"].category = "fi_refining"
+    data.raw.recipe["gr_wheel"].categories = {"fi_refining"}
     rm.RemoveIngredient("gr_wheel", "fu_iron", 250)
     rm.AddIngredient("gr_wheel", "fu_copper", 125)
     rm.AddIngredient("gr_wheel", "248k-zinc-atom", 125)

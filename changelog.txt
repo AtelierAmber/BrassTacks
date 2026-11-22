@@ -2,6 +2,13 @@
 Version: 2.4.21
 Date: ????
   Changes:
+    - Update to 2.1
+      - change category to categories in recipes
+      - change probability to independent_probability
+      - change data.raw.tool to data.raw.item
+      - use shared_probabilty for se scrap where appropriate
+  Balancing:
+    - Reduced brass plates in brass gear from 4 to 1 when only Krastorio 2 is active
 ---------------------------------------------------------------------------------------------------
 Version: 2.4.20
 Date: 2026-06-03

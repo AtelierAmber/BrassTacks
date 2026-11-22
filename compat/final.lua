@@ -27,7 +27,7 @@ if mods["Krastorio2"] then
   end
 
   if rm.CheckIngredient("chemical-science-pack", "sulfuric-acid") then
-    data.raw.recipe["chemical-science-pack"].category = data.raw.recipe["logistic-science-pack"].category
+    data.raw.recipe["chemical-science-pack"].categories = data.raw.recipe["logistic-science-pack"].categories
     rm.RemoveIngredient("chemical-science-pack", "sulfuric-acid", 999)
     rm.ReplaceIngredient("chemical-science-pack", mods["Krastorio2"] and "kr-glass" or "glass", "battery", 5)
   end
@@ -49,9 +49,12 @@ if false then
 
   local function add_catalyst(recipe, ingredient, amount, losschance, scrap, scrap_amount)
     rm.AddIngredient(recipe, ingredient, amount)
-    rm.AddProductRaw(recipe, {type="item", name=ingredient, amount=amount, probability=1.0 - losschance, ignored_by_productivity=amount, ignored_by_stats=amount})
     if scrap then
-      rm.AddProductRaw(recipe, {type="item", name=scrap, amount=scrap_amount, probability=losschance})
+      local chance = 1.0 - losschance
+      rm.AddProductRaw(recipe, {type="item", name=ingredient, amount=amount, shared_probability = {min = 0, max = chance}, ignored_by_productivity=amount, ignored_by_stats=amount})
+      rm.AddProductRaw(recipe, {type="item", name=scrap, amount=scrap_amount, shared_probability = {min = chance, max = 1}})
+    else
+      rm.AddProductRaw(recipe, {type="item", name=ingredient, amount=amount, independent_probability=1.0 - losschance, ignored_by_productivity=amount, ignored_by_stats=amount})
     end
   end
 

@@ -353,7 +353,7 @@ if not mods["galdocs-manufacturing"] then
     if mods["space-exploration"] then
       rm.ReplaceIngredient("iron-gear-wheel", "iron-plate", "brass-plate", 1)
     else
-      rm.ReplaceIngredient("iron-gear-wheel", "iron-plate", "brass-plate", 4)
+      rm.ReplaceIngredient("iron-gear-wheel", "iron-plate", "brass-plate", 1)
     end
   else
     rm.ReplaceIngredient("iron-gear-wheel", "iron-plate", "brass-plate", 1)
@@ -555,7 +555,7 @@ if mods["LunarLandings"] then
     rm.RemoveIngredient("ll-telescope", "iron-gear-wheel", 20)
     rm.AddIngredient("ll-telescope", "skyseeker-armature", 5)
     rm.AddIngredient("ll-data-card", "skyseeker-armature", 1)
-    rm.AddProductRaw("ll-data-card", {type="item", name="skyseeker-armature", amount=1, probability=0.95})
+    rm.AddProductRaw("ll-data-card", {type="item", name="skyseeker-armature", amount=1, independent_probability=0.95})
     tf.addPrereq("ll-space-data-collection", "skyseeker-armature")
   else
     rm.AddIngredient("ll-low-grav-assembling-machine", "bearing", 10)

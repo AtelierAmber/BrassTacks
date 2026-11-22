@@ -119,7 +119,7 @@ end
 
 if mods["space-exploration"] then
 
-  rm.AddProductRaw("se-scrap-hard-recycling", {type="item", name="zinc-ore", amount=1, probability=0.05})
+  rm.AddProductRaw("se-scrap-hard-recycling", {type="item", name="zinc-ore", amount=1, independent_probability=0.05})
 
   if parts.experimental then
     tf.addPrereq("se-meteor-defence", "skyseeker-armature")
@@ -199,17 +199,20 @@ if mods["space-exploration"] then
     if settings.startup["brasstacks-se-maintenance"].value then
       local function add_catalyst(recipe, ingredient, amount, losschance, scrap, scrap_amount)
         rm.AddIngredient(recipe, ingredient, amount)
-        rm.AddProductRaw(recipe, {type="item", name=ingredient, amount=amount, probability=1.0 - losschance, ignored_by_productivity=amount, ignored_by_stats=amount})
         if scrap then
-          rm.AddProductRaw(recipe, {type="item", name=scrap, amount=scrap_amount, probability=losschance})
+          local chance = 1.0 - losschance
+          rm.AddProductRaw(recipe, {type="item", name=ingredient, amount=amount, shared_probability = {min = 0, max = chance}, ignored_by_productivity=amount, ignored_by_stats=amount})
+          rm.AddProductRaw(recipe, {type="item", name=scrap, amount=scrap_amount, shared_probability = {min = chance, max = 1}})
+        else
+          rm.AddProductRaw(recipe, {type="item", name=ingredient, amount=amount, independent_probability=1.0 - losschance, ignored_by_productivity=amount, ignored_by_stats=amount})
         end
       end
 
       if parts.gyroscope then
         rm.AddIngredient("se-arcosphere-fracture", parts.gyroscope, 25)
-        rm.AddProductRaw("se-arcosphere-fracture", {type="item", name="se-scrap", amount=250, probability=1})
+        rm.AddProductRaw("se-arcosphere-fracture", {type="item", name="se-scrap", amount=250, independent_probability=1})
         rm.AddIngredient("se-arcosphere-fracture-alt", parts.gyroscope, 25)
-        rm.AddProductRaw("se-arcosphere-fracture-alt", {type="item", name="se-scrap", amount=250, probability=1})
+        rm.AddProductRaw("se-arcosphere-fracture-alt", {type="item", name="se-scrap", amount=250, independent_probability=1})
 
         add_catalyst("se-arcosphere-fold-in", parts.gyroscope, 1, 0.1, "se-scrap", 10)
         add_catalyst("se-arcosphere-fold-out", parts.gyroscope, 1, 0.1, "se-scrap", 10)
@@ -291,7 +294,7 @@ if mods["space-exploration"] then
           icon_size = 64, icon_mipmaps = 4, scale = 0.25
         }
       },
-      category = "hard-recycling",
+      categories = {"hard-recycling"},
       energy_required = 1,
       ingredients = {{type="item", name="zinc-ore", amount=50}},
       results = {{type="item", name="landfill", amount=1}},
